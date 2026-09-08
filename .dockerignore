@@ -1,0 +1,23 @@
+# Dependencies & hasil build (dibuat ulang di dalam Docker)
+node_modules
+dist
+dist-ssr
+
+# Git & CI
+.git
+.gitignore
+.gitlab-ci.yml
+
+# Log
+logs
+*.log
+npm-debug.log*
+
+# Editor & OS
+.vscode
+.idea
+.DS_Store
+
+# Docker itu sendiri
+Dockerfile
+.dockerignore

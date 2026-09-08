@@ -1,0 +1,52 @@
+# =========================================================
+# CI/CD jhic-frontend
+# Runner: GitLab Runner dengan tag "jhic" (shell executor,
+# Docker sudah terpasang di host runner)
+# Alur: build image -> deploy (run container di port 3000)
+# =========================================================
+
+stages:
+  - build
+  - deploy
+
+variables:
+  IMAGE_NAME: "jhic-frontend"
+  IMAGE_TAG: "latest"
+  CONTAINER_NAME: "jhic-frontend"
+  APP_PORT: "3000"
+
+# ---------- Job 1: Build image aplikasi ----------
+build-app:
+  stage: build
+  tags:
+    - jhic
+  script:
+    - echo "Building Docker image $IMAGE_NAME:$IMAGE_TAG ..."
+    - docker build -t $IMAGE_NAME:$IMAGE_TAG .
+    - echo "Build selesai -> $IMAGE_NAME:$IMAGE_TAG"
+  rules:
+    - if: $CI_COMMIT_BRANCH == "main"
+
+# ---------- Job 2: Deploy (run container di port 3000) ----------
+deploy-app:
+  stage: deploy
+  tags:
+    - jhic
+  script:
+    - echo "Menjalankan container $CONTAINER_NAME di port $APP_PORT ..."
+    # Hentikan & hapus container lama jika ada
+    - docker rm -f $CONTAINER_NAME 2>/dev/null || true
+    # Jalankan container baru dari image hasil build
+    - docker run -d --name $CONTAINER_NAME --restart unless-stopped -p ${APP_PORT}:${APP_PORT} $IMAGE_NAME:$IMAGE_TAG
+    # Verifikasi container berjalan dan aplikasi merespons
+    - docker ps --filter "name=$CONTAINER_NAME"
+    - sleep 3
+    - curl -sf http://localhost:${APP_PORT} > /dev/null && echo "Aplikasi berjalan di http://localhost:${APP_PORT}"
+    # Bersihkan layer/image lama yang tidak terpakai
+    - docker image prune -f
+  environment:
+    name: production
+    url: http://localhost:3000
+  rules:
+    - if: $CI_COMMIT_BRANCH == "main"
+
