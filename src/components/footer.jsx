@@ -57,7 +57,7 @@ function Footer() {
       <div className="mx-auto flex max-w-295 flex-col gap-8">
         <div className="flex items-center gap-2">
           <img
-            src="/logo_sekolah.webp"
+            src="/logo.webp"
             alt="Logo SKADUTA"
             className="h-11 w-11"
           />
