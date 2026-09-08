@@ -9,12 +9,12 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { MoveRight, Newspaper, SquareArrowUpRight } from "lucide-react";
-import { Link } from "react-router-dom";                                        
+import { Link } from "react-router-dom";
 
 function Hero() {
   return (
     <>
-      <section className="flex items-center justify-between py-16">
+      <section className="flex items-center justify-between py-18">
         <div className="flex items-start flex-col gap-4">
           <Badge
             variant="outline"
@@ -22,19 +22,19 @@ function Hero() {
           >
             The Industrial Culture School
           </Badge>
-          <h1 className="font-bold text-5xl max-w-xl">
+          <h1 className="font-bold text-5xl max-w-lg">
             Menghasilkan Tamatan{" "}
             <span className="text-primary">Berkarakter</span>,{" "}
             <span className="text-[#388bff]">Unggul</span> &{" "}
             <span className="text-[#237fff]">Berdaya</span> Saing Global
           </h1>
-          <p className="text-muted-foreground max-w-xl">
+          <p className="text-muted-foreground max-w-120 text-sm">
             SMK Negeri 2 Yogyakarta berkomitmen menghadirkan pendidikan vokasi
             berkualitas, berbasis industri, dan ekosistem pembelajaran modern
             berbasis projek.
           </p>
           <div className="flex items-center gap-2">
-            <Button className={"px-4 py-5 bg-emerald-600"}>
+            <Button className={"px-4 py-5 bg-emerald-600 hover:bg-emerald-700"}>
               <Link>SPMB</Link>
               <SquareArrowUpRight />
             </Button>
@@ -69,7 +69,7 @@ function Hero() {
           <img
             src="/sekolah.webp"
             alt="SEKOLAH"
-            className="rounded-3xl w-150 h-90"
+            className="rounded-3xl w-130 h-80"
           />
           <span className="bg-primary-foreground text-primary font-semibold p-5 rounded-2xl absolute -translate-x-11 -translate-y-7">
             Terakreditasi - A
