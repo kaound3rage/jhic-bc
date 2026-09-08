@@ -20,12 +20,12 @@ import { Program } from "./data-program";
 function Layout({ children }) {
   return (
     <>
-      <nav className="border-b px-60 py-4 flex items-center justify-between fixed w-full">
+      <nav className="border-b px-60 py-4 flex items-center justify-between fixed w-full bg-white">
         <div className="flex items-center gap-2">
           <img src="/logo_sekolah.webp" alt="LOGO" className="w-12 h-12" />
           <span className="flex flex-col">
             <h1 className="font-bold">SMK Negeri 2 Yogyakarrta</h1>
-            <p className="text-xs text-gray-600">
+            <p className="text-xs text-muted-foreground">
               The Industrial Culture School
             </p>
           </span>
