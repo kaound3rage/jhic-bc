@@ -1,4 +1,5 @@
 import FacilitySection from "@/components/home-component/facility-section";
+import AlumniSection from "@/components/home-component/alumni-section";
 import Hero from "@/components/home-component/hero-section";
 import MajorSection from "@/components/home-component/major-section";
 import MessageSection from "@/components/home-component/message-section";
@@ -8,6 +9,7 @@ import WhySkaduta from "@/components/home-component/why-skaduta";
 function Home() {
   return (
     <div className="w-full">
+      <AlumniSection />
       <Hero />
       <WhySkaduta />
       <ProfileSection />

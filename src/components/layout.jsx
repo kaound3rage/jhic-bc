@@ -1,6 +1,7 @@
 import Footer from "./footer";
 import Header from "./header";
 import ChatbotBox from "./chatbot-box";
+import IndustrySlider from "./industry-slider";
 
 function Layout({ children }) {
   return (
@@ -22,6 +23,7 @@ function Layout({ children }) {
       <main className="max-w-295 mx-auto flex flex-col items-center pt-25">
         {children}
       </main>
+      <IndustrySlider />
       <Footer />
       <ChatbotBox />
     </>
