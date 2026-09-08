@@ -1,4 +1,4 @@
-import { companyLogos } from "@/components/data-perusahaan";
+import { companyLogos } from "@/components/navigation-component/data-perusahaan";
 import {
   Avatar,
   AvatarFallback,
