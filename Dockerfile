@@ -1,5 +1,3 @@
-# syntax=docker/dockerfile:1
-
 # ---------- Stage 1: Build aplikasi (React + Vite) ----------
 FROM node:22-alpine AS builder
 

@@ -3,6 +3,12 @@
 # Runner: GitLab Runner dengan tag "jhic" (shell executor,
 # Docker sudah terpasang di host runner)
 # Alur: build image -> deploy (run container di port 3000)
+#
+# Arsitektur deploy:
+#   nginx server (config existing di host, port 80/443)
+#     -> proxy_pass http://localhost:3000
+#     -> container jhic-frontend (nginx internal listen 3000)
+# CI ini tidak mengubah/menyentuh config nginx yang ada di server.
 # =========================================================
 
 stages:
@@ -28,6 +34,8 @@ build-app:
     - if: $CI_COMMIT_BRANCH == "main"
 
 # ---------- Job 2: Deploy (run container di port 3000) ----------
+# Container hanya menjalankan aplikasi di port 3000.
+# Nginx existing di server tinggal diarahkan (proxy_pass) ke localhost:3000.
 deploy-app:
   stage: deploy
   tags:
