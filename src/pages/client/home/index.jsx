@@ -1,7 +1,9 @@
 function Home() {
   return (
     <div>
-      qwodkoqwdkqwdok
+      <section>
+        
+      </section>
     </div>
   )
 }
