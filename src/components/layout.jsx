@@ -1,5 +1,6 @@
 import Footer from "./footer";
 import Header from "./header";
+import ChatbotBox from "./chatbot-box";
 
 function Layout({ children }) {
   return (
@@ -22,6 +23,7 @@ function Layout({ children }) {
         {children}
       </main>
       <Footer />
+      <ChatbotBox />
     </>
   );
 }
