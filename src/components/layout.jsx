@@ -8,134 +8,139 @@ import {
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from "./ui/navigation-menu";
-import {
-  Aperture,
-  Compass,
-  School,
-  UserRound,
-} from "lucide-react";
+import { Aperture, Compass, School, UserRound } from "lucide-react";
 import { Jurusan } from "./data-jurusan";
 import { Program } from "./data-program";
 
 function Layout({ children }) {
   return (
     <>
-      <nav className="border-b px-60 py-4 flex items-center justify-between fixed w-full bg-white">
-        <div className="flex items-center gap-2">
-          <img src="/logo_sekolah.webp" alt="LOGO" className="w-12 h-12" />
-          <span className="flex flex-col">
-            <h1 className="font-bold">SMK Negeri 2 Yogyakarrta</h1>
-            <p className="text-xs text-muted-foreground">
-              The Industrial Culture School
-            </p>
-          </span>
-        </div>
-        <NavigationMenu>
-          <NavigationMenuList className={"flex items-center gap-2"}>
-            <NavigationMenuItem>
-              <NavigationMenuLink
-                className={navigationMenuTriggerStyle()}
-                render={<Link href="/">Beranda</Link>}
-              />
-            </NavigationMenuItem>
-            <NavigationMenuItem>
-              <NavigationMenuTrigger>Profil</NavigationMenuTrigger>
-              <NavigationMenuContent>
-                <ul className="w-96">
-                  <ListItem href="/docs" title="Profil Sekolah" icon={School}>
-                    Visi, Misi, Sejarah, dan informasi sekolah.
-                  </ListItem>
-                  <ListItem
-                    href="/docs/installation"
-                    title="Sambutan Kepala Sekolah"
-                    icon={UserRound}
-                  >
-                    Pesan dan amanat dari kepala sekolah.
-                  </ListItem>
-                </ul>
-              </NavigationMenuContent>
-            </NavigationMenuItem>
-            <NavigationMenuItem>
-              <NavigationMenuTrigger>
-                Konsentrasi Keahlian
-              </NavigationMenuTrigger>
+      <nav className="fixed top-0 z-50 w-full border-b bg-white">
+        <div className="flex max-w-7xl mx-auto items-center justify-between py-4">
+          <div className="flex items-center gap-2">
+            <img src="/logo_sekolah.webp" alt="LOGO" className="w-12 h-12" />
+            <span className="flex flex-col">
+              <h1 className="font-bold">SMK Negeri 2 Yogyakarrta</h1>
+              <p className="text-xs text-muted-foreground">
+                The Industrial Culture School
+              </p>
+            </span>
+          </div>
+          <NavigationMenu>
+            <NavigationMenuList className={"flex items-center gap-2"}>
+              <NavigationMenuItem>
+                <NavigationMenuLink
+                  className={navigationMenuTriggerStyle()}
+                  render={<Link href="/">Beranda</Link>}
+                />
+              </NavigationMenuItem>
+              <NavigationMenuItem>
+                <NavigationMenuTrigger>Profil</NavigationMenuTrigger>
+                <NavigationMenuContent>
+                  <ul className="w-96">
+                    <ListItem href="/docs" title="Profil Sekolah" icon={School}>
+                      Visi, Misi, Sejarah, dan informasi sekolah.
+                    </ListItem>
+                    <ListItem
+                      href="/docs/installation"
+                      title="Sambutan Kepala Sekolah"
+                      icon={UserRound}
+                    >
+                      Pesan dan amanat dari kepala sekolah.
+                    </ListItem>
+                  </ul>
+                </NavigationMenuContent>
+              </NavigationMenuItem>
+              <NavigationMenuItem>
+                <NavigationMenuTrigger>
+                  Konsentrasi Keahlian
+                </NavigationMenuTrigger>
 
-              <NavigationMenuContent>
-                <ul className="w-96">
-                  <ListItem
-                    href="/konsentrasi-keahlian"
-                    title="Lihat semua konsentrasi keahlian"
-                    icon={Compass}
-                  >
-                    Jelajahi 10 konsentrasi keahlian di SKADUTA.
-                  </ListItem>
-                  <hr className="my-2" />
-                  <li>
-                    {Jurusan.map((Item, index) => (
-                      <ListItem key={index} href={Item.path} title={Item.title}>
+                <NavigationMenuContent>
+                  <ul className="w-96">
+                    <ListItem
+                      href="/konsentrasi-keahlian"
+                      title="Lihat semua konsentrasi keahlian"
+                      icon={Compass}
+                    >
+                      Jelajahi 10 konsentrasi keahlian di SKADUTA.
+                    </ListItem>
+                    <hr className="my-2" />
+                    <li>
+                      {Jurusan.map((Item, index) => (
+                        <ListItem
+                          key={index}
+                          href={Item.path}
+                          title={Item.title}
+                        >
+                          {Item.deskripsi}
+                        </ListItem>
+                      ))}
+                    </li>
+                  </ul>
+                </NavigationMenuContent>
+              </NavigationMenuItem>
+              <NavigationMenuItem>
+                <NavigationMenuTrigger>Program</NavigationMenuTrigger>
+                <NavigationMenuContent>
+                  <ul className="w-96">
+                    {Program.map((Item, index) => (
+                      <ListItem
+                        key={index}
+                        href={Item.path}
+                        title={Item.title}
+                        icon={Item.icon}
+                      >
                         {Item.deskripsi}
                       </ListItem>
                     ))}
-                  </li>
-                </ul>
-              </NavigationMenuContent>
-            </NavigationMenuItem>
-            <NavigationMenuItem>
-              <NavigationMenuTrigger>Program</NavigationMenuTrigger>
-              <NavigationMenuContent>
-                <ul className="w-96">
-                  {Program.map((Item, index) => (
+                  </ul>
+                </NavigationMenuContent>
+              </NavigationMenuItem>
+              <NavigationMenuItem>
+                <NavigationMenuTrigger>
+                  Fasilitas & Galeri
+                </NavigationMenuTrigger>
+                <NavigationMenuContent>
+                  <ul className="w-100">
                     <ListItem
-                      key={index}
-                      href={Item.path}
-                      title={Item.title}
-                      icon={Item.icon}
+                      href="/docs/installation"
+                      title="Fasilitas"
+                      icon={School}
                     >
-                      {Item.deskripsi}
+                      Jelajahi fasilitas sekolah untuk mendukung kegiatan
+                      belajar siswa.
                     </ListItem>
-                  ))}
-                </ul>
-              </NavigationMenuContent>
-            </NavigationMenuItem>
-            <NavigationMenuItem>
-              <NavigationMenuTrigger>Fasilitas & Galeri</NavigationMenuTrigger>
-              <NavigationMenuContent>
-                <ul className="w-100">
-                  <ListItem
-                    href="/docs/installation"
-                    title="Fasilitas"
-                    icon={School}
-                  >
-                    Jelajahi fasilitas sekolah untuk mendukung kegiatan belajar
-                    siswa.
-                  </ListItem>
-                  <ListItem
-                    href="/docs/installation"
-                    title="Galeri Foto & Video"
-                    icon={Aperture}
-                  >
-                    Lihat berbagai momen dan kegiatan menarik di lingkungan
-                    sekolah.
-                  </ListItem>
-                </ul>
-              </NavigationMenuContent>
-            </NavigationMenuItem>
-            <NavigationMenuItem>
-              <NavigationMenuLink
-                className={navigationMenuTriggerStyle()}
-                render={<Link href="/berita">Berita</Link>}
-              />
-            </NavigationMenuItem>
-            <NavigationMenuItem>
-              <NavigationMenuLink
-                className={navigationMenuTriggerStyle()}
-                render={<Link href="/kontak">Kontak</Link>}
-              />
-            </NavigationMenuItem>
-          </NavigationMenuList>
-        </NavigationMenu>
+                    <ListItem
+                      href="/docs/installation"
+                      title="Galeri Foto & Video"
+                      icon={Aperture}
+                    >
+                      Lihat berbagai momen dan kegiatan menarik di lingkungan
+                      sekolah.
+                    </ListItem>
+                  </ul>
+                </NavigationMenuContent>
+              </NavigationMenuItem>
+              <NavigationMenuItem>
+                <NavigationMenuLink
+                  className={navigationMenuTriggerStyle()}
+                  render={<Link href="/berita">Berita</Link>}
+                />
+              </NavigationMenuItem>
+              <NavigationMenuItem>
+                <NavigationMenuLink
+                  className={navigationMenuTriggerStyle()}
+                  render={<Link href="/kontak">Kontak</Link>}
+                />
+              </NavigationMenuItem>
+            </NavigationMenuList>
+          </NavigationMenu>
+        </div>
       </nav>
-      <main className="px-60">{children}</main>
+      <main className="max-w-7xl mx-auto flex flex-col items-center pt-25">
+        {children}
+      </main>
     </>
   );
 }
