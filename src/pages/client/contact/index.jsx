@@ -1,4 +1,3 @@
-import Breadcrumb from "@/components/breadcrumb";
 // import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import ContactForm from "@/components/contact-component/contact-form";
@@ -38,7 +37,6 @@ function ContactPage() {
   return (
     <section className="w-full px-4 py-8 sm:px-6 lg:px-0 lg:py-12">
       <div className="mb-8 max-w-3xl">
-        <Breadcrumb />
         {/* <Badge variant="outline" className="border-primary/30 bg-primary/10 text-primary">Hubungi SKADUTA</Badge> */}
         <h1 className="mt-4 text-3xl font-bold tracking-tight sm:text-4xl">
           Kontak Kami
