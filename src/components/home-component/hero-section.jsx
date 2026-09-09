@@ -44,7 +44,7 @@ function Hero() {
               <MoveRight />
             </Button>
             <Button className={"px-4 py-5"} variant="outline">
-              <Link to={"https://elearning.smk2-yk.sch.id"}>Berita</Link>
+              <Link to={"/berita"}>Berita</Link>
               <Newspaper />
             </Button>
           </div>
