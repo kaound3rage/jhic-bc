@@ -1,4 +1,4 @@
-import { companyLogos } from "@/components/navigation-component/data-perusahaan";
+
 import {
   Avatar,
   AvatarFallback,
@@ -10,6 +10,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { MoveRight, Newspaper, SquareArrowUpRight } from "lucide-react";
 import { Link } from "react-router-dom";
+import { companyLogos } from "./data-industry";
 
 function Hero() {
   return (
