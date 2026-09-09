@@ -1,4 +1,4 @@
-import { Book, Briefcase, Presentation, Volleyball, Wrench } from "lucide-react";
+import { Book, Briefcase, Presentation, Siren, Volleyball, Wrench } from "lucide-react";
 
 export const Program = [
   {
@@ -20,9 +20,15 @@ export const Program = [
     icon: Briefcase,
   },
   {
+    title: "SIGAP",
+    path: "/sigap",
+    deskripsi: "Sistem Informasi Gangguan & Perbaikan Sarana Prasarana.",
+    icon: Siren,
+  },
+  {
     title: "Lapor Fasilitas",
     path: "/lapor-fasilitas",
-    deskripsi: "Platform warga sekolah melaporkan kerusakan fasilitas.",
+    deskripsi: "Form pelaporan kerusakan fasilitas.",
     icon: Wrench,
   },
   {

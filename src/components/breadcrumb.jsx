@@ -15,6 +15,13 @@ const routeMeta = {
     parents: [{ label: "Fasilitas" }],
     label: "Jadwal Ruangan",
   },
+  "/sigap": {
+    label: "SIGAP",
+  },
+  "/lapor-fasilitas": {
+    parents: [{ label: "SIGAP" }],
+    label: "Lapor Kerusakan Fasilitas",
+  },
 };
 
 const titleFromPath = (segment) => segment
