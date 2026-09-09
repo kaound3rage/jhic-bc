@@ -9,13 +9,13 @@ import WhySkaduta from "@/components/home-component/why-skaduta";
 function Home() {
   return (
     <div className="w-full">
-      <AlumniSection />
       <Hero />
       <WhySkaduta />
       <ProfileSection />
       <MessageSection />
       <MajorSection />
       <FacilitySection />
+      <AlumniSection />
     </div>
   );
 }
