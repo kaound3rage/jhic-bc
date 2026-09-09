@@ -155,8 +155,8 @@ function Footer() {
                   variant="outline"
                   className="size-10 border-primary-foreground/20 bg-primary-foreground/10 hover:bg-primary-foreground/20"
                 >
-                  <a
-                    href={item.href}
+                  <Link
+                    to={item.href}
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={item.name}
@@ -166,7 +166,7 @@ function Footer() {
                       alt={item.name}
                       className="size-5 brightness-0 invert"
                     />
-                  </a>
+                  </Link>
                 </Button>
               ))}
             </div>

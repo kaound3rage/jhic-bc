@@ -12,16 +12,20 @@ import {
 
 const routeMeta = {
   "/jadwal-ruangan": {
-    parents: [{ label: "Fasilitas" }],
+    parents: [],
     label: "Jadwal Ruangan",
   },
   "/sigap": {
     parents: [],
     label: "SIGAP",
   },
-  "/lapor-fasilitas": {
-    parents: [{ label: "SIGAP" }],
-    label: "Lapor Kerusakan Fasilitas",
+  "/berita": {
+    parents: [],
+    label: "Berita",
+  },
+  "/kontak": {
+    parents: [],
+    label: "Kontak Kami",
   },
 };
 
@@ -30,7 +34,7 @@ const titleFromPath = (segment) => segment
   .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
   .join(" ");
 
-function Breadcrumb() {
+function Breadcrumb({ items: customItems }) {
   const { pathname } = useLocation();
   const meta = routeMeta[pathname];
   const pathSegments = pathname.split("/").filter(Boolean);
@@ -38,9 +42,9 @@ function Breadcrumb() {
     label: titleFromPath(segment),
     href: `/${pathSegments.slice(0, index + 1).join("/")}`,
   }));
-  const items = meta
+  const items = customItems ?? (meta
     ? [...meta.parents, { label: meta.label }]
-    : generatedItems;
+    : generatedItems);
 
   if (pathname === "/") return null;
 
