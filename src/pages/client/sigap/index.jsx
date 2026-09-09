@@ -89,10 +89,9 @@ function Sigap() {
         <h1 className="text-2xl font-semibold tracking-tight sm:text-3xl">
           SIGAP
         </h1>
-        <p className="text-sm text-muted-foreground">
+        <p className="text-sm mt-3 text-muted-foreground">
           Sistem Informasi Gangguan &amp; Perbaikan Sarana Prasarana
         </p>
-        <div className="mt-3 h-1 w-16 rounded-full bg-primary" />
       </div>
 
       <Card className="mb-6 overflow-hidden py-0">
@@ -148,7 +147,10 @@ function Sigap() {
             {processSteps.map((step, index) => {
               const isLast = index === processSteps.length - 1;
               return (
-                <li key={step.title} className="relative flex flex-1 gap-4 lg:flex-col lg:gap-3">
+                <li
+                  key={step.title}
+                  className="relative flex flex-1 gap-4 lg:flex-col lg:gap-3"
+                >
                   {!isLast && (
                     <span
                       aria-hidden="true"
@@ -209,9 +211,7 @@ function Sigap() {
                 <FileQuestion className="size-7 text-muted-foreground" />
               </span>
               <div>
-                <p className="font-medium text-foreground">
-                  Belum ada laporan
-                </p>
+                <p className="font-medium text-foreground">Belum ada laporan</p>
                 <p className="mt-1 text-sm text-muted-foreground">
                   {query
                     ? "Tidak ada laporan yang cocok dengan pencarianmu."
@@ -286,10 +286,7 @@ function Sigap() {
 
               {hasMore && (
                 <div className="mt-4 flex justify-center border-t pt-4">
-                  <Button
-                    variant="ghost"
-                    className="gap-1 text-primary"
-                  >
+                  <Button variant="ghost" className="gap-1 text-primary">
                     <ClipboardCheck className="size-4" />
                     Lihat semua laporan
                   </Button>

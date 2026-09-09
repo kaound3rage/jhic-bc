@@ -111,7 +111,7 @@ function Header() {
         <NavigationMenuItem>
           <NavigationMenuLink
             className={navigationMenuTriggerStyle()}
-            render={<Link href="/berita">Berita</Link>}
+            render={<Link to="/berita">Berita</Link>}
           />
         </NavigationMenuItem>
         <NavigationMenuItem>
