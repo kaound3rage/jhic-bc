@@ -12,20 +12,20 @@ import {
 
 const routeMeta = {
   "/jadwal-ruangan": {
-    parents: [{ label: "Fasilitas" }],
+    parents: [],
     label: "Jadwal Ruangan",
   },
   "/sigap": {
     parents: [],
     label: "SIGAP",
   },
-  "/lapor-fasilitas": {
-    parents: [{ label: "SIGAP" }],
-    label: "Lapor Kerusakan Fasilitas",
-  },
   "/berita": {
     parents: [],
     label: "Berita",
+  },
+  "/kontak": {
+    parents: [],
+    label: "Kontak Kami",
   },
 };
 
