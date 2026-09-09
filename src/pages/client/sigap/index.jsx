@@ -8,7 +8,6 @@ import {
   MapPin,
   Plus,
   Search,
-  Ticket,
   Wrench,
 } from "lucide-react";
 
@@ -156,7 +155,7 @@ function Sigap() {
                       className="absolute top-6 left-6 h-[calc(100%-3rem)] w-px bg-border lg:top-6 lg:left-1/2 lg:h-px lg:w-[calc(100%-3rem)]"
                     />
                   )}
-                  <span className="relative z-10 flex size-12 shrink-0 items-center justify-center rounded-full border-2 border-sigap-amber bg-background font-mono text-sm font-semibold text-[#8a5a0e]">
+                  <span className="relative z-10 flex size-12 shrink-0 items-center justify-center rounded-full border-2 border-primary bg-primary/10 font-mono text-sm font-semibold text-primary">
                     {String(index + 1).padStart(2, "0")}
                   </span>
                   <div className="pb-6 lg:pb-0">
@@ -174,11 +173,11 @@ function Sigap() {
         </CardContent>
       </Card>
 
-      <Card className="py-5 shadow-sm">
+      <Card className="py-5">
         <CardHeader className="flex flex-col gap-4 border-b pb-4 sm:flex-row sm:items-center sm:justify-between">
           <div>
             <CardTitle className="flex items-center gap-2">
-              <ClipboardList className="size-4 text-sigap-amber" />
+              <ClipboardList className="size-4 text-primary" />
               Laporan Terkini
             </CardTitle>
             <p className="mt-1 text-sm text-muted-foreground">
@@ -224,7 +223,7 @@ function Sigap() {
                   size="sm"
                   variant="outline"
                   render={<Link to="/lapor-fasilitas" />}
-                  className="mt-1 rounded-lg border-sigap-amber/40 text-[#8a5a0e] hover:bg-sigap-amber/10"
+                  className="mt-1 rounded-lg"
                 >
                   <Plus /> Buat Laporan
                 </Button>
@@ -289,7 +288,7 @@ function Sigap() {
                 <div className="mt-4 flex justify-center border-t pt-4">
                   <Button
                     variant="ghost"
-                    className="gap-1 text-sigap-amber hover:bg-sigap-amber/10 hover:text-[#8a5a0e]"
+                    className="gap-1 text-primary"
                   >
                     <ClipboardCheck className="size-4" />
                     Lihat semua laporan
