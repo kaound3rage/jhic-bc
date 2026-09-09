@@ -5,6 +5,7 @@ import MajorSection from "@/components/home-component/major-section";
 import MessageSection from "@/components/home-component/message-section";
 import ProfileSection from "@/components/home-component/profile-section";
 import WhySkaduta from "@/components/home-component/why-skaduta";
+import NewsSection from "../../../components/home-component/news-section";
 
 function Home() {
   return (
@@ -14,6 +15,7 @@ function Home() {
       <ProfileSection />
       <MessageSection />
       <MajorSection />
+      <NewsSection />
       <FacilitySection />
       <AlumniSection />
     </div>
