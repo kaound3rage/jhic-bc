@@ -18,6 +18,14 @@ const routeMeta = {
       { label: "Lapor Kerusakan Fasilitas" },
     ],
   },
+  "/konsentrasi-keahlian": {
+    parents: [],
+    label: "Konsentrasi Keahlian",
+  },
+  "/spmb": {
+    parents: [],
+    label: "SPMB",
+  },
 };
 
 function Breadcrumb({ items: customItems }) {

@@ -7,6 +7,9 @@ import BeritaPage from "./pages/client/news";
 import NewsDetailPage from "./pages/client/news/detail";
 import ContactPage from "./pages/client/contact";
 import PrincipalMessagePage from "./pages/client/principal-message";
+import KonsentrasiKeahlianPage from "./pages/client/konsentrasi-keahlian";
+import MajorDetailPage from "./pages/client/konsentrasi-keahlian/detail";
+import SpmbPage from "./pages/client/spmb";
 import { Route, Routes } from "react-router-dom";
 
 function App() {
@@ -22,6 +25,15 @@ function App() {
           <Route path="/berita/:slug" element={<NewsDetailPage />} />
           <Route path="/kontak" element={<ContactPage />} />
           <Route path="/profil/sambutan-kepala-sekolah" element={<PrincipalMessagePage />} />
+          <Route
+            path="/konsentrasi-keahlian"
+            element={<KonsentrasiKeahlianPage />}
+          />
+          <Route
+            path="/konsentrasi-keahlian/:slug"
+            element={<MajorDetailPage />}
+          />
+          <Route path="/spmb" element={<SpmbPage />} />
         </Routes>
       </Layout>
     </>
