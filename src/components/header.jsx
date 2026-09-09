@@ -99,11 +99,11 @@ function Header() {
                 Lihat berbagai momen dan kegiatan menarik di lingkungan sekolah.
               </ListItem>
               <ListItem
-                href="/docs/installation"
+                href="/sigap"
                 title="Lapor Kerusakan"
                 icon={Wrench}
               >
-                Platform warga sekolah melaporkan kerusakan fasilitas.
+                Sistem Informasi Gangguan & Perbaikan Sarana Prasarana.
               </ListItem>
             </ul>
           </NavigationMenuContent>

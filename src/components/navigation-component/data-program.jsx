@@ -1,4 +1,4 @@
-import { Book, Briefcase, Presentation, Siren, Volleyball, Wrench } from "lucide-react";
+import { Book, Briefcase, Presentation, Volleyball } from "lucide-react";
 
 export const Program = [
   {
@@ -18,18 +18,6 @@ export const Program = [
     path: "https://bkk.smk2-yk.sch.id/",
     deskripsi: "Tempat alumni & non alumni mendapatkan pekerjaan.",
     icon: Briefcase,
-  },
-  {
-    title: "SIGAP",
-    path: "/sigap",
-    deskripsi: "Sistem Informasi Gangguan & Perbaikan Sarana Prasarana.",
-    icon: Siren,
-  },
-  {
-    title: "Lapor Fasilitas",
-    path: "/lapor-fasilitas",
-    deskripsi: "Form pelaporan kerusakan fasilitas.",
-    icon: Wrench,
   },
   {
     title: "Jadwal Ruangan",
