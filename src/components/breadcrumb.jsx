@@ -16,6 +16,7 @@ const routeMeta = {
     label: "Jadwal Ruangan",
   },
   "/sigap": {
+    parents: [],
     label: "SIGAP",
   },
   "/lapor-fasilitas": {
