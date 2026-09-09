@@ -84,34 +84,21 @@ function Sigap() {
   };
 
   return (
-    <section className="w-full rounded-2xl bg-muted/40 px-4 py-8 ring-1 ring-border/60 sm:px-6 lg:px-8 lg:py-12">
+    <section className="w-full px-4 py-8 sm:px-6 lg:px-0 lg:py-12">
       <div className="mb-8">
         <Breadcrumb />
-        <div className="flex items-center gap-2">
-          <h1 className="text-2xl font-semibold tracking-tight sm:text-3xl">
-            SIGAP
-          </h1>
-          <Badge
-            variant="outline"
-            className="rounded-md border-sigap-amber/40 bg-sigap-amber/10 px-2 py-0.5 font-mono text-[10px] font-semibold tracking-wider text-[#8a5a0e] uppercase"
-          >
-            Sarana Prasarana
-          </Badge>
-        </div>
-        <p className="mt-1 text-sm text-muted-foreground">
+        <h1 className="text-2xl font-semibold tracking-tight sm:text-3xl">
+          SIGAP
+        </h1>
+        <p className="text-sm text-muted-foreground">
           Sistem Informasi Gangguan &amp; Perbaikan Sarana Prasarana
         </p>
-        <div className="mt-3 h-1 w-16 rounded-full bg-sigap-amber" />
+        <div className="mt-3 h-1 w-16 rounded-full bg-primary" />
       </div>
 
-      <Card className="mb-6 overflow-hidden border-0 bg-[#FFF8EC] py-0 ring-1 ring-sigap-amber/40 shadow-sm">
+      <Card className="mb-6 overflow-hidden py-0">
         <div className="flex flex-col gap-6 p-6 sm:p-8 lg:flex-row lg:items-center lg:justify-between">
           <div className="max-w-xl">
-            <div className="mb-3 flex items-center gap-2">
-              <Badge className="gap-1 rounded-md bg-sigap-amber px-2.5 py-1 text-xs font-semibold text-[#3a2a05]">
-                <Ticket className="size-3.5" /> SIGAP
-              </Badge>
-            </div>
             <h2 className="text-xl font-semibold text-foreground sm:text-2xl">
               Temukan kerusakan fasilitas? Laporkan sekarang.
             </h2>
@@ -122,7 +109,7 @@ function Sigap() {
             <Button
               size="lg"
               render={<Link to="/lapor-fasilitas" />}
-              className="mt-5 h-10 rounded-lg bg-sigap-amber px-4 text-sm font-semibold text-[#3a2a05] hover:bg-[#e0952a]"
+              className="mt-5"
             >
               <Plus /> Buat Laporan
             </Button>
@@ -130,17 +117,17 @@ function Sigap() {
 
           <div
             aria-hidden="true"
-            className="w-full max-w-64 shrink-0 rounded-xl border border-sigap-amber/30 bg-[#FFF8EC] p-4 lg:w-64"
+            className="w-full max-w-64 shrink-0 rounded-xl border bg-card p-4 lg:w-64"
           >
             <div className="mb-3 flex items-center justify-between">
-              <span className="font-mono text-[10px] font-semibold tracking-widest text-[#8a5a0e]">
+              <span className="font-mono text-[10px] font-semibold tracking-widest text-muted-foreground">
                 SR-2024-006
               </span>
               <span className="flex items-center gap-1.5 text-[10px] font-medium text-status-process">
                 <span className="size-1.5 rounded-full bg-current" /> Diproses
               </span>
             </div>
-            <div className="rounded-lg border bg-white p-3">
+            <div className="rounded-lg border bg-background p-3">
               <p className="text-xs font-medium text-foreground">
                 Lampu kelas mati
               </p>
@@ -150,13 +137,13 @@ function Sigap() {
             </div>
             <div className="mt-3 flex items-center justify-between text-[10px] text-muted-foreground">
               <span>24 Jun 2024</span>
-              <Wrench className="size-3.5 text-sigap-amber" />
+              <Wrench className="size-3.5 text-primary" />
             </div>
           </div>
         </div>
       </Card>
 
-      <Card className="mb-6 py-5 shadow-sm">
+      <Card className="mb-6 py-5">
         <CardContent className="pt-0">
           <ol className="flex flex-col gap-0 lg:flex-row">
             {processSteps.map((step, index) => {
