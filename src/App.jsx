@@ -1,6 +1,7 @@
 import Layout from "./components/layout";
 import Home from "./pages/client/home";
 import ScheduleRoom from "./pages/client/schedule-room";
+import FacilityReport from "./pages/client/facility-report";
 import { Route, Routes } from "react-router-dom";
 
 function App() {
@@ -10,6 +11,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/jadwal-ruangan" element={<ScheduleRoom />} />
+          <Route path="/lapor-fasilitas" element={<FacilityReport />} />
         </Routes>
       </Layout>
     </>

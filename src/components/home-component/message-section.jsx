@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 function MessageSection() {
   return (
     <section className="py-18 flex flex-col gap-6 relative">
-      <span className="p-3 border rounded-full absolute right-0 translate-x-5 translate-y-6 z-100 bg-background rotate-180">
+      <span className="p-3 border rounded-full absolute right-0 translate-x-5 translate-y-6 z-10 bg-background rotate-180">
         <Quote className="size-10 fill-primary text-primary" />
       </span>
       <h1 className="font-bold text-2xl">Sambutan Kepala Sekolah</h1>
@@ -45,7 +45,7 @@ function MessageSection() {
           </Button>
         </div>
         <div className="w-[35%] shrink-0 relative">
-          <div className="absolute flex items-center gap-4 p-3 rounded-xl border bg-background bottom-0 -translate-x-12 -translate-y-6 w-50">
+          <div className="absolute flex items-center gap-4 p-3 rounded-xl border bg-background z-10 bottom-0 -translate-x-12 -translate-y-6 w-50">
             <GraduationCap className="text-primary" />
             <span>
               <p className="text-muted-foreground text-xs">Kepala Sekolah</p>

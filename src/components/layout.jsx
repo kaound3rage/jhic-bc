@@ -2,6 +2,7 @@ import Footer from "./footer";
 import Header from "./header";
 import ChatbotBox from "./chatbot-box";
 import IndustrySlider from "./industry-slider";
+import { Toaster } from "@/components/ui/sonner";
 
 function Layout({ children }) {
   return (
@@ -26,6 +27,7 @@ function Layout({ children }) {
       <IndustrySlider />
       <Footer />
       <ChatbotBox />
+      <Toaster position="top-center" />
     </>
   );
 }
