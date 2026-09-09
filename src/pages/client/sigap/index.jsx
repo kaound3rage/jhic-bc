@@ -37,18 +37,24 @@ const formatDate = (value) =>
 
 function StatusBadge({ status }) {
   const meta = statusMeta[status] ?? { label: status, color: "muted" };
+  const styles = {
+    "status-success":
+      "border-status-success/30 bg-status-success/10 text-status-success",
+    "status-process":
+      "border-status-process/40 bg-status-process/15 text-[#8a5a0e]",
+    "status-pending":
+      "border-status-pending/30 bg-status-pending/10 text-status-pending",
+  };
   return (
     <Badge
       variant="outline"
-      className={`border-0 bg-transparent p-0 text-xs font-medium ${
-        meta.color === "status-success" ? "text-status-success" : ""
-      } ${meta.color === "status-process" ? "text-status-process" : ""} ${
-        meta.color === "status-pending" ? "text-status-pending" : ""
+      className={`w-fit whitespace-nowrap rounded-full border px-2 py-1 text-xs font-medium ${
+        styles[meta.color] ?? "border-border bg-muted text-muted-foreground"
       }`}
     >
       <span
         aria-hidden="true"
-        className="mr-1.5 inline-block size-2 shrink-0 rounded-full bg-current"
+        className="mr-1 inline-block size-1.5 shrink-0 rounded-full bg-current"
       />
       {meta.label}
     </Badge>
@@ -78,7 +84,7 @@ function Sigap() {
   };
 
   return (
-    <section className="w-full px-4 py-8 sm:px-6 lg:px-0 lg:py-12">
+    <section className="w-full rounded-2xl bg-muted/40 px-4 py-8 ring-1 ring-border/60 sm:px-6 lg:px-8 lg:py-12">
       <div className="mb-8">
         <Breadcrumb />
         <div className="flex items-center gap-2">
@@ -98,7 +104,7 @@ function Sigap() {
         <div className="mt-3 h-1 w-16 rounded-full bg-sigap-amber" />
       </div>
 
-      <Card className="mb-6 overflow-hidden py-0">
+      <Card className="mb-6 overflow-hidden border-0 bg-[#FFF8EC] py-0 ring-1 ring-sigap-amber/40 shadow-sm">
         <div className="flex flex-col gap-6 p-6 sm:p-8 lg:flex-row lg:items-center lg:justify-between">
           <div className="max-w-xl">
             <div className="mb-3 flex items-center gap-2">
@@ -150,7 +156,7 @@ function Sigap() {
         </div>
       </Card>
 
-      <Card className="mb-6 py-5">
+      <Card className="mb-6 py-5 shadow-sm">
         <CardContent className="pt-0">
           <ol className="flex flex-col gap-0 lg:flex-row">
             {processSteps.map((step, index) => {
@@ -181,7 +187,7 @@ function Sigap() {
         </CardContent>
       </Card>
 
-      <Card className="py-5">
+      <Card className="py-5 shadow-sm">
         <CardHeader className="flex flex-col gap-4 border-b pb-4 sm:flex-row sm:items-center sm:justify-between">
           <div>
             <CardTitle className="flex items-center gap-2">
