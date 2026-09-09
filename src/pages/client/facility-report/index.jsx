@@ -12,7 +12,13 @@ import {
 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
@@ -26,6 +32,7 @@ import {
 } from "@/components/ui/select";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Separator } from "@/components/ui/separator";
+import Breadcrumb from "@/components/breadcrumb";
 import { kelasOptions, kategoriOptions } from "./data-master";
 
 const CLASSES_API = "/api/classes";
@@ -232,7 +239,7 @@ function FacilityReport() {
         fileInputRef.current.value = "";
       }
     },
-    [photos.length, validateFiles]
+    [photos.length, validateFiles],
   );
 
   const removePhoto = (index) => {
@@ -273,7 +280,7 @@ function FacilityReport() {
             }
             const data = await res.json();
             return data?.url ?? data?.fileUrl ?? null;
-          })
+          }),
         );
         fotoUrls = uploadResults.filter(Boolean);
       }
@@ -305,7 +312,7 @@ function FacilityReport() {
       if (fileInputRef.current) fileInputRef.current.value = "";
     } catch (err) {
       toast.error(
-        err?.message || "Terjadi kesalahan saat mengirim laporan. Coba lagi."
+        err?.message || "Terjadi kesalahan saat mengirim laporan. Coba lagi.",
       );
     } finally {
       setSubmitting(false);
@@ -314,7 +321,8 @@ function FacilityReport() {
 
   return (
     <div className="w-full">
-      <div className="mb-10 flex flex-col items-center gap-3 text-center">
+      <Breadcrumb />
+      <div className="mb-10 mt-3 flex flex-col gap-3">
         <h1 className="font-heading text-3xl font-bold text-foreground md:text-4xl">
           Lapor Kerusakan Fasilitas
         </h1>
@@ -324,53 +332,14 @@ function FacilityReport() {
         </p>
       </div>
 
-      <div className="grid w-full grid-cols-1 items-start gap-6 lg:grid-cols-[1fr_2fr] lg:gap-8">
-        <Card className="order-2 lg:order-1 lg:sticky lg:top-24">
-          <CardContent className="flex flex-col gap-4">
-            <div className="font-heading text-base font-medium text-foreground">
-              Prosedur Perbaikan
-            </div>
-            <ol className="flex flex-col gap-0">
-              {PROSEDUR.map((step, index) => {
-                const Icon = step.icon;
-                const isLast = index === PROSEDUR.length - 1;
-                return (
-                  <li key={step.title} className="relative flex gap-3 pb-6">
-                    {!isLast && (
-                      <span
-                        aria-hidden="true"
-                        className="absolute top-8 left-4 h-[calc(100%-2rem)] w-px bg-border"
-                      />
-                    )}
-                    <span className="flex size-8 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary">
-                      <Icon className="size-4" />
-                    </span>
-                    <div className="flex flex-col gap-0.5 pt-0.5">
-                      <span className="text-sm font-semibold text-foreground">
-                        {step.title}
-                      </span>
-                      <p className="text-sm text-muted-foreground">
-                        {step.deskripsi}
-                      </p>
-                    </div>
-                  </li>
-                );
-              })}
-            </ol>
-          </CardContent>
-        </Card>
-
-        <Card className="order-1 lg:order-2">
+      <div className="grid w-full grid-cols-1 items-start gap-6 lg:grid-cols-[2fr_1fr] lg:gap-8">
+        <Card>
           <form onSubmit={handleSubmit} noValidate>
-            <CardContent className="flex flex-col gap-6">
+            <CardHeader className="border-b">
+              <CardTitle>Data Pelapor</CardTitle>
+            </CardHeader>
+            <CardContent className="flex flex-col gap-6 py-5">
               <section className="flex flex-col gap-4">
-                <div className="flex flex-col gap-1">
-                  <h2 className="font-heading text-lg font-semibold text-foreground">
-                    Data Pelapor
-                  </h2>
-                  <Separator />
-                </div>
-
                 <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                   <Field>
                     <Label htmlFor="namaLengkap">Nama Lengkap</Label>
@@ -428,7 +397,9 @@ function FacilityReport() {
                     value={form.kontak}
                     onChange={(e) => setField("kontak", e.target.value)}
                     aria-invalid={!!errors.kontak}
-                    aria-describedby={errors.kontak ? "kontak-error" : undefined}
+                    aria-describedby={
+                      errors.kontak ? "kontak-error" : undefined
+                    }
                   />
                   {errors.kontak && (
                     <FieldError id="kontak-error">{errors.kontak}</FieldError>
@@ -491,7 +462,9 @@ function FacilityReport() {
                       value={form.lokasi}
                       onChange={(e) => setField("lokasi", e.target.value)}
                       aria-invalid={!!errors.lokasi}
-                      aria-describedby={errors.lokasi ? "lokasi-error" : undefined}
+                      aria-describedby={
+                        errors.lokasi ? "lokasi-error" : undefined
+                      }
                     />
                     {errors.lokasi && (
                       <FieldError id="lokasi-error">{errors.lokasi}</FieldError>
@@ -528,9 +501,7 @@ function FacilityReport() {
                   </span>
                   <RadioGroup
                     value={form.tingkatUrgensi}
-                    onValueChange={(value) =>
-                      setField("tingkatUrgensi", value)
-                    }
+                    onValueChange={(value) => setField("tingkatUrgensi", value)}
                     aria-labelledby="tingkatUrgensi-label"
                     className="flex flex-row flex-wrap gap-3"
                   >
@@ -560,7 +531,9 @@ function FacilityReport() {
                 <div
                   role="button"
                   tabIndex={0}
-                  onClick={() => photos.length < MAX_FILES && fileInputRef.current?.click()}
+                  onClick={() =>
+                    photos.length < MAX_FILES && fileInputRef.current?.click()
+                  }
                   onKeyDown={(e) => {
                     if (
                       (e.key === "Enter" || e.key === " ") &&
@@ -643,9 +616,8 @@ function FacilityReport() {
                 )}
               </section>
 
-              <Separator />
-
-              <div className="flex justify-end">
+            </CardContent>
+            <CardFooter className="justify-end">
                 <Button type="submit" size="lg" disabled={submitting}>
                   {submitting ? (
                     <>
@@ -659,9 +631,42 @@ function FacilityReport() {
                     </>
                   )}
                 </Button>
-              </div>
-            </CardContent>
+            </CardFooter>
           </form>
+        </Card>
+        <Card className="lg:sticky lg:top-24">
+          <CardContent className="flex flex-col gap-4">
+            <div className="font-heading text-base font-medium text-foreground">
+              Prosedur Perbaikan
+            </div>
+            <ol className="flex flex-col gap-0">
+              {PROSEDUR.map((step, index) => {
+                const Icon = step.icon;
+                const isLast = index === PROSEDUR.length - 1;
+                return (
+                  <li key={step.title} className="relative flex gap-3 pb-6">
+                    {!isLast && (
+                      <span
+                        aria-hidden="true"
+                        className="absolute top-8 left-4 h-[calc(100%-2rem)] w-px bg-border"
+                      />
+                    )}
+                    <span className="flex size-8 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary">
+                      <Icon className="size-4" />
+                    </span>
+                    <div className="flex flex-col gap-0.5 pt-0.5">
+                      <span className="text-sm font-semibold text-foreground">
+                        {step.title}
+                      </span>
+                      <p className="text-sm text-muted-foreground">
+                        {step.deskripsi}
+                      </p>
+                    </div>
+                  </li>
+                );
+              })}
+            </ol>
+          </CardContent>
         </Card>
       </div>
     </div>

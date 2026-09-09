@@ -30,7 +30,7 @@ function Header() {
                 Visi, Misi, Sejarah, dan informasi sekolah.
               </ListItem>
               <ListItem
-                href="/docs/installation"
+                href="/profil/sambutan-kepala-sekolah"
                 title="Sambutan Kepala Sekolah"
                 icon={UserRound}
               >

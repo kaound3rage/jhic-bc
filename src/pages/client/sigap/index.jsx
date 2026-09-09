@@ -16,7 +16,6 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import Breadcrumb from "@/components/breadcrumb";
 import { reports, processSteps, statusMeta } from "./data-sigap";
 
 const initials = (name) =>
@@ -85,7 +84,6 @@ function Sigap() {
   return (
     <section className="w-full px-4 py-8 sm:px-6 lg:px-0 lg:py-12">
       <div className="mb-8">
-        <Breadcrumb />
         <h1 className="text-2xl font-semibold tracking-tight sm:text-3xl">
           SIGAP
         </h1>
@@ -106,7 +104,7 @@ function Sigap() {
             </p>
             <Button
               size="lg"
-              render={<Link to="/lapor-fasilitas" />}
+              render={<Link to="/sigap/lapor-fasilitas" />}
               className="mt-5"
             >
               <Plus /> Buat Laporan

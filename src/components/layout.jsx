@@ -3,6 +3,7 @@ import Header from "./header";
 import ChatbotBox from "./chatbot-box";
 import IndustrySlider from "./industry-slider";
 import { Toaster } from "@/components/ui/sonner";
+import { Link } from "react-router-dom";
 
 function Layout({ children }) {
   return (
@@ -11,12 +12,12 @@ function Layout({ children }) {
         <div className="flex max-w-295 mx-auto items-center justify-between py-4">
           <div className="flex items-center gap-2">
             <img src="/logo.webp" alt="LOGO" className="w-12 h-12" />
-            <span className="flex flex-col">
+            <Link to={"/"} className="flex flex-col">
               <h1 className="font-bold">SMK Negeri 2 Yogyakarrta</h1>
               <p className="text-xs text-muted-foreground">
                 The Industrial Culture School
               </p>
-            </span>
+            </Link>
           </div>
           <Header />
         </div>

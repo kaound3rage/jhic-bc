@@ -2,7 +2,6 @@ import { useMemo, useState } from "react";
 import { CalendarDays, Clock3, MapPin, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import Breadcrumb from "@/components/breadcrumb";
 
 // Replace these fallback values with GET /rooms, /rooms/:id/schedule, and
 // /settings/operational-hours when the scheduling API is available.
@@ -114,7 +113,6 @@ function ScheduleRoom() {
   return (
     <section className="w-full px-4 py-8 sm:px-6 lg:px-0 lg:py-12">
       <div className="mb-8">
-        <Breadcrumb />
         <h1 className="text-2xl font-semibold tracking-tight sm:text-3xl">
           Jadwal Ruangan
         </h1>
