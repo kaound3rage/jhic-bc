@@ -58,3 +58,4 @@ deploy-app:
   rules:
     - if: $CI_COMMIT_BRANCH == "main"
 
+#
