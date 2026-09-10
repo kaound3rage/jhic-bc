@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900" role="img" aria-label="PKS - Momen Latihan">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="hsl(247 100% 96%)"/>
+      <stop offset="1" stop-color="hsl(247 55% 70%)"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="900" fill="url(#g)"/>
+  <circle cx="1020" cy="180" r="230" fill="#FFFFFF" opacity="0.6"/>
+  <circle cx="140" cy="790" r="260" fill="#FFFFFF" opacity="0.4"/>
+  <circle cx="600" cy="420" r="260" fill="none" stroke="#1D5BB8" stroke-opacity="0.18" stroke-width="10"/>
+  <text x="600" y="420" text-anchor="middle" dominant-baseline="central" font-family="'Inter','Segoe UI',Arial,sans-serif" font-size="180" font-weight="800" fill="#1D5BB8" opacity="0.9">PKS</text>
+  <rect x="40" y="760" width="1120" height="72" rx="16" fill="#1D5BB8"/>
+  <text x="600" y="801" text-anchor="middle" font-family="'Inter','Segoe UI',Arial,sans-serif" font-size="34" font-weight="600" fill="#FFFFFF">Momen Latihan</text>
+</svg>

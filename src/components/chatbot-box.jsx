@@ -8,8 +8,6 @@ import {
   Send,
   Square,
   BookOpen,
-  AlertCircle,
-  Clock,
 } from "lucide-react";
 
 // ============================================================================
@@ -30,6 +28,10 @@ const INITIAL_MESSAGES = [
     time: "Baru saja",
   },
 ];
+
+// Id unik untuk pesan (di luar scope komponen agar lint purity tetap bersih)
+const generateMessageId = (prefix) =>
+  `${prefix}-${Date.now()}-${Math.random().toString(36).slice(2, 7)}`;
 
 export default function ChatbotBox() {
   const [isOpen, setIsOpen] = useState(false);
@@ -157,8 +159,8 @@ export default function ChatbotBox() {
 
     setInputVal("");
 
-    const userMessageId = `user-${Date.now()}`;
-    const botMessageId = `bot-${Date.now()}`;
+    const userMessageId = generateMessageId("user");
+    const botMessageId = generateMessageId("bot");
 
     const newUserMessage = {
       id: userMessageId,
@@ -199,7 +201,7 @@ export default function ChatbotBox() {
           body: JSON.stringify({ message: text }),
           signal: abortController.signal,
         });
-      } catch (directErr) {
+      } catch {
         // Fallback panggil via /api/chat (proxy Vite / reverse proxy Nginx)
         response = await fetch("/api/chat", {
           method: "POST",
@@ -435,7 +437,7 @@ export default function ChatbotBox() {
           </div>
 
           {/* Area Percakapan (Messages List) */}
-          <div className="relative flex-1 overflow-y-auto p-3.5 space-y-3 bg-gradient-to-b from-[#F0F9FF]/40 to-background text-xs">
+          <div className="relative flex-1 overflow-y-auto p-3.5 space-y-3 bg-linear-to-b from-[#F0F9FF]/40 to-background text-xs">
             {messages.map((msg) => {
               const isUser = msg.role === "user";
 

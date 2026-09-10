@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Button } from "../ui/button";
-import NewsCard from "@/components/news/news-card";
+import NewsCard from "@/components/news-component/news-card";
 import { newsItems } from "@/data/news";
 
 function NewsSection() {

@@ -4,6 +4,7 @@ import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import {
   Select,
@@ -36,9 +37,9 @@ function FormField({
   const id = `contact-${name}`;
   return (
     <div>
-      <label htmlFor={id} className="mb-1.5 block text-sm font-medium">
+      <Label htmlFor={id} className="mb-1.5 block text-sm font-medium">
         {label} {required && <span className="text-destructive">*</span>}
-      </label>
+      </Label>
       <Input
         id={id}
         name={name}
@@ -142,12 +143,12 @@ function ContactForm() {
               onChange={updateField}
             />
             <div>
-              <label
+              <Label
                 htmlFor="contact-purpose"
                 className="mb-1.5 block text-sm font-medium"
               >
                 Keperluan <span className="text-destructive">*</span>
-              </label>
+              </Label>
               <Select
                 value={form.purpose}
                 onValueChange={(value) => {
@@ -197,12 +198,12 @@ function ContactForm() {
             />
           </div>
           <div>
-            <label
+            <Label
               htmlFor="contact-message"
               className="mb-1.5 block text-sm font-medium"
             >
               Pesan <span className="text-destructive">*</span>
-            </label>
+            </Label>
             <Textarea
               id="contact-message"
               name="message"

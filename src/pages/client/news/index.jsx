@@ -1,8 +1,7 @@
 import { Newspaper } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import Breadcrumb from "@/components/breadcrumb";
-import NewsCard from "@/components/news/news-card";
-import NewsFilterBar from "@/components/news/news-filter-bar";
+import NewsCard from "@/components/news-component/news-card";
+import NewsFilterBar from "@/components/news-component/news-filter-bar";
 import useNewsFilter from "@/hooks/use-news-filter";
 import { newsItems } from "@/data/news";
 
@@ -12,7 +11,6 @@ function BeritaPage() {
   return (
     <section className="w-full py-10 md:py-14">
       <div className="mb-8 max-w-3xl">
-        <Breadcrumb />
         {/* <p className="mb-2 text-sm font-semibold tracking-wide text-primary uppercase">Pusat informasi</p> */}
         <h1 className="text-3xl font-bold tracking-tight md:text-4xl">Berita SKADUTA</h1>
         <p className="mt-3 text-muted-foreground">
