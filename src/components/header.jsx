@@ -92,7 +92,7 @@ function Header() {
                 siswa.
               </ListItem>
               <ListItem
-                href="/docs/installation"
+                href="/galeri"
                 title="Galeri Foto & Video"
                 icon={Aperture}
               >

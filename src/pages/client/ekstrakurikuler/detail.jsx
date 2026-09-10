@@ -1,89 +1,22 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { ArrowRight, ChevronLeft, ChevronRight, Compass, X } from "lucide-react";
+import { ArrowRight, Compass } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import Breadcrumb from "@/components/breadcrumb";
 import { usePageMeta } from "@/hooks/use-page-meta";
 import { getEkstrakurikulerBySlug } from "@/data/ekstrakurikuler";
-
-function Lightbox({ images, index, onClose, onNavigate }) {
-  useEffect(() => {
-    const previousOverflow = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-
-    const handleKeyDown = (event) => {
-      if (event.key === "Escape") onClose();
-      if (event.key === "ArrowRight") onNavigate(index + 1);
-      if (event.key === "ArrowLeft") onNavigate(index - 1);
-    };
-    window.addEventListener("keydown", handleKeyDown);
-
-    return () => {
-      document.body.style.overflow = previousOverflow;
-      window.removeEventListener("keydown", handleKeyDown);
-    };
-  }, [index, onClose, onNavigate]);
-
-  return (
-    <div
-      role="dialog"
-      aria-modal="true"
-      aria-label="Galeri foto kegiatan"
-      className="fixed inset-0 z-[70] flex animate-in fade-in-0 items-center justify-center bg-black/90 p-4 [animation-duration:200ms]"
-      onClick={onClose}
-    >
-      <button
-        type="button"
-        aria-label="Tutup galeri"
-        onClick={onClose}
-        className="absolute top-4 right-4 flex h-11 w-11 cursor-pointer items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-white/20"
-      >
-        <X className="h-5 w-5" />
-      </button>
-
-      <button
-        type="button"
-        aria-label="Foto sebelumnya"
-        onClick={(event) => {
-          event.stopPropagation();
-          onNavigate(index - 1);
-        }}
-        className="absolute left-3 top-1/2 flex h-11 w-11 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-white/20 sm:left-6"
-      >
-        <ChevronLeft className="h-6 w-6" />
-      </button>
-
-      <img
-        key={index}
-        src={images[index]}
-        alt={`Foto galeri ke-${index + 1}`}
-        onClick={(event) => event.stopPropagation()}
-        className="max-h-[82vh] max-w-full rounded-xl object-contain animate-in zoom-in-95 fade-in-0 shadow-2xl [animation-duration:200ms]"
-      />
-
-      <button
-        type="button"
-        aria-label="Foto berikutnya"
-        onClick={(event) => {
-          event.stopPropagation();
-          onNavigate(index + 1);
-        }}
-        className="absolute right-3 top-1/2 flex h-11 w-11 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-white/20 sm:right-6"
-      >
-        <ChevronRight className="h-6 w-6" />
-      </button>
-
-      <span className="absolute bottom-5 left-1/2 -translate-x-1/2 rounded-full bg-white/10 px-4 py-1.5 text-sm font-medium text-white">
-        {index + 1} / {images.length}
-      </span>
-    </div>
-  );
-}
+import { Lightbox, PhotoGrid } from "@/components/photo-gallery";
 
 function EkstrakurikulerDetailView({ item }) {
   const [activeTab, setActiveTab] = useState("visi");
   const [lightboxIndex, setLightboxIndex] = useState(null);
+
+  const galleryPhotos = item.galeri.map((src, index) => ({
+    id: `${item.slug}-galeri-${index}`,
+    src,
+    alt: `Galeri kegiatan ${item.nama} ${index + 1}`,
+  }));
 
   // Preload gambar galeri & hero agar lightbox tidak kosong saat dibuka.
   useEffect(() => {
@@ -100,7 +33,9 @@ function EkstrakurikulerDetailView({ item }) {
   }, [item]);
 
   const navigateGallery = (next) => {
-    setLightboxIndex(next < 0 ? item.galeri.length - 1 : next % item.galeri.length);
+    setLightboxIndex(
+      next < 0 ? galleryPhotos.length - 1 : next % galleryPhotos.length,
+    );
   };
 
   return (
@@ -219,24 +154,12 @@ function EkstrakurikulerDetailView({ item }) {
         <p className="mt-3 text-sm text-muted-foreground">
           Klik pada foto untuk melihat tampilan lebih besar.
         </p>
-        <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
-          {item.galeri.map((src, index) => (
-            <button
-              key={src}
-              type="button"
-              aria-label={`Buka foto galeri ${index + 1}`}
-              onClick={() => setLightboxIndex(index)}
-              className="group cursor-pointer overflow-hidden rounded-xl ring-1 ring-foreground/10 transition-all duration-200 hover:ring-2 hover:ring-primary/60 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
-            >
-              <img
-                src={src}
-                alt={`Galeri kegiatan ${item.nama} ${index + 1}`}
-                loading="lazy"
-                decoding="async"
-                className="aspect-4/3 w-full object-cover transition-transform duration-300 group-hover:scale-105"
-              />
-            </button>
-          ))}
+        <div className="mt-6">
+          <PhotoGrid
+            photos={galleryPhotos}
+            onOpen={(index) => setLightboxIndex(index)}
+            gridClassName="grid-cols-2 sm:grid-cols-3 lg:grid-cols-4"
+          />
         </div>
       </div>
 
@@ -262,9 +185,9 @@ function EkstrakurikulerDetailView({ item }) {
       </div>
 
       {/* LIGHTBOX */}
-      {lightboxIndex !== null && item.galeri[lightboxIndex] && (
+      {lightboxIndex !== null && galleryPhotos[lightboxIndex] && (
         <Lightbox
-          images={item.galeri}
+          photos={galleryPhotos}
           index={lightboxIndex}
           onClose={() => setLightboxIndex(null)}
           onNavigate={navigateGallery}

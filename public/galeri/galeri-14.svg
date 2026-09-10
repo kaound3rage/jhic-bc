@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900" role="img" aria-label="HARI GURU">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="hsl(20 100% 96%)"/>
+      <stop offset="1" stop-color="hsl(20 55% 40%)"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="900" fill="url(#g)"/>
+  <circle cx="1020" cy="180" r="230" fill="#FFFFFF" opacity="0.5"/>
+  <circle cx="140" cy="790" r="260" fill="#FFFFFF" opacity="0.35"/>
+  <circle cx="600" cy="420" r="250" fill="none" stroke="#FFFFFF" stroke-opacity="0.4" stroke-width="10"/>
+  <text x="600" y="420" text-anchor="middle" dominant-baseline="central" font-family="'Inter','Segoe UI',Arial,sans-serif" font-size="150" font-weight="800" fill="#FFFFFF" opacity="0.95">HARI GURU
+  </text>
+  <text x="600" y="818" text-anchor="middle" font-family="'Inter','Segoe UI',Arial,sans-serif" font-size="26" font-weight="500" fill="#FFFFFF" opacity="0.85">SMK Negeri 2 Yogyakarta</text>
+</svg>

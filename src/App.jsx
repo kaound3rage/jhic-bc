@@ -12,6 +12,7 @@ import MajorDetailPage from "./pages/client/konsentrasi-keahlian/detail";
 import SpmbPage from "./pages/client/spmb";
 import EkstrakurikulerPage from "./pages/client/ekstrakurikuler";
 import EkstrakurikulerDetailPage from "./pages/client/ekstrakurikuler/detail";
+import GaleriPage from "./pages/client/galeri";
 import { Route, Routes } from "react-router-dom";
 
 function App() {
@@ -41,6 +42,7 @@ function App() {
             path="/ekstrakurikuler/:slug"
             element={<EkstrakurikulerDetailPage />}
           />
+          <Route path="/galeri" element={<GaleriPage />} />
         </Routes>
       </Layout>
     </>
