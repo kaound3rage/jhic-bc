@@ -7,6 +7,7 @@ import Breadcrumb from "@/components/breadcrumb";
 import { usePageMeta } from "@/hooks/use-page-meta";
 import { getEkstrakurikulerBySlug } from "@/data/ekstrakurikuler";
 import { Lightbox, PhotoGrid } from "@/components/photo-gallery";
+import { cn } from "cn";
 
 function EkstrakurikulerDetailView({ item }) {
   const [activeTab, setActiveTab] = useState("visi");
@@ -40,7 +41,7 @@ function EkstrakurikulerDetailView({ item }) {
 
   return (
     <section className="w-full px-4 py-8 sm:px-6 lg:px-0 lg:py-12">
-      <div className="mb-6">
+      <div className="mb-8">
         <Breadcrumb
           items={[
             { label: "Beranda", href: "/" },
@@ -82,7 +83,7 @@ function EkstrakurikulerDetailView({ item }) {
           </h2>
           <div className="mt-5 space-y-4">
             {item.deskripsi.map((paragraph, index) => (
-              <p key={index} className="text-justify text-[15px] leading-7 text-foreground/90">
+              <p key={index} className="text-sm leading-7 text-muted-foreground sm:text-base sm:leading-7">
                 {paragraph}
               </p>
             ))}
@@ -103,9 +104,11 @@ function EkstrakurikulerDetailView({ item }) {
                     type="button"
                     aria-pressed={isActive}
                     onClick={() => setActiveTab(tab.key)}
-                    className={cnTab(
-                      isActive,
-                      "flex cursor-pointer items-center gap-1.5 pb-3 text-sm font-semibold transition-colors",
+                    className={cn(
+                      "flex cursor-pointer items-center gap-1.5 pb-3 text-sm font-semibold transition-colors border-b-2",
+                      isActive
+                        ? "border-primary text-primary"
+                        : "border-transparent text-muted-foreground hover:text-foreground",
                     )}
                   >
                     {tab.label}
@@ -123,7 +126,7 @@ function EkstrakurikulerDetailView({ item }) {
                   key="visi"
                   className="animate-in fade-in-0 slide-in-from-bottom-2 [animation-duration:300ms]"
                 >
-                  <p className="text-[15px] leading-7 text-foreground/90">{item.visi}</p>
+                  <p className="text-sm leading-7 text-muted-foreground sm:text-base sm:leading-7">{item.visi}</p>
                 </div>
               ) : (
                 <ol
@@ -131,7 +134,7 @@ function EkstrakurikulerDetailView({ item }) {
                   className="space-y-3 animate-in fade-in-0 slide-in-from-bottom-2 [animation-duration:300ms]"
                 >
                   {item.misi.map((mission, index) => (
-                    <li key={index} className="flex gap-3 text-sm leading-6 text-foreground/90">
+                    <li key={index} className="flex gap-3 text-sm leading-6 text-muted-foreground">
                       <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-md bg-primary/10 text-xs font-bold text-primary">
                         {index + 1}
                       </span>
@@ -164,7 +167,7 @@ function EkstrakurikulerDetailView({ item }) {
       </div>
 
       {/* CTA */}
-      <div className="mt-10 flex flex-col items-start gap-4 rounded-2xl bg-muted/50 p-6 ring-1 ring-foreground/10 sm:flex-row sm:items-center sm:justify-between sm:p-8">
+      <div className="mt-10 flex flex-col items-start gap-4 rounded-2xl bg-muted/50 p-6 ring-1 ring-border sm:flex-row sm:items-center sm:justify-between sm:p-8">
         <div className="flex items-start gap-4">
           <span className="flex size-11 shrink-0 items-center justify-center rounded-md border border-[#BAE6FD] bg-[#F0F9FF]">
             <Compass className="size-5 text-primary" />
@@ -222,11 +225,3 @@ function EkstrakurikulerDetailPage() {
 
 export default EkstrakurikulerDetailPage;
 export { EkstrakurikulerDetailView };
-
-function cnTab(isActive, base) {
-  return `${base} ${
-    isActive
-      ? "border-b-2 border-primary text-primary"
-      : "border-b-2 border-transparent text-muted-foreground hover:text-foreground"
-  }`;
-}
