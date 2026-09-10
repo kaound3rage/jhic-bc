@@ -12,6 +12,13 @@ import {
 // Only pages with an explicit navigation hierarchy belong here. Main navbar
 // pages intentionally have no entry and therefore render no breadcrumb.
 const routeMeta = {
+  "/profil/sekolah": {
+    items: [
+      { label: "Beranda", href: "/" },
+      { label: "Profil", href: "/profil/sekolah" },
+      { label: "Profil Sekolah" },
+    ],
+  },
   "/sigap/lapor-fasilitas": {
     items: [
       { label: "SIGAP", href: "/sigap" },

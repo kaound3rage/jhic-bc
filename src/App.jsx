@@ -13,6 +13,7 @@ import SpmbPage from "./pages/client/spmb";
 import EkstrakurikulerPage from "./pages/client/ekstrakurikuler";
 import EkstrakurikulerDetailPage from "./pages/client/ekstrakurikuler/detail";
 import GaleriPage from "./pages/client/galeri";
+import SchoolProfilePage from "./pages/client/profile";
 import FasilitasPage from "./pages/client/facility";
 import { Route, Routes, useLocation } from "react-router-dom";
 import NotFound from "./components/not-found";
@@ -29,6 +30,7 @@ const pageTitles = {
   "/berita": "Berita",
   "/kontak": "Kontak",
   "/profil/sambutan-kepala-sekolah": "Sambutan Kepala Sekolah",
+  "/profil/sekolah": "Profil Sekolah",
   "/konsentrasi-keahlian": "Konsentrasi Keahlian",
   "/spmb": "SPMB",
   "/ekstrakurikuler": "Ekstrakurikuler",
@@ -73,6 +75,7 @@ function App() {
             path="/profil/sambutan-kepala-sekolah"
             element={<PrincipalMessagePage />}
           />
+          <Route path="/profil/sekolah" element={<SchoolProfilePage />} />
           <Route
             path="/konsentrasi-keahlian"
             element={<KonsentrasiKeahlianPage />}
