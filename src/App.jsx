@@ -13,6 +13,7 @@ import SpmbPage from "./pages/client/spmb";
 import EkstrakurikulerPage from "./pages/client/ekstrakurikuler";
 import EkstrakurikulerDetailPage from "./pages/client/ekstrakurikuler/detail";
 import GaleriPage from "./pages/client/galeri";
+import FasilitasPage from "./pages/client/facility";
 import { Route, Routes, useLocation } from "react-router-dom";
 import NotFound from "./components/not-found";
 import { usePageMeta } from "./hooks/use-page-meta";
@@ -32,6 +33,7 @@ const pageTitles = {
   "/spmb": "SPMB",
   "/ekstrakurikuler": "Ekstrakurikuler",
   "/galeri": "Galeri",
+  "/fasilitas": "Fasilitas Sekolah",
 };
 
 function RouteMeta() {
@@ -86,6 +88,7 @@ function App() {
             element={<EkstrakurikulerDetailPage />}
           />
           <Route path="/galeri" element={<GaleriPage />} />
+          <Route path="/fasilitas" element={<FasilitasPage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
         <RouteMeta />

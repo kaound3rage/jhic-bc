@@ -84,7 +84,7 @@ function Header() {
           <NavigationMenuContent>
             <ul className="w-100">
               <ListItem
-                href="/docs/installation"
+                href="/fasilitas"
                 title="Fasilitas"
                 icon={School}
               >

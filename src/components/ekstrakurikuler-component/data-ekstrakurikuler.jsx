@@ -113,8 +113,8 @@ export const ekstrakurikulerList = [
   },
   {
     id: 12,
-    slug: "wsp-tonti",
-    nama: "WSP / Tonti",
+    slug: "wsp-paskibra",
+    nama: "WSP (PASKIBRA)",
     kategori: "Organisasi & Kepemimpinan",
     deskripsi:
       "Mengembangkan kedisiplinan, ketangkasan, kepemimpinan, kekompakan, dan keterampilan baris-berbaris.",
