@@ -3,7 +3,7 @@ import { Book, Briefcase, Presentation, Volleyball } from "lucide-react";
 export const Program = [
   {
     title: "Ekstrakurikuler",
-    path: "/ekstrakurikuler",
+    path: "/program/ekstrakurikuler",
     deskripsi: "Gabung dengan ekstrakurikuler di SKADUTA.",
     icon: Volleyball,
   },

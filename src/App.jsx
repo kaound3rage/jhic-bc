@@ -6,6 +6,7 @@ import Sigap from "./pages/client/sigap";
 import BeritaPage from "./pages/client/news";
 import NewsDetailPage from "./pages/client/news/detail";
 import ContactPage from "./pages/client/contact";
+import EkstrakurikulerPage from "./pages/client/ekstrakurikuler";
 import { Route, Routes } from "react-router-dom";
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
           <Route path="/berita" element={<BeritaPage />} />
           <Route path="/berita/:slug" element={<NewsDetailPage />} />
           <Route path="/kontak" element={<ContactPage />} />
+          <Route path="/program/ekstrakurikuler" element={<EkstrakurikulerPage />} />
         </Routes>
       </Layout>
     </>
