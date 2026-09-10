@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import {
   Briefcase,
@@ -20,7 +19,7 @@ import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
 import Breadcrumb from "@/components/breadcrumb";
 import { usePageMeta } from "@/hooks/use-page-meta";
-import { fetchMajor, fetchSchoolStats } from "@/data/majors-service";
+import { jurusan, schoolStats } from "@/data/data-jurusan";
 
 function statCardsOf(statistik) {
   return [
@@ -239,7 +238,7 @@ function MajorDetailView({ major, stats }) {
   );
 }
 
-function MajorDetailSkeleton({ nama }) {
+export function MajorDetailSkeleton({ nama }) {
   return (
     <section className="w-full px-4 py-8 sm:px-6 lg:px-0 lg:py-12">
       <div className="mb-8">
@@ -293,33 +292,14 @@ function MajorDetailSkeleton({ nama }) {
 
 function MajorDetailPage() {
   const { slug } = useParams();
-  const [data, setData] = useState(null);
-
-  useEffect(() => {
-    let active = true;
-    async function load() {
-      const [{ major }, { stats }] = await Promise.all([
-        fetchMajor(slug),
-        fetchSchoolStats(),
-      ]);
-      if (active) setData({ major, stats });
-    }
-    load();
-    return () => {
-      active = false;
-    };
-  }, [slug]);
+  const major = jurusan.find((item) => item.slug === slug);
 
   usePageMeta(
-    data?.major ? `${data.major.nama} — Konsentrasi Keahlian` : "Konsentrasi Keahlian",
-    data?.major?.deskripsiSingkat,
+    major ? `${major.nama} — Konsentrasi Keahlian` : "Konsentrasi Keahlian",
+    major?.deskripsiSingkat,
   );
 
-  if (!data) {
-    return <MajorDetailSkeleton nama={data?.major?.nama} />;
-  }
-
-  if (!data.major) {
+  if (!major) {
     return (
       <section className="flex min-h-96 w-full flex-col items-center justify-center gap-4 py-12 text-center">
         <h1 className="text-2xl font-bold">Konsentrasi keahlian tidak ditemukan</h1>
@@ -333,7 +313,7 @@ function MajorDetailPage() {
     );
   }
 
-  return <MajorDetailView major={data.major} stats={data.stats} />;
+  return <MajorDetailView major={major} stats={schoolStats} />;
 }
 
 export default MajorDetailPage;

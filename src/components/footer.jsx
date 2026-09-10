@@ -136,9 +136,9 @@ function Footer() {
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4864.190986357477!2d110.36479467588632!3d-7.777067577158788!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a58373fffffff%3A0xa4ec1ca156555926!2sSMK%20Negeri%202%20Yogyakarta!5e1!3m2!1sid!2sid!4v1788875288738!5m2!1sid!2sid"
               width="450"
               height="300"
-              allowfullscreen=""
+              allowFullScreen
               loading="lazy"
-              referrerpolicy="strict-origin-when-cross-origin"
+              referrerPolicy="strict-origin-when-cross-origin"
               className="rounded"
             ></iframe>
           </div>

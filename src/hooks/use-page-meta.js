@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-const SITE_NAME = "SKADUTA";
+const SITE_NAME = "SMK Negeri 2 Yogyakarta";
 const DEFAULT_DESCRIPTION =
   "SMK Negeri 2 Yogyakarta — informasi sekolah, konsentrasi keahlian, dan layanan publikasi.";
 

@@ -40,12 +40,12 @@ function MessageSection() {
             }
             variant="secondary"
           >
-            <Link>Baca Selengkapnya</Link>
+            <Link to={"/profil/sambutan-kepala-sekolah"}>Baca Selengkapnya</Link>
             <ArrowRight />
           </Button>
         </div>
         <div className="w-[35%] shrink-0 relative">
-          <div className="absolute flex items-center gap-4 p-3 rounded-xl border bg-background z-10 bottom-0 -translate-x-12 -translate-y-6 w-50">
+          <div className="absolute flex items-center gap-4 p-3 rounded-xl border bg-background/85 z-10 bottom-0 -translate-x-12 -translate-y-6 w-50">
             <GraduationCap className="text-primary" />
             <span>
               <p className="text-muted-foreground text-xs">Kepala Sekolah</p>
