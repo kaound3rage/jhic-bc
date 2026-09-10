@@ -13,7 +13,7 @@ function Layout({ children }) {
           <div className="flex items-center gap-2">
             <img src="/logo.webp" alt="LOGO" className="w-12 h-12" />
             <Link to={"/"} className="flex flex-col">
-              <h1 className="font-bold">SMK Negeri 2 Yogyakarrta</h1>
+              <h1 className="font-bold">SMK Negeri 2 Yogyakarta</h1>
               <p className="text-xs text-muted-foreground">
                 The Industrial Culture School
               </p>

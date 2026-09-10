@@ -8,13 +8,14 @@ import {
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from "./ui/navigation-menu";
-import { Aperture, Compass, School, UserRound, Wrench } from "lucide-react";
+import { Aperture, Compass, Menu, School, UserRound, Wrench } from "lucide-react";
 import { Program } from "./navigation-component/data-program";
 import { Jurusan } from "./navigation-component/data-jurusan";
 
 function Header() {
   return (
-    <NavigationMenu>
+    <>
+    <NavigationMenu className="hidden md:flex">
       <NavigationMenuList className={"flex items-center gap-2"}>
         <NavigationMenuItem>
           <NavigationMenuLink
@@ -26,7 +27,7 @@ function Header() {
           <NavigationMenuTrigger>Profil</NavigationMenuTrigger>
           <NavigationMenuContent>
             <ul className="w-96">
-              <ListItem href="/docs" title="Profil Sekolah" icon={School}>
+              <ListItem href="/profil/sekolah" title="Profil Sekolah" icon={School}>
                 Visi, Misi, Sejarah, dan informasi sekolah.
               </ListItem>
               <ListItem
@@ -122,6 +123,22 @@ function Header() {
         </NavigationMenuItem>
       </NavigationMenuList>
     </NavigationMenu>
+    <details className="relative md:hidden">
+      <summary className="flex size-9 cursor-pointer list-none items-center justify-center rounded-lg border border-border text-foreground [&::-webkit-details-marker]:hidden">
+        <Menu className="size-5" />
+        <span className="sr-only">Buka menu navigasi</span>
+      </summary>
+      <div className="absolute top-11 right-0 z-50 w-64 rounded-xl border bg-background p-2 shadow-lg">
+        <Link className="block rounded-lg px-3 py-2 text-sm hover:bg-muted" to="/">Beranda</Link>
+        <Link className="block rounded-lg px-3 py-2 text-sm hover:bg-muted" to="/profil/sekolah">Profil Sekolah</Link>
+        <Link className="block rounded-lg px-3 py-2 text-sm hover:bg-muted" to="/profil/sambutan-kepala-sekolah">Sambutan Kepala Sekolah</Link>
+        <Link className="block rounded-lg px-3 py-2 text-sm hover:bg-muted" to="/konsentrasi-keahlian">Konsentrasi Keahlian</Link>
+        <Link className="block rounded-lg px-3 py-2 text-sm hover:bg-muted" to="/galeri">Fasilitas &amp; Galeri</Link>
+        <Link className="block rounded-lg px-3 py-2 text-sm hover:bg-muted" to="/berita">Berita</Link>
+        <Link className="block rounded-lg px-3 py-2 text-sm hover:bg-muted" to="/kontak">Kontak</Link>
+      </div>
+    </details>
+    </>
   );
 }
 
