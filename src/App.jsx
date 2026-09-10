@@ -15,6 +15,7 @@ import EkstrakurikulerDetailPage from "./pages/client/ekstrakurikuler/detail";
 import GaleriPage from "./pages/client/galeri";
 import SchoolProfilePage from "./pages/client/profile";
 import FasilitasPage from "./pages/client/facility";
+import AlumniPage from "./pages/client/alumni";
 import { Route, Routes, useLocation } from "react-router-dom";
 import NotFound from "./components/not-found";
 import { usePageMeta } from "./hooks/use-page-meta";
@@ -36,6 +37,7 @@ const pageTitles = {
   "/ekstrakurikuler": "Ekstrakurikuler",
   "/galeri": "Galeri",
   "/fasilitas": "Fasilitas Sekolah",
+  "/alumni": "Alumni",
 };
 
 function RouteMeta() {
@@ -92,6 +94,7 @@ function App() {
           />
           <Route path="/galeri" element={<GaleriPage />} />
           <Route path="/fasilitas" element={<FasilitasPage />} />
+          <Route path="/alumni" element={<AlumniPage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
         <RouteMeta />

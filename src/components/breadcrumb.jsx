@@ -33,6 +33,12 @@ const routeMeta = {
     parents: [],
     label: "SPMB",
   },
+  "/alumni": {
+    items: [
+      { label: "Beranda", href: "/" },
+      { label: "Alumni" },
+    ],
+  },
   "/ekstrakurikuler": {
     parents: [],
     label: "Ekstrakurikuler",

@@ -3,39 +3,24 @@ import { ArrowLeft, ArrowRight } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import { Button } from "../ui/button";
 import { Card } from "../ui/card";
-
-const alumniStories = [
-  {
-    name: "Abdul Latif Ikhlashul Mukmin",
-    role: "Director PT Coding Collective",
-    image: "/latif.png",
-    quote:
-      "Belajar di SMK Negeri 2 Yogyakarta memberi saya fondasi teknis dan keberanian untuk terus berkembang. Pengalaman projek bersama industri sangat membantu saat memasuki dunia kerja.",
-  },
-  {
-    name: "Aulia Rahma",
-    role: "Digital Marketing Specialist",
-    image: "/woman.png",
-    quote:
-      "Guru dan teman-teman di SKADUTA mengajarkan saya untuk bekerja dengan disiplin, kolaboratif, dan selalu menghasilkan karya yang bisa dipertanggungjawabkan.",
-  },
-];
+import { Link } from "react-router-dom";
+import { alumni } from "@/data/alumni";
 
 function AlumniSection() {
   const [activeStory, setActiveStory] = useState(0);
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setActiveStory((current) => (current + 1) % alumniStories.length);
+      setActiveStory((current) => (current + 1) % alumni.length);
     }, 6000);
 
     return () => clearInterval(timer);
   }, []);
 
-  const story = alumniStories[activeStory];
+  const story = alumni[activeStory];
 
   function showStory(index) {
-    setActiveStory((index + alumniStories.length) % alumniStories.length);
+    setActiveStory((index + alumni.length) % alumni.length);
   }
 
   return (
@@ -76,7 +61,7 @@ function AlumniSection() {
             </div>
           </div>
           <div className="absolute bottom-6 left-6 flex items-center gap-2 md:left-[42%]">
-            {alumniStories.map((item, index) => (
+            {alumni.map((item, index) => (
               <button
                 key={item.name}
                 type="button"
@@ -110,6 +95,11 @@ function AlumniSection() {
             </Button>
           </div>
         </Card>
+        <div className="mt-5 flex justify-center md:justify-end">
+          <Button variant="outline" render={<Link to="/alumni" />}>
+            Lihat Semua Alumni
+          </Button>
+        </div>
       </div>
     </section>
   );
