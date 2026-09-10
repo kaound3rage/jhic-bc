@@ -18,6 +18,7 @@ function AlumniPage() {
   const [kategori, setKategori] = useState("Semua");
   const [isFiltering, setIsFiltering] = useState(false);
   const [filterTarget, setFilterTarget] = useState(null);
+  const [hoveredAlumni, setHoveredAlumni] = useState(null);
 
   usePageMeta(
     "Alumni",
@@ -96,38 +97,48 @@ function AlumniPage() {
             {filteredAlumni.map((item) => (
               <Card
                 key={item.slug}
-                className="h-full py-0 transition-all duration-200 hover:-translate-y-1 hover:shadow-md"
+                onMouseEnter={() => setHoveredAlumni(item.slug)}
+                onMouseLeave={() => setHoveredAlumni(null)}
+                className="relative min-h-80 h-full py-0 transition-all duration-300 hover:-translate-y-1 hover:shadow-md"
               >
-                <CardContent className="flex h-full flex-col items-center p-5 text-center">
-                  <Avatar className="size-24 border-4 border-background shadow-sm ring-1 ring-border">
-                    <AvatarImage src={item.image} alt={item.name} />
-                    <AvatarFallback className="bg-primary/10 font-semibold text-primary">
-                      {item.name
-                        .split(" ")
-                        .map((part) => part[0])
-                        .slice(0, 2)
-                        .join("")}
-                    </AvatarFallback>
-                  </Avatar>
-                  <h2 className="mt-4 text-base font-semibold">{item.name}</h2>
-                  <p className="mt-1 min-h-10 text-sm leading-5 text-muted-foreground">
-                    {item.role}
-                  </p>
-                  <Badge
-                    variant="outline"
-                    className={`mt-4 ${kategoriStyle[item.kategori]}`}
-                  >
-                    {item.kategori}
-                  </Badge>
-                  <div className="mt-3 flex flex-wrap justify-center gap-1.5">
-                    <Badge variant="secondary">Lulus {item.tahunLulus}</Badge>
-                    <Badge variant="outline" className="max-w-full truncate">
-                      {item.jurusan}
+                <CardContent className="relative min-h-80 p-0 text-center">
+                  <div className={`absolute inset-0 flex flex-col items-center p-5 transition-all duration-300 ${hoveredAlumni === item.slug ? "scale-95 opacity-0" : "scale-100 opacity-100"}`}>
+                    <Avatar className="size-24 border-4 border-background shadow-sm ring-1 ring-border">
+                      <AvatarImage src={item.image} alt={item.name} />
+                      <AvatarFallback className="bg-primary/10 font-semibold text-primary">
+                        {item.name
+                          .split(" ")
+                          .map((part) => part[0])
+                          .slice(0, 2)
+                          .join("")}
+                      </AvatarFallback>
+                    </Avatar>
+                    <h2 className="mt-4 text-base font-semibold">{item.name}</h2>
+                    <p className="mt-1 min-h-10 text-sm leading-5 text-muted-foreground">
+                      {item.role}
+                    </p>
+                    <Badge
+                      variant="outline"
+                      className={`mt-4 ${kategoriStyle[item.kategori]}`}
+                    >
+                      {item.kategori}
                     </Badge>
+                    <div className="mt-3 flex flex-wrap justify-center gap-1.5">
+                      <Badge variant="secondary">Lulus {item.tahunLulus}</Badge>
+                      <Badge variant="outline" className="max-w-full truncate">
+                        {item.jurusan}
+                      </Badge>
+                    </div>
                   </div>
-                  <p className="mt-4 line-clamp-2 flex-1 text-sm leading-6 text-muted-foreground">
-                    &ldquo;{item.quote}&rdquo;
-                  </p>
+                  <div className={`absolute inset-0 flex flex-col justify-between p-6 text-left transition-all duration-300 ${hoveredAlumni === item.slug ? "scale-100 opacity-100" : "scale-95 opacity-0"}`}>
+                    <span className="text-5xl leading-none text-primary">&ldquo;</span>
+                    <p className="line-clamp-5 text-base leading-7 text-muted-foreground">
+                      {item.quote}
+                    </p>
+                    <p className="border-t border-border pt-4 text-sm font-semibold text-foreground">
+                      {item.name}
+                    </p>
+                  </div>
                 </CardContent>
               </Card>
             ))}
