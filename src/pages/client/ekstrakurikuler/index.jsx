@@ -1,28 +1,23 @@
-import { usePageMeta } from "@/hooks/use-page-meta";
-import Breadcrumb from "@/components/breadcrumb";
-import EkstrakurikulerShowcase from "@/components/ekstrakurikuler-showcase";
+import { useState } from "react";
+import EkstrakurikulerCta from "@/components/ekstrakurikuler-component/ekstrakurikuler-cta";
+import EkstrakurikulerHero from "@/components/ekstrakurikuler-component/ekstrakurikuler-hero";
+import EkstrakurikulerList from "@/components/ekstrakurikuler-component/ekstrakurikuler-list";
+import EkstrakurikulerSearch from "@/components/ekstrakurikuler-component/ekstrakurikuler-search";
+import { ekstrakurikulerList } from "@/components/ekstrakurikuler-component/data-ekstrakurikuler";
 
 function EkstrakurikulerPage() {
-  usePageMeta(
-    "Ekstrakurikuler",
-    "Jelajahi ekstrakurikuler dan organisasi siswa di SMK Negeri 2 Yogyakarta (SKADUTA).",
+  const [search, setSearch] = useState("");
+  const normalizedSearch = search.trim().toLowerCase();
+  const filteredItems = ekstrakurikulerList.filter((item) =>
+    item.nama.toLowerCase().includes(normalizedSearch),
   );
 
   return (
-    <section className="w-full px-4 py-8 sm:px-6 lg:px-0 lg:py-12">
-      <div className="mb-8 max-w-3xl">
-        <Breadcrumb />
-        <h1 className="mt-4 text-2xl font-semibold tracking-tight sm:text-3xl">
-          Ekstrakurikuler
-        </h1>
-        <p className="mt-3 text-sm text-muted-foreground">
-          Lebih dari 14 ekstrakurikuler dan organisasi untuk mewadahi potensi
-          dan minat siswa. Arahkan kursor (atau ketuk) pada daftar di bawah
-          untuk melihat detail setiap kegiatan.
-        </p>
-      </div>
-
-      <EkstrakurikulerShowcase />
+    <section className="w-full space-y-6 px-4 py-8 sm:px-6 lg:px-0 lg:py-12">
+      <EkstrakurikulerHero />
+      <EkstrakurikulerSearch value={search} onChange={setSearch} />
+      <EkstrakurikulerList items={filteredItems} />
+      <EkstrakurikulerCta />
     </section>
   );
 }
