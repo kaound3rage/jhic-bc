@@ -38,7 +38,7 @@ function PrincipalMessagePage() {
           </Card>
 
           <div className="mt-5 flex flex-wrap gap-2">
-            <Button asChild className={"py-4.5 px-3.5"}>
+            <Button className={"py-4.5 px-3.5"}>
               <ArrowLeft />
               <Link to="/">Kembali ke Beranda</Link>
             </Button>

@@ -92,7 +92,7 @@ export function Lightbox({ photos, index, onClose, onNavigate }) {
           />
         )}
         {(photo?.caption || photo?.tanggal) && (
-          <div className="mt-4 max-w-full px-4 text-center animate-in fade-in-0 [animation-duration:200ms]">
+          <div className="mt-4 max-w-full px-4 text-center animate-in fade-in-0 animation-duration-[200ms]">
             {photo?.caption && (
               <p className="text-base font-medium text-white">{photo.caption}</p>
             )}

@@ -52,7 +52,7 @@ function EkstrakurikulerDetailView({ item }) {
       </div>
 
       {/* HERO BANNER */}
-      <div className="relative h-64 overflow-hidden rounded-2xl bg-muted shadow-sm ring-1 ring-foreground/10 sm:h-80 lg:h-[26rem]">
+      <div className="relative h-64 overflow-hidden rounded-2xl bg-muted shadow-sm ring-1 ring-foreground/10 sm:h-80 lg:h-104">
         <img
           src={item.heroImage}
           alt={item.fotoAlt}
@@ -60,7 +60,7 @@ function EkstrakurikulerDetailView({ item }) {
           decoding="async"
           className="absolute inset-0 h-full w-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/35 to-black/10" />
+        <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/35 to-black/10" />
         <div className="absolute inset-x-0 bottom-0 p-6 sm:p-8 lg:p-12">
           <Badge className="border-white/25 bg-white/15 text-white backdrop-blur-sm hover:bg-white/15">
             {item.kategori}
@@ -124,14 +124,14 @@ function EkstrakurikulerDetailView({ item }) {
               {activeTab === "visi" ? (
                 <div
                   key="visi"
-                  className="animate-in fade-in-0 slide-in-from-bottom-2 [animation-duration:300ms]"
+                  className="animate-in fade-in-0 slide-in-from-bottom-2 animation-duration-[300ms]"
                 >
                   <p className="text-sm leading-7 text-muted-foreground sm:text-base sm:leading-7">{item.visi}</p>
                 </div>
               ) : (
                 <ol
                   key="misi"
-                  className="space-y-3 animate-in fade-in-0 slide-in-from-bottom-2 [animation-duration:300ms]"
+                  className="space-y-3 animate-in fade-in-0 slide-in-from-bottom-2 animation-duration-[300ms]"
                 >
                   {item.misi.map((mission, index) => (
                     <li key={index} className="flex gap-3 text-sm leading-6 text-muted-foreground">

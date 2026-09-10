@@ -437,7 +437,7 @@ export default function ChatbotBox() {
           </div>
 
           {/* Area Percakapan (Messages List) */}
-          <div className="relative flex-1 overflow-y-auto p-3.5 space-y-3 bg-gradient-to-b from-[#F0F9FF]/40 to-background text-xs">
+          <div className="relative flex-1 overflow-y-auto p-3.5 space-y-3 bg-linear-to-b from-[#F0F9FF]/40 to-background text-xs">
             {messages.map((msg) => {
               const isUser = msg.role === "user";
 
