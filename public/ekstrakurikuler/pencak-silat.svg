@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080" role="img" aria-label="Ekskul Pencak Silat">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#EFF8FF"/>
+      <stop offset="1" stop-color="#B7D6F5"/>
+    </linearGradient>
+  </defs>
+  <rect width="1920" height="1080" fill="url(#g)"/>
+  <circle cx="1680" cy="210" r="280" fill="#FFFFFF" opacity="0.6"/>
+  <circle cx="210" cy="930" r="340" fill="#FFFFFF" opacity="0.4"/>
+  <circle cx="960" cy="470" r="360" fill="none" stroke="#C0392B" stroke-opacity="0.18" stroke-width="12"/>
+  <text x="960" y="470" text-anchor="middle" dominant-baseline="central" font-family="'Inter','Segoe UI',Arial,sans-serif" font-size="240" font-weight="800" fill="#C0392B" opacity="0.9">SILAT</text>
+  <rect x="60" y="870" width="1800" height="92" rx="20" fill="#C0392B"/>
+  <text x="960" y="921" text-anchor="middle" font-family="'Inter','Segoe UI',Arial,sans-serif" font-size="44" font-weight="600" fill="#FFFFFF">Pencak Silat</text>
+</svg>

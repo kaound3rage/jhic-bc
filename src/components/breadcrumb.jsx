@@ -26,6 +26,10 @@ const routeMeta = {
     parents: [],
     label: "SPMB",
   },
+  "/ekstrakurikuler": {
+    parents: [],
+    label: "Ekstrakurikuler",
+  },
 };
 
 function Breadcrumb({ items: customItems }) {

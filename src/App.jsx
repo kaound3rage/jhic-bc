@@ -10,6 +10,7 @@ import PrincipalMessagePage from "./pages/client/principal-message";
 import KonsentrasiKeahlianPage from "./pages/client/konsentrasi-keahlian";
 import MajorDetailPage from "./pages/client/konsentrasi-keahlian/detail";
 import SpmbPage from "./pages/client/spmb";
+import EkstrakurikulerPage from "./pages/client/ekstrakurikuler";
 import { Route, Routes } from "react-router-dom";
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
             element={<MajorDetailPage />}
           />
           <Route path="/spmb" element={<SpmbPage />} />
+          <Route path="/ekstrakurikuler" element={<EkstrakurikulerPage />} />
         </Routes>
       </Layout>
     </>

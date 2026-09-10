@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import {
-  ShieldCheck,
+  Bot,
   X,
   Minus,
   RotateCcw,
@@ -35,17 +35,16 @@ const generateMessageId = (prefix) =>
 
 export default function ChatbotBox() {
   const [isOpen, setIsOpen] = useState(false);
-  const [isClosing, setIsClosing] = useState(false);
   const [showTooltip, setShowTooltip] = useState(true);
   const [messages, setMessages] = useState(INITIAL_MESSAGES);
   const [inputVal, setInputVal] = useState("");
   const [isStreaming, setIsStreaming] = useState(false);
   const [serverStatus, setServerStatus] = useState("checking"); // 'online' | 'offline' | 'checking'
+  const [serverModel, setServerModel] = useState("qwen2.5:1.5b");
 
   const abortControllerRef = useRef(null);
   const messagesEndRef = useRef(null);
   const inputRef = useRef(null);
-  const closeTimerRef = useRef(null);
 
   // Cek status kesehatan backend saat pertama kali dibuka
   useEffect(() => {
@@ -61,8 +60,11 @@ export default function ChatbotBox() {
         }
 
         if (res && res.ok) {
-          await res.json();
-          if (isMounted) setServerStatus("online");
+          const data = await res.json();
+          if (isMounted) {
+            setServerStatus("online");
+            if (data.model) setServerModel(data.model);
+          }
         } else {
           if (isMounted) setServerStatus("online"); // fallback
         }
@@ -74,13 +76,6 @@ export default function ChatbotBox() {
     checkHealth();
     return () => {
       isMounted = false;
-    };
-  }, []);
-
-  // Bersihkan timer close saat unmount
-  useEffect(() => {
-    return () => {
-      if (closeTimerRef.current) window.clearTimeout(closeTimerRef.current);
     };
   }, []);
 
@@ -99,22 +94,6 @@ export default function ChatbotBox() {
       }, 150);
     }
   }, [isOpen]);
-
-  // Buka / tutup dengan animasi halus
-  const openChat = () => {
-    if (closeTimerRef.current) window.clearTimeout(closeTimerRef.current);
-    setIsClosing(false);
-    setIsOpen(true);
-  };
-
-  const closeChat = () => {
-    setIsClosing(true);
-    closeTimerRef.current = window.setTimeout(() => {
-      setIsOpen(false);
-      setIsClosing(false);
-      closeTimerRef.current = null;
-    }, 200);
-  };
 
   // Format teks markdown sederhana (bold, list, paragraf)
   const renderFormattedText = (text) => {
@@ -137,7 +116,7 @@ export default function ChatbotBox() {
 
       if (line.trim().startsWith("- ") || line.trim().startsWith("* ")) {
         return (
-          <li key={idx} className="ml-4 list-disc text-sm leading-relaxed">
+          <li key={idx} className="ml-4 list-disc text-xs leading-relaxed">
             {formattedLine}
           </li>
         );
@@ -145,7 +124,7 @@ export default function ChatbotBox() {
 
       if (/^\d+\.\s/.test(line.trim())) {
         return (
-          <div key={idx} className="ml-2 text-sm leading-relaxed">
+          <div key={idx} className="ml-2 text-xs leading-relaxed">
             {formattedLine}
           </div>
         );
@@ -156,7 +135,7 @@ export default function ChatbotBox() {
       }
 
       return (
-        <p key={idx} className="text-sm leading-relaxed">
+        <p key={idx} className="leading-relaxed">
           {formattedLine}
         </p>
       );
@@ -384,308 +363,289 @@ export default function ChatbotBox() {
   ];
 
   return (
-    <>
-      {/* Overlay lembut di belakang chat saat terbuka (desktop) */}
-      {isOpen && (
-        <button
-          type="button"
-          aria-hidden="true"
-          tabIndex={-1}
-          onClick={closeChat}
-          className="fixed inset-0 z-40 hidden animate-in fade-in-0 bg-foreground/15 backdrop-blur-[1.5px] duration-200 md:block"
-        />
-      )}
-
-      <div className="fixed right-3 bottom-3 z-50 font-sans md:right-6 md:bottom-6">
-        {/* Window Chat saat Terbuka */}
-        {isOpen ? (
-          <div
-            className={`flex h-[calc(100dvh-1rem)] w-[calc(100vw-1rem)] flex-col overflow-hidden rounded-xl bg-card text-card-foreground ring-1 ring-foreground/10 shadow-2xl transition-all duration-200 ease-out md:h-[min(70vh,calc(100vh-4.5rem))] md:h-[min(70dvh,calc(100dvh-4.5rem))] md:w-[min(400px,calc(100vw-3rem))] ${
-              isClosing
-                ? "translate-y-3 scale-[0.98] opacity-0"
-                : "translate-y-0 scale-100 opacity-100"
-            }`}
-          >
-            {/* Header Box */}
-            <div className="flex items-center justify-between border-b border-primary/20 bg-primary px-4 py-3 text-primary-foreground shadow-sm">
-              <div className="flex items-center gap-2.5">
-                <div className="relative flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-white/15 ring-1 ring-white/30">
-                  <img
-                    src="/logo.webp"
-                    alt="SMKN 2 Yogyakarta"
-                    className="h-6 w-6 object-contain"
-                    onError={(e) => {
-                      e.currentTarget.style.display = "none";
-                    }}
-                  />
-                  <ShieldCheck className="hidden h-5 w-5 text-white only:block" />
-                  <span className="absolute -bottom-0.5 -right-0.5 flex h-3 w-3">
-                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75"></span>
-                    <span className="relative inline-flex h-3 w-3 rounded-full border-2 border-primary bg-emerald-400"></span>
-                  </span>
-                </div>
-                <div className="flex flex-col">
-                  <div className="flex items-center gap-1.5">
-                    <h2 className="text-sm leading-none font-bold tracking-tight text-white">
-                      SKADUTA Assistant
-                    </h2>
-                    <Sparkles className="h-3.5 w-3.5 text-amber-300" />
-                  </div>
-                  <p className="mt-1 text-xs text-primary-foreground/85">
-                    SMKN 2 Yogyakarta •{" "}
-                    <span className="font-medium text-emerald-300">
-                      {serverStatus === "online" ? "Online" : "Siap"}
-                    </span>
-                  </p>
-                </div>
+    <div className="fixed bottom-5 left-5 z-50 font-sans">
+      {/* Box Chatbot saat Terbuka */}
+      {isOpen ? (
+        <div
+          className="flex flex-col overflow-hidden rounded-2xl border border-[#BAE6FD] bg-card text-card-foreground shadow-2xl transition-all duration-300 animate-in fade-in slide-in-from-bottom-4"
+          style={{
+            width: "min(400px, calc(100vw - 2.5rem))",
+            height: "min(580px, calc(100vh - 6rem))",
+          }}
+        >
+          {/* Header Box */}
+          <div className="flex items-center justify-between border-b border-primary/20 bg-primary px-4 py-3 text-primary-foreground shadow-sm">
+            <div className="flex items-center gap-2.5">
+              <div className="relative flex h-9 w-9 items-center justify-center rounded-xl bg-white/15 backdrop-blur-xs ring-1 ring-white/30">
+                <img
+                  src="/logo.webp"
+                  alt="SMKN 2 Yogyakarta"
+                  className="h-6 w-6 object-contain"
+                  onError={(e) => {
+                    e.currentTarget.style.display = "none";
+                  }}
+                />
+                <Bot className="h-5 w-5 text-white hidden only:block" />
+                <span className="absolute -bottom-0.5 -right-0.5 flex h-2.5 w-2.5">
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75"></span>
+                  <span className="relative inline-flex h-2.5 w-2.5 rounded-full border-2 border-primary bg-emerald-400"></span>
+                </span>
               </div>
-
-              {/* Tombol Aksi Header (area tap minimal 44x44 di mobile) */}
-              <div className="flex items-center gap-0.5 text-primary-foreground/90">
-                <button
-                  type="button"
-                  onClick={handleResetChat}
-                  title="Mulai percakapan baru"
-                  className="flex h-11 w-11 cursor-pointer items-center justify-center rounded-lg transition-colors hover:bg-white/15 active:scale-95 md:h-8 md:w-8"
-                >
-                  <RotateCcw className="h-4 w-4" />
-                </button>
-                <button
-                  type="button"
-                  onClick={closeChat}
-                  title="Perkecil"
-                  className="hidden h-11 w-11 cursor-pointer items-center justify-center rounded-lg transition-colors hover:bg-white/15 active:scale-95 md:flex md:h-8 md:w-8"
-                >
-                  <Minus className="h-4 w-4" />
-                </button>
-                <button
-                  type="button"
-                  onClick={closeChat}
-                  title="Tutup Chat"
-                  aria-label="Tutup Chat"
-                  className="flex h-11 w-11 cursor-pointer items-center justify-center rounded-lg bg-white/10 transition-colors hover:bg-white/20 active:scale-95 md:h-8 md:w-8"
-                >
-                  <X className="h-5 w-5 md:h-4 md:w-4" />
-                </button>
+              <div className="flex flex-col">
+                <div className="flex items-center gap-1.5">
+                  <h2 className="text-sm font-bold leading-none tracking-tight text-white">
+                    SKADUTA Assistant
+                  </h2>
+                  <Sparkles className="h-3 w-3 text-amber-300" />
+                </div>
+                <p className="text-[11px] text-primary-foreground/85 mt-0.5">
+                  SMKN 2 Yogyakarta •{" "}
+                  <span className="text-emerald-300 font-medium">
+                    {serverStatus === "online" ? "Online" : "Siap"}
+                  </span>
+                </p>
               </div>
             </div>
 
-            {/* Area Percakapan (Messages List) */}
-            <div className="relative flex-1 space-y-3 overflow-y-auto bg-gradient-to-b from-primary/5 to-background p-3.5 text-sm">
-              {messages.map((msg) => {
-                const isUser = msg.role === "user";
+            {/* Tombol Aksi Header */}
+            <div className="flex items-center gap-1 text-primary-foreground/90">
+              <button
+                type="button"
+                onClick={handleResetChat}
+                title="Mulai percakapan baru"
+                className="flex h-7 w-7 items-center justify-center rounded-lg hover:bg-white/15 active:scale-95 transition-colors cursor-pointer"
+              >
+                <RotateCcw className="h-3.5 w-3.5" />
+              </button>
+              <button
+                type="button"
+                onClick={() => setIsOpen(false)}
+                title="Perkecil"
+                className="flex h-7 w-7 items-center justify-center rounded-lg hover:bg-white/15 active:scale-95 transition-colors cursor-pointer"
+              >
+                <Minus className="h-4 w-4" />
+              </button>
+              <button
+                type="button"
+                onClick={() => setIsOpen(false)}
+                title="Tutup Chat"
+                className="flex h-7 w-7 items-center justify-center rounded-lg hover:bg-white/15 active:scale-95 transition-colors cursor-pointer"
+              >
+                <X className="h-4 w-4" />
+              </button>
+            </div>
+          </div>
 
-                return (
+          {/* Area Percakapan (Messages List) */}
+          <div className="relative flex-1 overflow-y-auto p-3.5 space-y-3 bg-gradient-to-b from-[#F0F9FF]/40 to-background text-xs">
+            {messages.map((msg) => {
+              const isUser = msg.role === "user";
+
+              return (
+                <div
+                  key={msg.id}
+                  className={`flex gap-2 ${
+                    isUser ? "justify-end" : "justify-start"
+                  }`}
+                >
+                  {!isUser && (
+                    <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#BAE6FD] text-primary border border-primary/20 mt-0.5">
+                      <Bot className="h-4 w-4" />
+                    </div>
+                  )}
+
                   <div
-                    key={msg.id}
-                    className={`flex gap-2 ${
-                      isUser ? "justify-end" : "justify-start"
+                    className={`max-w-[85%] rounded-2xl px-3.5 py-2.5 leading-relaxed shadow-xs ${
+                      isUser
+                        ? "bg-primary text-primary-foreground rounded-tr-xs"
+                        : msg.error
+                        ? "bg-red-50 border border-red-200 text-red-800 rounded-tl-xs"
+                        : "bg-white border border-border text-foreground rounded-tl-xs"
                     }`}
                   >
-                    {!isUser && (
-                      <div className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-border-badge text-primary ring-1 ring-primary/20">
-                        <ShieldCheck className="h-4 w-4" />
+                    {/* Teks Pesan */}
+                    <div className="space-y-1">
+                      {renderFormattedText(msg.content)}
+                      {msg.isStreaming && !msg.content && (
+                        <div className="flex items-center gap-1.5 py-1 text-muted-foreground">
+                          <span className="h-1.5 w-1.5 rounded-full bg-primary animate-bounce"></span>
+                          <span
+                            className="h-1.5 w-1.5 rounded-full bg-primary animate-bounce"
+                            style={{ animationDelay: "0.2s" }}
+                          ></span>
+                          <span
+                            className="h-1.5 w-1.5 rounded-full bg-primary animate-bounce"
+                            style={{ animationDelay: "0.4s" }}
+                          ></span>
+                          <span className="text-[11px] ml-1">Mengetik...</span>
+                        </div>
+                      )}
+                      {msg.isStreaming && msg.content && (
+                        <span className="inline-block h-3 w-1 bg-primary ml-0.5 animate-pulse align-middle" />
+                      )}
+                    </div>
+
+                    {/* Sumber Dokumen RAG (jika ada) */}
+                    {!isUser && msg.sources && msg.sources.length > 0 && (
+                      <div className="mt-2.5 pt-2 border-t border-border/70 text-[10px]">
+                        <div className="flex items-center gap-1 text-muted-foreground mb-1 font-medium">
+                          <BookOpen className="h-3 w-3 text-primary" />
+                          <span>Sumber Referensi:</span>
+                        </div>
+                        <div className="flex flex-wrap gap-1">
+                          {Array.from(new Set(msg.sources)).map(
+                            (source, sIdx) => (
+                              <span
+                                key={sIdx}
+                                className="inline-block rounded-md bg-[#F0F9FF] border border-[#BAE6FD] px-1.5 py-0.5 font-mono text-[9px] text-primary"
+                              >
+                                {formatSourceTitle(source)}
+                              </span>
+                            )
+                          )}
+                        </div>
                       </div>
                     )}
 
+                    {/* Waktu Pesan */}
                     <div
-                      className={`max-w-[85%] rounded-xl px-3.5 py-2.5 leading-relaxed shadow-xs ${
+                      className={`text-[9px] mt-1 text-right ${
                         isUser
-                          ? "rounded-br-sm bg-primary text-primary-foreground"
-                          : msg.error
-                          ? "rounded-bl-sm bg-destructive/10 text-destructive ring-1 ring-destructive/30"
-                          : "rounded-bl-sm bg-white text-foreground ring-1 ring-border"
+                          ? "text-primary-foreground/75"
+                          : "text-muted-foreground/75"
                       }`}
                     >
-                      {/* Teks Pesan */}
-                      <div className="space-y-1">
-                        {renderFormattedText(msg.content)}
-                        {msg.isStreaming && !msg.content && (
-                          <div className="flex items-center gap-1.5 py-1 text-xs text-muted-foreground">
-                            <span className="h-1.5 w-1.5 animate-bounce rounded-full bg-primary"></span>
-                            <span
-                              className="h-1.5 w-1.5 animate-bounce rounded-full bg-primary"
-                              style={{ animationDelay: "0.2s" }}
-                            ></span>
-                            <span
-                              className="h-1.5 w-1.5 animate-bounce rounded-full bg-primary"
-                              style={{ animationDelay: "0.4s" }}
-                            ></span>
-                            <span className="ml-1 text-xs">Mengetik...</span>
-                          </div>
-                        )}
-                        {msg.isStreaming && msg.content && (
-                          <span className="ml-0.5 inline-block h-3 w-1 animate-pulse bg-primary align-middle" />
-                        )}
-                      </div>
-
-                      {/* Sumber Dokumen RAG (jika ada) */}
-                      {!isUser && msg.sources && msg.sources.length > 0 && (
-                        <div className="mt-2.5 border-t border-border/70 pt-2 text-xs">
-                          <div className="mb-1 flex items-center gap-1 font-medium text-muted-foreground">
-                            <BookOpen className="h-3 w-3 text-primary" />
-                            <span>Sumber Referensi:</span>
-                          </div>
-                          <div className="flex flex-wrap gap-1">
-                            {Array.from(new Set(msg.sources)).map(
-                              (source, sIdx) => (
-                                <span
-                                  key={sIdx}
-                                  className="inline-block rounded-md bg-primary/10 px-1.5 py-0.5 font-mono text-[10px] text-primary ring-1 ring-border-badge"
-                                >
-                                  {formatSourceTitle(source)}
-                                </span>
-                              )
-                            )}
-                          </div>
-                        </div>
-                      )}
-
-                      {/* Waktu Pesan */}
-                      <div
-                        className={`mt-1 text-right text-[10px] ${
-                          isUser
-                            ? "text-primary-foreground/75"
-                            : "text-muted-foreground/75"
-                        }`}
-                      >
-                        {msg.time}
-                      </div>
+                      {msg.time}
                     </div>
                   </div>
-                );
-              })}
-              <div ref={messagesEndRef} />
-            </div>
-
-            {/* Saran Pertanyaan Cepat (Quick Prompts) */}
-            {messages.length <= 2 && (
-              <div className="border-t border-border/40 bg-muted/20 px-3.5 py-2">
-                <p className="mb-1.5 flex items-center gap-1 text-xs font-medium text-muted-foreground">
-                  <Sparkles className="h-3 w-3 text-primary" /> Rekomendasi
-                  Pertanyaan:
-                </p>
-                <div className="flex flex-wrap gap-1.5">
-                  {quickPrompts.map((prompt, i) => (
-                    <button
-                      key={i}
-                      type="button"
-                      disabled={isStreaming}
-                      onClick={() => handleSendMessage(prompt)}
-                      className="cursor-pointer rounded-full border border-border-badge bg-white px-2.5 py-1 text-xs text-foreground/80 transition-colors hover:border-primary/50 hover:bg-primary/10 disabled:opacity-50"
-                    >
-                      {prompt}
-                    </button>
-                  ))}
                 </div>
-              </div>
-            )}
+              );
+            })}
+            <div ref={messagesEndRef} />
+          </div>
 
-            {/* Area Form Input */}
-            <div className="border-t border-border bg-white p-2.5">
-              <form
-                onSubmit={(e) => {
-                  e.preventDefault();
-                  handleSendMessage();
-                }}
-                className="flex items-center gap-1.5 rounded-xl border border-input bg-white p-1 shadow-xs focus-within:border-primary focus-within:ring-2 focus-within:ring-primary/20"
-              >
-                <input
-                  ref={inputRef}
-                  type="text"
-                  value={inputVal}
-                  onChange={(e) => setInputVal(e.target.value)}
-                  placeholder="Tanyakan sesuatu seputar SKADUTA..."
-                  disabled={isStreaming}
-                  className="flex-1 bg-transparent px-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none disabled:opacity-60"
-                />
-
-                {isStreaming ? (
+          {/* Saran Pertanyaan Cepat (Quick Prompts) */}
+          {messages.length <= 2 && (
+            <div className="px-3.5 py-1.5 bg-muted/20 border-t border-border/40">
+              <p className="text-[10px] text-muted-foreground font-medium mb-1 flex items-center gap-1">
+                <Sparkles className="h-2.5 w-2.5 text-primary" /> Rekomendasi
+                Pertanyaan:
+              </p>
+              <div className="flex flex-wrap gap-1">
+                {quickPrompts.map((prompt, i) => (
                   <button
+                    key={i}
                     type="button"
-                    onClick={handleStopStreaming}
-                    title="Hentikan balasan"
-                    className="flex h-8 w-8 shrink-0 cursor-pointer items-center justify-center rounded-lg bg-destructive text-white transition-colors hover:bg-destructive/85"
+                    disabled={isStreaming}
+                    onClick={() => handleSendMessage(prompt)}
+                    className="rounded-full border border-[#BAE6FD] bg-white px-2.5 py-1 text-[10px] text-foreground/80 hover:bg-[#F0F9FF] hover:border-primary/50 transition-colors disabled:opacity-50 cursor-pointer"
                   >
-                    <Square className="h-3 w-3 fill-white" />
+                    {prompt}
                   </button>
-                ) : (
-                  <button
-                    type="submit"
-                    disabled={!inputVal.trim()}
-                    title="Kirim pesan"
-                    className="flex h-8 w-8 shrink-0 cursor-pointer items-center justify-center rounded-lg bg-emerald-600 text-white transition-colors hover:bg-emerald-700 disabled:cursor-not-allowed disabled:opacity-40"
-                  >
-                    <Send className="h-4 w-4" />
-                  </button>
-                )}
-              </form>
-
-              <div className="mt-1.5 flex items-center justify-between px-1 text-[11px] text-muted-foreground">
-                <span>SMK Negeri 2 Yogyakarta</span>
-                <span className="flex items-center gap-1">
-                  <Sparkles className="h-3 w-3 text-primary" />
-                  Didukung oleh AI
-                </span>
+                ))}
               </div>
             </div>
-          </div>
-        ) : (
-          /* Tombol Floating Launcher di Pojok Kanan Bawah */
-          <div className="flex flex-col items-end gap-2">
-            {/* Tooltip / Balon Sapaan */}
-            {showTooltip && (
-              <div className="relative flex items-center gap-2 rounded-2xl border border-border-badge bg-white px-3.5 py-2 text-sm text-foreground shadow-lg animate-in fade-in slide-in-from-bottom-2">
-                <span className="flex h-2 w-2 animate-pulse rounded-full bg-emerald-500" />
-                <button
-                  type="button"
-                  onClick={openChat}
-                  className="cursor-pointer text-left font-medium text-foreground transition-colors hover:text-primary"
-                >
-                  Tanya seputar SKADUTA AI?
-                </button>
-                <button
-                  type="button"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    setShowTooltip(false);
-                  }}
-                  className="ml-1 cursor-pointer text-muted-foreground/70 transition-colors hover:text-foreground"
-                  title="Tutup pesan"
-                  aria-label="Tutup pesan"
-                >
-                  <X className="h-3.5 w-3.5" />
-                </button>
-                <div className="absolute -bottom-1.5 right-5 h-3 w-3 rotate-45 border-b border-r border-border-badge bg-white"></div>
-              </div>
-            )}
+          )}
 
-            {/* Tombol Utama Chatbot */}
-            <button
-              type="button"
-              onClick={openChat}
-              className="group flex cursor-pointer items-center gap-2.5 rounded-full border border-border-badge bg-primary px-4 py-2.5 text-primary-foreground shadow-xl transition-all duration-300 hover:scale-105 hover:bg-primary/90 hover:shadow-2xl active:scale-95"
-              aria-label="Buka Chatbot SKADUTA"
+          {/* Area Form Input */}
+          <div className="border-t border-border/80 bg-white p-2.5">
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                handleSendMessage();
+              }}
+              className="flex items-center gap-1.5 rounded-xl border border-input bg-white p-1 focus-within:border-primary focus-within:ring-2 focus-within:ring-primary/20 shadow-xs"
             >
-              <div className="relative flex h-9 w-9 items-center justify-center rounded-full bg-white/20 ring-1 ring-white/40">
-                <ShieldCheck className="h-5 w-5 text-white transition-transform group-hover:rotate-12" />
-                <span className="absolute -top-0.5 -right-0.5 flex h-3 w-3">
-                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75"></span>
-                  <span className="relative inline-flex h-3 w-3 rounded-full border-2 border-primary bg-emerald-400"></span>
-                </span>
-              </div>
-              <div className="flex flex-col items-start pr-1">
-                <span className="text-sm font-bold leading-tight tracking-wide">
-                  Tanya Skaduta AI
-                </span>
-                <span className="text-xs leading-none text-primary-foreground/80">
-                  Layanan Informasi
-                </span>
-              </div>
-            </button>
+              <input
+                ref={inputRef}
+                type="text"
+                value={inputVal}
+                onChange={(e) => setInputVal(e.target.value)}
+                placeholder="Tanyakan sesuatu seputar SKADUTA..."
+                disabled={isStreaming}
+                className="flex-1 bg-transparent px-2.5 text-xs text-foreground placeholder:text-muted-foreground focus:outline-none disabled:opacity-60"
+              />
+
+              {isStreaming ? (
+                <button
+                  type="button"
+                  onClick={handleStopStreaming}
+                  title="Hentikan balasan"
+                  className="flex h-7 w-7 items-center justify-center rounded-lg bg-red-600 text-white hover:bg-red-700 transition-colors cursor-pointer"
+                >
+                  <Square className="h-3 w-3 fill-white" />
+                </button>
+              ) : (
+                <button
+                  type="submit"
+                  disabled={!inputVal.trim()}
+                  className="flex h-7 w-7 items-center justify-center rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition-colors disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer"
+                >
+                  <Send className="h-3.5 w-3.5" />
+                </button>
+              )}
+            </form>
+
+            <div className="mt-1.5 flex items-center justify-between text-[9px] text-muted-foreground px-1">
+              <span>SMK Negeri 2 Yogyakarta</span>
+              <span>Model: {serverModel}</span>
+            </div>
           </div>
-        )}
-      </div>
-    </>
+        </div>
+      ) : (
+        /* Tombol Floating Launcher di Pojok Kiri Bawah */
+        <div className="flex flex-col items-start gap-2">
+          {/* Tooltip / Balon Sapaan */}
+          {showTooltip && (
+            <div className="relative flex items-center gap-2 rounded-2xl border border-[#BAE6FD] bg-white px-3.5 py-2 text-xs text-foreground shadow-lg animate-in fade-in slide-in-from-bottom-2">
+              <span className="flex h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
+              <button
+                type="button"
+                onClick={() => setIsOpen(true)}
+                className="text-left font-medium text-foreground hover:text-primary transition-colors cursor-pointer"
+              >
+                Tanya seputar SKADUTA AI?
+              </button>
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setShowTooltip(false);
+                }}
+                className="ml-1 text-muted-foreground/70 hover:text-foreground cursor-pointer"
+                title="Tutup pesan"
+              >
+                <X className="h-3 w-3" />
+              </button>
+              <div className="absolute -bottom-1.5 left-5 h-3 w-3 rotate-45 border-b border-r border-[#BAE6FD] bg-white"></div>
+            </div>
+          )}
+
+          {/* Tombol Utama Chatbot */}
+          <button
+            type="button"
+            onClick={() => setIsOpen(true)}
+            className="group flex items-center gap-2.5 rounded-full border border-[#BAE6FD] bg-primary px-4 py-2.5 text-primary-foreground shadow-xl transition-all duration-300 hover:scale-105 hover:bg-primary/90 hover:shadow-2xl active:scale-95 cursor-pointer"
+            aria-label="Buka Chatbot SKADUTA"
+          >
+            <div className="relative flex h-8 w-8 items-center justify-center rounded-full bg-white/20 ring-1 ring-white/40">
+              <Bot className="h-4 w-4 text-white transition-transform group-hover:rotate-12" />
+              <span className="absolute -top-0.5 -right-0.5 flex h-2.5 w-2.5">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75"></span>
+                <span className="relative inline-flex h-2.5 w-2.5 rounded-full border-2 border-primary bg-emerald-400"></span>
+              </span>
+            </div>
+            <div className="flex flex-col items-start pr-1">
+              <span className="text-xs font-bold leading-tight tracking-wide">
+                Tanya Skaduta AI
+              </span>
+              <span className="text-[10px] text-primary-foreground/80 leading-none">
+                Layanan Informasi
+              </span>
+            </div>
+          </button>
+        </div>
+      )}
+    </div>
   );
 }
