@@ -1,5 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {
+  ArrowRight,
   Compass,
   Feather,
   Flame,
@@ -19,7 +21,7 @@ import { ekstrakurikulerData } from "@/data/ekstrakurikuler";
 const CROSSFADE_MS = 350;
 
 const ICONS_BY_SLUG = {
-  "osis-mpk": Users,
+  osis: Users,
   tmc: Mountain,
   "kidung-aji-saka": Music,
   "kuli-tinta": PenLine,
@@ -53,6 +55,22 @@ function EkstrakurikulerShowcase({ data = ekstrakurikulerData }) {
   const [displayedIndex, setDisplayedIndex] = useState(0);
   const [fading, setFading] = useState(false);
   const timerRef = useRef(null);
+  const navigate = useNavigate();
+
+  // Preload semua gambar preview agar tidak ada jeda/foto blank saat
+  // hover cepat berpindah-pindah antar box.
+  useEffect(() => {
+    const preloaded = items.map((item) => {
+      const image = new Image();
+      image.src = item.fotoUrl;
+      return image;
+    });
+    return () => {
+      preloaded.forEach((image) => {
+        image.src = "";
+      });
+    };
+  }, [items]);
 
   useEffect(() => {
     return () => window.clearTimeout(timerRef.current);
@@ -86,7 +104,8 @@ function EkstrakurikulerShowcase({ data = ekstrakurikulerData }) {
         <img
           src={displayed.fotoUrl}
           alt={displayed.fotoAlt}
-          loading="lazy"
+          loading="eager"
+          decoding="async"
           className={cn(
             "absolute inset-0 h-full w-full object-cover transition-opacity ease-in-out duration-[350ms]",
             fading ? "opacity-0" : "opacity-100",
@@ -97,7 +116,8 @@ function EkstrakurikulerShowcase({ data = ekstrakurikulerData }) {
           <img
             src={active.fotoUrl}
             alt={active.fotoAlt}
-            loading="lazy"
+            loading="eager"
+            decoding="async"
             className="absolute inset-0 h-full w-full object-cover animate-in fade-in-0 [animation-duration:350ms] ease-in-out"
           />
         )}
@@ -154,9 +174,10 @@ function EkstrakurikulerShowcase({ data = ekstrakurikulerData }) {
                       key={item.slug}
                       type="button"
                       aria-pressed={isActive}
+                      title={`Buka halaman ${item.nama}`}
                       onMouseEnter={() => selectEkskul(itemIndex)}
                       onFocus={() => selectEkskul(itemIndex)}
-                      onClick={() => selectEkskul(itemIndex)}
+                      onClick={() => navigate(`/ekstrakurikuler/${item.slug}`)}
                       className={cn(
                         "group flex cursor-pointer flex-col items-center gap-2.5 rounded-xl bg-card p-3.5 ring-1 transition-all duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring sm:p-4",
                         isActive
@@ -181,6 +202,17 @@ function EkstrakurikulerShowcase({ data = ekstrakurikulerData }) {
                         )}
                       >
                         {item.nama}
+                      </span>
+                      <span
+                        className={cn(
+                          "flex items-center gap-1 text-[11px] font-medium text-primary transition-all duration-200",
+                          isActive
+                            ? "translate-y-0 opacity-100"
+                            : "translate-y-0.5 opacity-0",
+                        )}
+                      >
+                        Lihat detail
+                        <ArrowRight className="h-3 w-3" />
                       </span>
                     </button>
                   );

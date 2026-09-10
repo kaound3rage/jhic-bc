@@ -1,68 +1,219 @@
-// Struktur data ekstrakurikuler SMK Negeri 2 Yogyakarta.
-// Tiap item: slug, nama, deskripsi, fotoUrl (ganti dengan foto asli nanti),
-// fotoAlt. Untuk ikon kecil pada box selector, gunakan slug di
-// src/components/ekstrakurikuler-showcase.jsx (map ikon lucide).
+// Struktur data ekstrakurikuler & organisasi SMK Negeri 2 Yogyakarta.
+// Tiap item: slug (URL), nama (nama singkat), judulLengkap (judul hero),
+// tagline, deskripsi (array paragraf), visi, misi (array), galeri (array foto),
+// fotoUrl (thumbnail showcase), heroImage (banner detail).
 export const ekstrakurikulerData = [
   {
     kategori: "Organisasi & Badan Khusus",
     items: [
       {
-        slug: "osis-mpk",
+        slug: "osis",
         nama: "OSIS & MPK",
-        deskripsi:
-          "Organisasi Siswa Intra Sekolah dan Majelis Perwakilan Kelas sebagai wadah kepemimpinan siswa.",
-        fotoUrl: "/ekstrakurikuler/osis-mpk.svg",
+        judulLengkap: "OSIS - Organisasi Siswa Intra Sekolah",
+        tagline: "Memberdayakan siswa, menginspirasi perubahan.",
+        fotoUrl: "/ekstrakurikuler/osis.svg",
+        heroImage: "/ekstrakurikuler/osis.svg",
         fotoAlt: "Kegiatan OSIS & MPK SMK Negeri 2 Yogyakarta",
+        deskripsi: [
+          "OSIS (Organisasi Siswa Intra Sekolah) merupakan satu-satunya wadah organisasi siswa yang sah di sekolah. Bersama MPK (Majelis Perwakilan Kelas), OSIS menjadi jembatan aspirasi antara siswa, sekolah, dan lingkungan sekitar dalam rangka menumbuhkan jiwa kepemimpinan serta tanggung jawab bersama.",
+          "Melalui program kerja yang terstruktur, OSIS & MPK mengelola berbagai kegiatan sekolah mulai dari Masa Pengenalan Lingkungan Sekolah, peringatan hari besar nasional, lomba antar kelas, hingga kegiatan sosial kemasyarakatan. Keanggotaan terbuka bagi seluruh siswa melalui mekanisme pemilihan yang demokratis setiap tahunnya.",
+        ],
+        visi: "Mewujudkan OSIS yang berkarakter, berwawasan luas, mandiri, dan menjadi teladan bagi seluruh siswa dalam menumbuhkan budaya sekolah yang aktif, kreatif, serta berlandaskan imtaq dan iptek.",
+        misi: [
+          "Mengorganisir kegiatan siswa yang bermanfaat dan berdampak positif.",
+          "Menampung serta menyalurkan aspirasi siswa kepada pihak sekolah.",
+          "Meningkatkan keimanan, ketakwaan, dan budi pekerti siswa.",
+          "Mengembangkan keterampilan organisasi dan kepemimpinan siswa.",
+          "Menjalin kerjasama harmonis antara siswa, guru, dan karyawan.",
+        ],
+        galeri: [
+          "/ekstrakurikuler/galeri/osis-1.svg",
+          "/ekstrakurikuler/galeri/osis-2.svg",
+          "/ekstrakurikuler/galeri/osis-3.svg",
+          "/ekstrakurikuler/galeri/osis-4.svg",
+        ],
       },
       {
         slug: "tmc",
         nama: "Technical Mountaineering Club (TMC)",
-        deskripsi: "Kegiatan pecinta alam, pendakian, dan konservasi lingkungan.",
+        judulLengkap: "TMC - Technical Mountaineering Club",
+        tagline: "Mendaki, mencintai, dan menjaga alam.",
         fotoUrl: "/ekstrakurikuler/tmc.svg",
+        heroImage: "/ekstrakurikuler/tmc.svg",
         fotoAlt: "Kegiatan Technical Mountaineering Club SMK Negeri 2 Yogyakarta",
+        deskripsi: [
+          "Technical Mountaineering Club (TMC) merupakan ekskul pecinta alam yang berfokus pada kegiatan pendakian gunung, penjelajahan, dan pengetahuan alam terbuka. Anggota dibekali kemampuan navigasi darat, manajemen perjalanan, survival, serta kepedulian terhadap kelestarian lingkungan.",
+          "Selain aktivitas di alam bebas, TMC juga aktif dalam aksi konservasi seperti penanaman pohon, bersih gunung, dan edukasi lingkungan. Kegiatan ini membentuk karakter anggota yang tangguh, mandiri, solider, dan mencintai alam.",
+        ],
+        visi: "Menjadi komunitas pecinta alam yang profesional, terampil, peduli lingkungan, dan berjiwa sosial sebagai teladan di kalangan siswa.",
+        misi: [
+          "Melatih keterampilan navigasi dan manajemen kegiatan alam terbuka.",
+          "Menumbuhkan rasa cinta dan kepedulian terhadap lingkungan.",
+          "Melaksanakan kegiatan konservasi dan bakti sosial.",
+          "Memupuk kedisiplinan, kekompakan, dan solidaritas anggota.",
+        ],
+        galeri: [
+          "/ekstrakurikuler/galeri/tmc-1.svg",
+          "/ekstrakurikuler/galeri/tmc-2.svg",
+          "/ekstrakurikuler/galeri/tmc-3.svg",
+          "/ekstrakurikuler/galeri/tmc-4.svg",
+        ],
       },
       {
         slug: "kidung-aji-saka",
         nama: "Kidung Aji Saka",
-        deskripsi: "Kelompok seni dan budaya tradisional.",
+        judulLengkap: "Kidung Aji Saka",
+        tagline: "Melestarikan seni dan budaya tradisional.",
         fotoUrl: "/ekstrakurikuler/kidung-aji-saka.svg",
+        heroImage: "/ekstrakurikuler/kidung-aji-saka.svg",
         fotoAlt: "Kegiatan Kidung Aji Saka SMK Negeri 2 Yogyakarta",
+        deskripsi: [
+          "Kidung Aji Saka adalah ekstrakurikuler seni dan budaya tradisional yang mewadahi minat siswa pada kesenian, khususnya karawitan, tembang, dan seni pertunjukan Jawa. Anggota berlatih secara rutin untuk menjaga dan melestarikan warisan budaya bangsa.",
+          "Melalui pementasan di berbagai acara sekolah maupun luar sekolah, ekskul ini menjadi ajang aktualisasi diri dan pelestarian budaya yang membanggakan nama baik sekolah.",
+        ],
+        visi: "Melestarikan dan mengembangkan seni budaya tradisional agar tetap hidup dan membudaya di kalangan generasi muda.",
+        misi: [
+          "Membina keterampilan karawitan dan seni tradisional siswa.",
+          "Mengadakan latihan rutin dan pementasan seni budaya.",
+          "Menanamkan rasa cinta terhadap budaya lokal.",
+          "Berpartisipasi dalam festival dan lomba seni budaya.",
+        ],
+        galeri: [
+          "/ekstrakurikuler/galeri/kidung-aji-saka-1.svg",
+          "/ekstrakurikuler/galeri/kidung-aji-saka-2.svg",
+          "/ekstrakurikuler/galeri/kidung-aji-saka-3.svg",
+          "/ekstrakurikuler/galeri/kidung-aji-saka-4.svg",
+        ],
       },
       {
         slug: "kuli-tinta",
         nama: "Kuli Tinta",
-        deskripsi: "Klub jurnalistik dan majalah sekolah.",
+        judulLengkap: "Kuli Tinta",
+        tagline: "Mengabarkan narasi dari balik meja redaksi.",
         fotoUrl: "/ekstrakurikuler/kuli-tinta.svg",
+        heroImage: "/ekstrakurikuler/kuli-tinta.svg",
         fotoAlt: "Kegiatan Kuli Tinta SMK Negeri 2 Yogyakarta",
+        deskripsi: [
+          "Kuli Tinta adalah klub jurnalistik dan majalah sekolah yang menaungi siswa penulis, jurnalis, dan content creator. Anggota belajar menulis berita, feature, opini, serta mengelola media sekolah baik cetak maupun digital.",
+          "Aktivitas utama klub ini adalah menerbitkan majalah sekolah, mengelola media sosial resmi, dan meliput berbagai kegiatan sekolah. Keanggotaan terbuka bagi siswa yang ingin mengasah keterampilan menulis dan jurnalistiknya.",
+        ],
+        visi: "Menjadi media informasi siswa yang terpercaya, kreatif, dan mampu menginspirasi dengan menghasilkan karya jurnalistik berkualitas.",
+        misi: [
+          "Melatih kemampuan menulis dan membaca kritis siswa.",
+          "Menerbitkan majalah dan konten media sekolah secara berkala.",
+          "Meliput dan mendokumentasikan kegiatan sekolah.",
+          "Mengembangkan karakter jurnalistik yang jujur dan bertanggung jawab.",
+        ],
+        galeri: [
+          "/ekstrakurikuler/galeri/kuli-tinta-1.svg",
+          "/ekstrakurikuler/galeri/kuli-tinta-2.svg",
+          "/ekstrakurikuler/galeri/kuli-tinta-3.svg",
+          "/ekstrakurikuler/galeri/kuli-tinta-4.svg",
+        ],
       },
       {
         slug: "pmr",
         nama: "PMR",
-        deskripsi:
-          "Palang Merah Remaja, mengembangkan kepedulian sosial dan keterampilan pertama.",
+        judulLengkap: "PMR - Palang Merah Remaja",
+        tagline: "Rela berkorban untuk sesama.",
         fotoUrl: "/ekstrakurikuler/pmr.svg",
+        heroImage: "/ekstrakurikuler/pmr.svg",
         fotoAlt: "Kegiatan Palang Merah Remaja SMK Negeri 2 Yogyakarta",
+        deskripsi: [
+          "Palang Merah Remaja (PMR) adalah wadah pembinaan anggota remaja PMI yang bergerak di bidang kepalangmerahan. Anggota dibina dalam bidang kesehatan remaja, pertolongan pertama, serta aksi kemanusiaan dan sosial.",
+          "Program rutin PMR meliputi latihan pertolongan pertama, donor darah, bakti sosial, dan penyuluhan kesehatan. Kegiatan ini membentuk generasi yang peduli, tanggap, dan rela menolong sesama tanpa pamrih.",
+        ],
+        visi: "Mewujudkan remaja Palang Merah yang sehat, kreatif, peduli sesama, dan siap menjadi kader kemanusiaan yang tangguh.",
+        misi: [
+          "Melatih keterampilan pertolongan pertama dan kesehatan remaja.",
+          "Menumbuhkan jiwa sosial dan kepedulian terhadap sesama.",
+          "Melaksanakan aksi donor darah dan bakti sosial.",
+          "Meningkatkan pengetahuan kepalangmerahan dan kemanusiaan.",
+        ],
+        galeri: [
+          "/ekstrakurikuler/galeri/pmr-1.svg",
+          "/ekstrakurikuler/galeri/pmr-2.svg",
+          "/ekstrakurikuler/galeri/pmr-3.svg",
+          "/ekstrakurikuler/galeri/pmr-4.svg",
+        ],
       },
       {
         slug: "dewan-ambalan",
         nama: "Dewan Ambalan",
-        deskripsi: "Kegiatan Pramuka penegak di lingkungan sekolah.",
+        judulLengkap: "Dewan Ambalan",
+        tagline: "Satyaku kudarmakan, darmaku kubaktikan.",
         fotoUrl: "/ekstrakurikuler/dewan-ambalan.svg",
+        heroImage: "/ekstrakurikuler/dewan-ambalan.svg",
         fotoAlt: "Kegiatan Dewan Ambalan SMK Negeri 2 Yogyakarta",
+        deskripsi: [
+          "Dewan Ambalan adalah wadah kegiatan Pramuka penegak di lingkungan sekolah. Melalui sistem satuan karya dan golongan penegak, anggota dikembangkan potensinya dalam kepemimpinan, kemandirian, dan pengabdian kepada masyarakat.",
+          "Kegiatan meliputi latihan rutin, perkemahan, widyawisata pendidikan, gladian pemimpin, serta bakti sosial. Pramuka menjadi sarana pembentukan karakter yang disiplin, cinta tanah air, dan berkepribadian luhur.",
+        ],
+        visi: "Membentuk pramuka penegak yang beriman, berkarakter, terampil, mandiri, dan menjadi agen perubahan bagi masyarakat serta lingkungan.",
+        misi: [
+          "Melaksanakan pendidikan kepramukaan secara teratur dan menarik.",
+          "Mengembangkan jiwa kepemimpinan dan kemandirian anggota.",
+          "Menanamkan nilai kejujuran, kedisiplinan, dan gotong royong.",
+          "Melaksanakan kegiatan perkemahan dan bakti masyarakat.",
+        ],
+        galeri: [
+          "/ekstrakurikuler/galeri/dewan-ambalan-1.svg",
+          "/ekstrakurikuler/galeri/dewan-ambalan-2.svg",
+          "/ekstrakurikuler/galeri/dewan-ambalan-3.svg",
+          "/ekstrakurikuler/galeri/dewan-ambalan-4.svg",
+        ],
       },
       {
         slug: "pks",
         nama: "PKS",
-        deskripsi: "Patroli Keamanan Sekolah, menjaga ketertiban dan keamanan.",
+        judulLengkap: "PKS - Patroli Keamanan Sekolah",
+        tagline: "Menjaga ketertiban, mengawal keamanan.",
         fotoUrl: "/ekstrakurikuler/pks.svg",
+        heroImage: "/ekstrakurikuler/pks.svg",
         fotoAlt: "Kegiatan Patroli Keamanan Sekolah SMK Negeri 2 Yogyakarta",
+        deskripsi: [
+          "Patroli Keamanan Sekolah (PKS) adalah organ siswa yang membantu menciptakan lingkungan sekolah yang aman, tertib, dan nyaman. Anggota PKS berperan dalam pengaturan lalu lintas, pengawasan ketertiban, dan membantu kegiatan-kegiatan sekolah.",
+          "Dengan pembinaan dari guru dan kepolisian, anggota PKS dibekali pengetahuan keselamatan berlalu lintas serta etika ketertiban. Kegiatan ini menumbuhkan kedisiplinan dan tanggung jawab dalam menjaga ketertiban umum, khususnya di lingkungan sekolah.",
+        ],
+        visi: "Menjadikan lingkungan sekolah yang aman, tertib, dan disiplin melalui peran aktif patroli keamanan yang profesional dan menjadi teladan.",
+        misi: [
+          "Membantu menciptakan keamanan dan ketertiban sekolah.",
+          "Mengedukasi siswa tentang keselamatan berlalu lintas.",
+          "Menanamkan disiplin dan sopan santun berlalu lintas.",
+          "Bekerjasama dengan guru dan pihak berwenang dalam pengamanan kegiatan.",
+        ],
+        galeri: [
+          "/ekstrakurikuler/galeri/pks-1.svg",
+          "/ekstrakurikuler/galeri/pks-2.svg",
+          "/ekstrakurikuler/galeri/pks-3.svg",
+          "/ekstrakurikuler/galeri/pks-4.svg",
+        ],
       },
       {
         slug: "wsp-tonti",
         nama: "WSP / Tonti",
-        deskripsi: "Peleton Inti / Kesamaptaan, melatih kedisiplinan dan baris-berbaris.",
+        judulLengkap: "WSP / Tonti",
+        tagline: "Peleton inti, jiwa korsa yang tangguh.",
         fotoUrl: "/ekstrakurikuler/wsp-tonti.svg",
+        heroImage: "/ekstrakurikuler/wsp-tonti.svg",
         fotoAlt: "Kegiatan WSP / Tonti SMK Negeri 2 Yogyakarta",
+        deskripsi: [
+          "WSP (Wira Saka Praja) / Tonti (Peleton Inti) adalah ekstrakurikuler yang melatih kedisiplinan, keterampilan baris-berbaris (PBB), dan kesamaptaan fisik. Anggota menjadi motor penggerak dalam berbagai upacara dan kegiatan sekolah.",
+          "Latihan dilakukan secara rutin dengan penguasaan gerakan dasar peraturan baris-berbaris, disiplin waktu, dan kekompakan tim. Ekskul ini membentuk mental yang kuat, jiwa korsa, serta pengabdian terhadap sekolah dan negara.",
+        ],
+        visi: "Membentuk anggota yang disiplin, berjiwa korsa, dan siap menjadi garda terdepan dalam setiap kegiatan sekolah serta mencintai tanah air.",
+        misi: [
+          "Melatih keterampilan baris-berbaris dan kesamaptaan jasmani.",
+          "Menanamkan kedisiplinan, tanggung jawab, dan jiwa kepemimpinan.",
+          "Menjadi pasukan pengibar bendera dan pengatur upacara sekolah.",
+          "Membina kekompakan dan semangat kebersamaan antar anggota.",
+        ],
+        galeri: [
+          "/ekstrakurikuler/galeri/wsp-tonti-1.svg",
+          "/ekstrakurikuler/galeri/wsp-tonti-2.svg",
+          "/ekstrakurikuler/galeri/wsp-tonti-3.svg",
+          "/ekstrakurikuler/galeri/wsp-tonti-4.svg",
+        ],
       },
     ],
   },
@@ -72,34 +223,106 @@ export const ekstrakurikulerData = [
       {
         slug: "pencak-silat",
         nama: "Pencak Silat",
-        deskripsi:
-          "Beladiri tradisional untuk membentuk ketangkasan dan mental juara.",
+        judulLengkap: "Pencak Silat",
+        tagline: "Beladiri tradisional, mental juara.",
         fotoUrl: "/ekstrakurikuler/pencak-silat.svg",
+        heroImage: "/ekstrakurikuler/pencak-silat.svg",
         fotoAlt: "Kegiatan Pencak Silat SMK Negeri 2 Yogyakarta",
+        deskripsi: [
+          "Pencak Silat merupakan ekstrakurikuler beladiri yang melestarikan seni bela diri asli Nusantara. Anggota dilatih teknik beladiri, seni jurus, serta nilai-nilai disiplin, sportivitas, dan budi pekerti luhur.",
+          "Selain mengasah kebugaran fisik, kegiatan ini membangun kepercayaan diri dan mental juara. Siswa berkesempatan mengikuti kejuaraan silat tingkat pelajar dan daerah untuk mengharumkan nama sekolah.",
+        ],
+        visi: "Menjadi atlet dan pesilat berkarakter yang unggul dalam prestasi, menjunjung tinggi nilai seni budaya dan sportivitas.",
+        misi: [
+          "Melatih teknik beladiri dan seni pencak silat secara benar.",
+          "Menumbuhkan kedisiplinan, ketangkasan, dan mental juara.",
+          "Melestarikan seni budaya bangsa melalui pencak silat.",
+          "Meningkatkan prestasi di kejuaraan tingkat pelajar dan daerah.",
+        ],
+        galeri: [
+          "/ekstrakurikuler/galeri/pencak-silat-1.svg",
+          "/ekstrakurikuler/galeri/pencak-silat-2.svg",
+          "/ekstrakurikuler/galeri/pencak-silat-3.svg",
+          "/ekstrakurikuler/galeri/pencak-silat-4.svg",
+        ],
       },
       {
         slug: "sepak-bola-futsal",
         nama: "Sepak Bola / Futsal",
-        deskripsi:
-          "Melatih tim, teknik, dan sportivitas di lapangan.",
+        judulLengkap: "Sepak Bola / Futsal",
+        tagline: "Solid di lapangan, berprestasi di kejuaraan.",
         fotoUrl: "/ekstrakurikuler/sepak-bola-futsal.svg",
+        heroImage: "/ekstrakurikuler/sepak-bola-futsal.svg",
         fotoAlt: "Kegiatan Sepak Bola / Futsal SMK Negeri 2 Yogyakarta",
+        deskripsi: [
+          "Ekstrakurikuler sepak bola dan futsal mewadahi siswa yang memiliki minat di bidang olahraga permainan bola besar. Latihan berfokus pada teknik dasar, taktik permainan, kebugaran, serta kerja sama tim.",
+          "Tim sekolah rutin mengikuti pertandingan antar sekolah dan turnamen futsal pelajar. Melalui kegiatannya, siswa belajar sportivitas, kerja keras, dan kekompakan dalam satu tim.",
+        ],
+        visi: "Membentuk tim sepak bola dan futsal yang solid, berkarakter sportif, dan berprestasi di tingkat kota maupun nasional.",
+        misi: [
+          "Melatih teknik dasar dan taktik permainan sepak bola dan futsal.",
+          "Meningkatkan kebugaran jasmani dan mental bertanding siswa.",
+          "Menumbuhkan sportivitas, kekompakan, dan jiwa tim.",
+          "Berpartisipasi aktif dalam kompetisi antar sekolah dan turnamen.",
+        ],
+        galeri: [
+          "/ekstrakurikuler/galeri/sepak-bola-futsal-1.svg",
+          "/ekstrakurikuler/galeri/sepak-bola-futsal-2.svg",
+          "/ekstrakurikuler/galeri/sepak-bola-futsal-3.svg",
+          "/ekstrakurikuler/galeri/sepak-bola-futsal-4.svg",
+        ],
       },
       {
         slug: "bola-voli",
         nama: "Bola Voli",
-        deskripsi:
-          "Mengasah kerja sama tim dan keterampilan dasar permainan voli.",
+        judulLengkap: "Bola Voli",
+        tagline: "Smash sejati, kekompakan sepanjang waktu.",
         fotoUrl: "/ekstrakurikuler/bola-voli.svg",
+        heroImage: "/ekstrakurikuler/bola-voli.svg",
         fotoAlt: "Kegiatan Bola Voli SMK Negeri 2 Yogyakarta",
+        deskripsi: [
+          "Ekstrakurikuler bola voli mengasah keterampilan dasar permainan voli seperti passing, servis, smash, dan blocking. Latihan rutin dilakukan untuk membangun teknik serta kebugaran dan kerja sama antar pemain.",
+          "Tim voli sekolah berlatih dengan metode yang terstruktur dan mengikuti kompetisi antar sekolah. Kegiatan ini membentuk siswa yang tangkas, sportif, dan mampu bekerja sama dalam memenangkan pertandingan.",
+        ],
+        visi: "Menghasilkan tim bola voli yang terampil, kompak, dan berprestasi serta menjunjung tinggi nilai sportivitas.",
+        misi: [
+          "Melatih teknik dasar dan lanjutan permainan bola voli.",
+          "Mengembangkan kebugaran fisik dan mental bertanding.",
+          "Menanamkan kerja sama tim dan sportivitas.",
+          "Mengikuti kompetisi antar sekolah dan kejuaraan tingkat daerah.",
+        ],
+        galeri: [
+          "/ekstrakurikuler/galeri/bola-voli-1.svg",
+          "/ekstrakurikuler/galeri/bola-voli-2.svg",
+          "/ekstrakurikuler/galeri/bola-voli-3.svg",
+          "/ekstrakurikuler/galeri/bola-voli-4.svg",
+        ],
       },
       {
         slug: "bulutangkis",
         nama: "Bulutangkis (Badminton)",
-        deskripsi:
-          "Berlatih teknik, kelincahan, dan strategi permainan bulutangkis.",
+        judulLengkap: "Bulutangkis (Badminton)",
+        tagline: "Cepat, lincah, dan penuh strategi.",
         fotoUrl: "/ekstrakurikuler/bulutangkis.svg",
+        heroImage: "/ekstrakurikuler/bulutangkis.svg",
         fotoAlt: "Kegiatan Bulutangkis SMK Negeri 2 Yogyakarta",
+        deskripsi: [
+          "Ekstrakurikuler bulutangkis mewadahi siswa yang menyukai olahraga raket. Latihan mencakup teknik pukulan, footwork, strategi permainan, serta kebugaran dan ketangkasan tubuh.",
+          "Siswa berlatih secara teratur dan dapat mengikuti turnamen bulutangkis pelajar. Kegiatan ini mengajarkan kecepatan, ketepatan, dan pengambilan keputusan yang cepat di dalam pertandingan.",
+        ],
+        visi: "Mencetak atlet bulutangkis yang terampil, lincah, dan berprestasi dengan penuh sportivitas di tingkat pelajar.",
+        misi: [
+          "Melatih teknik pukulan dasar dan lanjutan bulutangkis.",
+          "Meningkatkan kelincahan, ketepatan, dan strategi bermain.",
+          "Membangun mental juara dan sportivitas anggota.",
+          "Mengikuti turnamen bulutangkis tingkat pelajar dan daerah.",
+        ],
+        galeri: [
+          "/ekstrakurikuler/galeri/bulutangkis-1.svg",
+          "/ekstrakurikuler/galeri/bulutangkis-2.svg",
+          "/ekstrakurikuler/galeri/bulutangkis-3.svg",
+          "/ekstrakurikuler/galeri/bulutangkis-4.svg",
+        ],
       },
     ],
   },
@@ -107,3 +330,6 @@ export const ekstrakurikulerData = [
 
 export const getAllEkstrakurikuler = () =>
   ekstrakurikulerData.flatMap((category) => category.items);
+
+export const getEkstrakurikulerBySlug = (slug) =>
+  getAllEkstrakurikuler().find((item) => item.slug === slug);
