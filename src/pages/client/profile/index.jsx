@@ -63,6 +63,14 @@ const missions = [
   "Mengembangkan kompetensi peserta didik sesuai dengan bakat dan minat.",
   "Menyelenggarakan pembelajaran dan manajemen sekolah berbasis TIK.",
   "Meningkatkan fasilitas dan lingkungan belajar yang aman, nyaman, ramah lingkungan, ramah anak, dan responsif gender.",
+  "Melaksanakan penataan lingkungan sekolah dan pengelolaan limbah 3R (Reuse, Reduce, Recycle) di setiap unit kerja.",
+  "Menerapkan Perilaku Ramah Lingkungan Hidup (PRLH) warga sekolah menuju sekolah adiwiyata tingkat nasional.",
+  "Mendampingi peserta didik dalam pembiasaan beribadah untuk meningkatkan ketaqwaan kepada Tuhan Yang Maha Esa.",
+  "Menerapkan pendidikan berbasis Budaya Yogyakarta dan Profil Pelajar Pancasila.",
+  "Meningkatkan kualitas dan kuantitas pendidik dan tenaga kependidikan yang memenuhi kualifikasi profesional, sertifikasi kompetensi, kreatif, inovatif, berkarakter, dan berbudaya kerja industri.",
+  "Membangun kemitraan (Link and Match) dengan lembaga yang relevan dalam dan luar negeri.",
+  "Menyelenggarakan sertifikasi kompetensi dan bahasa asing bagi peserta didik.",
+  "Menyelenggarakan program pertukaran pelajar dan guru tingkat ASEAN.",
 ];
 
 // PLACEHOLDER: lengkapi dengan arsip penghargaan resmi sebelum dipublikasikan.
@@ -149,7 +157,13 @@ function SchoolProfilePage() {
             <div className="flex items-start gap-3"><CheckCircle2 className="mt-0.5 size-4 shrink-0 text-emerald-600" /><span>Lingkungan belajar aman, inklusif, dan berkelanjutan.</span></div>
           </div>
         </div>
-        <ProfileTabs activeTab={activeTab} onTabChange={setActiveTab} visi={vision} misi={missions} />
+        <ProfileTabs
+          activeTab={activeTab}
+          onTabChange={setActiveTab}
+          visi={vision}
+          misi={missions}
+          contentClassName="h-72"
+        />
       </section>
 
       <section className="mt-16 sm:mt-20">
