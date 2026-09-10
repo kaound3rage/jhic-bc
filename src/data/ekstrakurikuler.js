@@ -329,7 +329,9 @@ export const ekstrakurikulerData = [
 ];
 
 export const getAllEkstrakurikuler = () =>
-  ekstrakurikulerData.flatMap((category) => category.items);
+  ekstrakurikulerData.flatMap((category) =>
+    category.items.map((item) => ({ ...item, kategori: category.kategori })),
+  );
 
 export const getEkstrakurikulerBySlug = (slug) =>
   getAllEkstrakurikuler().find((item) => item.slug === slug);

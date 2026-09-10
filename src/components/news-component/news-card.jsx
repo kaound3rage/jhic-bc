@@ -31,7 +31,11 @@ function NewsCard({ item }) {
   const newsUrl = `/berita/${item.slug}`;
 
   const shareNews = async () => {
-    const shareData = { title: item.title, text: item.description, url: newsUrl };
+    const shareData = {
+      title: item.title,
+      text: item.description,
+      url: newsUrl,
+    };
 
     if (navigator.share) {
       await navigator.share(shareData);
@@ -43,7 +47,11 @@ function NewsCard({ item }) {
 
   return (
     <Card className="mx-auto flex h-full w-full max-w-sm flex-col pt-0">
-      <Link to={newsUrl} className="overflow-hidden" aria-label={`Baca ${item.title}`}>
+      <Link
+        to={newsUrl}
+        className="overflow-hidden"
+        aria-label={`Baca ${item.title}`}
+      >
         <img
           src={item.image}
           alt={item.title}
@@ -52,7 +60,10 @@ function NewsCard({ item }) {
       </Link>
 
       <CardHeader className="flex-1">
-        <Badge variant="outline" className={`w-fit ${getBadgeStyle(item.type)}`}>
+        <Badge
+          variant="outline"
+          className={`w-fit ${getBadgeStyle(item.type)}`}
+        >
           #{item.type}
         </Badge>
         <CardTitle className="line-clamp-2">
@@ -60,20 +71,26 @@ function NewsCard({ item }) {
             {item.title}
           </Link>
         </CardTitle>
-        <CardDescription className="line-clamp-3">{item.description}</CardDescription>
+        <CardDescription className="line-clamp-3">
+          {item.description}
+        </CardDescription>
         <p className="mt-4 text-xs text-muted-foreground">
           {item.date} · {item.author}
         </p>
       </CardHeader>
 
       <CardFooter>
-        <div className="flex w-full items-center justify-between gap-2">
-          <div className="flex flex-wrap gap-1">
+        <div className="flex w-full items-center justify-end gap-2">
+          {/* <div className="flex flex-wrap gap-1">
             {item.tags?.slice(0, 2).map((tag) => (
               <span key={tag} className="text-xs text-muted-foreground">#{tag}</span>
             ))}
-          </div>
-          <Button variant="ghost" className="text-primary hover:text-primary" onClick={shareNews}>
+          </div> */}
+          <Button
+            variant="ghost"
+            className="text-primary hover:text-primary"
+            onClick={shareNews}
+          >
             Bagikan <Share2 />
           </Button>
         </div>

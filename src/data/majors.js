@@ -4,7 +4,7 @@ export const majors = [
     nama: "Desain Komunikasi Visual",
     deskripsiSingkat:
       "Mempelajari desain visual, ilustrasi, dan komunikasi kreatif.",
-    fotoUrl: "/jurusan/desain-komunikasi-visual.svg",
+    fotoUrl: "/sija.png",
     fotoAlt:
       "Kegiatan praktik jurusan Desain Komunikasi Visual di SMK Negeri 2 Yogyakarta",
     infoSingkat: [
@@ -58,7 +58,7 @@ export const majors = [
     slug: "desain-pemodelan-dan-informasi-bangunan",
     nama: "Desain Pemodelan dan Informasi Bangunan",
     deskripsiSingkat: "Mempelajari perancangan dan pemodelan bangunan.",
-    fotoUrl: "/jurusan/desain-pemodelan-dan-informasi-bangunan.svg",
+    fotoUrl: "/sija.png",
     fotoAlt:
       "Kegiatan praktik jurusan Desain Pemodelan dan Informasi Bangunan di SMK Negeri 2 Yogyakarta",
     infoSingkat: [
@@ -112,7 +112,7 @@ export const majors = [
     slug: "konstruksi-gedung-dan-sanitasi",
     nama: "Konstruksi Gedung dan Sanitasi",
     deskripsiSingkat: "Mempelajari konstruksi bangunan dan instalasi sanitasi.",
-    fotoUrl: "/jurusan/konstruksi-gedung-dan-sanitasi.svg",
+    fotoUrl: "/sija.png",
     fotoAlt:
       "Kegiatan praktik jurusan Konstruksi Gedung dan Sanitasi di SMK Negeri 2 Yogyakarta",
     infoSingkat: [
@@ -128,7 +128,7 @@ export const majors = [
       kelas: 2,
       masaBelajar: "3 Tahun",
       mataPelajaran: 14,
-      jumlahSiswa: 71,
+      jumlahSiswa: 36,
       jumlahGuru: 6,
     },
     kompetensiKeahlian: [
@@ -167,7 +167,7 @@ export const majors = [
     nama: "Sistem Informasi, Jaringan, dan Aplikasi",
     deskripsiSingkat:
       "Mempelajari aplikasi, sistem informasi, dan jaringan komputer.",
-    fotoUrl: "/jurusan/sistem-informasi-jaringan-dan-aplikasi.svg",
+    fotoUrl: "/sija.png",
     fotoAlt:
       "Kegiatan praktik jurusan Sistem Informasi, Jaringan, dan Aplikasi di SMK Negeri 2 Yogyakarta",
     infoSingkat: [
@@ -225,7 +225,7 @@ export const majors = [
     slug: "teknik-audio-video",
     nama: "Teknik Audio Video",
     deskripsiSingkat: "Mempelajari teknologi audio, video, dan elektronika.",
-    fotoUrl: "/jurusan/teknik-audio-video.svg",
+    fotoUrl: "/sija.png",
     fotoAlt:
       "Kegiatan praktik jurusan Teknik Audio Video di SMK Negeri 2 Yogyakarta",
     infoSingkat: [
@@ -241,7 +241,7 @@ export const majors = [
       kelas: 2,
       masaBelajar: "3 Tahun",
       mataPelajaran: 15,
-      jumlahSiswa: 69,
+      jumlahSiswa: 36,
       jumlahGuru: 6,
     },
     kompetensiKeahlian: [
@@ -279,7 +279,7 @@ export const majors = [
     slug: "teknik-geomatika",
     nama: "Teknik Geomatika",
     deskripsiSingkat: "Mempelajari survei, pemetaan, dan data geospasial.",
-    fotoUrl: "/jurusan/teknik-geomatika.svg",
+    fotoUrl: "/sija.png",
     fotoAlt:
       "Kegiatan praktik jurusan Teknik Geomatika di SMK Negeri 2 Yogyakarta",
     infoSingkat: [
@@ -333,7 +333,7 @@ export const majors = [
     slug: "teknik-instalasi-tenaga-listrik",
     nama: "Teknik Instalasi Tenaga Listrik",
     deskripsiSingkat: "Mempelajari instalasi dan sistem tenaga listrik.",
-    fotoUrl: "/jurusan/teknik-instalasi-tenaga-listrik.svg",
+    fotoUrl: "/sija.png",
     fotoAlt:
       "Kegiatan praktik jurusan Teknik Instalasi Tenaga Listrik di SMK Negeri 2 Yogyakarta",
     infoSingkat: [
@@ -349,7 +349,7 @@ export const majors = [
       kelas: 2,
       masaBelajar: "3 Tahun",
       mataPelajaran: 14,
-      jumlahSiswa: 70,
+      jumlahSiswa: 144,
       jumlahGuru: 6,
     },
     kompetensiKeahlian: [
@@ -387,7 +387,7 @@ export const majors = [
     slug: "teknik-kendaraan-ringan",
     nama: "Teknik Kendaraan Ringan",
     deskripsiSingkat: "Mempelajari perawatan dan perbaikan kendaraan ringan.",
-    fotoUrl: "/jurusan/teknik-kendaraan-ringan.svg",
+    fotoUrl: "/sija.png",
     fotoAlt:
       "Kegiatan praktik jurusan Teknik Kendaraan Ringan di SMK Negeri 2 Yogyakarta",
     infoSingkat: [
@@ -403,7 +403,7 @@ export const majors = [
       kelas: 2,
       masaBelajar: "3 Tahun",
       mataPelajaran: 14,
-      jumlahSiswa: 70,
+      jumlahSiswa: 144,
       jumlahGuru: 7,
     },
     kompetensiKeahlian: [
@@ -441,7 +441,7 @@ export const majors = [
     slug: "teknik-mekatronika",
     nama: "Teknik Mekatronika",
     deskripsiSingkat: "Mempelajari mekanik, elektronika, kontrol, dan otomasi.",
-    fotoUrl: "/jurusan/teknik-mekatronika.svg",
+    fotoUrl: "/sija.png",
     fotoAlt:
       "Kegiatan praktik jurusan Teknik Mekatronika di SMK Negeri 2 Yogyakarta",
     infoSingkat: [
@@ -495,7 +495,7 @@ export const majors = [
     slug: "teknik-pemesinan",
     nama: "Teknik Pemesinan",
     deskripsiSingkat: "Mempelajari proses manufaktur dan pengoperasian mesin.",
-    fotoUrl: "/jurusan/teknik-pemesinan.svg",
+    fotoUrl: "/sija.png",
     fotoAlt:
       "Kegiatan praktik jurusan Teknik Pemesinan di SMK Negeri 2 Yogyakarta",
     infoSingkat: [
@@ -511,7 +511,7 @@ export const majors = [
       kelas: 1,
       masaBelajar: "3 Tahun",
       mataPelajaran: 14,
-      jumlahSiswa: 36,
+      jumlahSiswa: 144,
       jumlahGuru: 6,
     },
     kompetensiKeahlian: [
@@ -552,6 +552,3 @@ export const schoolStats = {
   berdiriSejak: "2019",
   kerjasamaIndustri: "50+",
 };
-
-export const getMajorBySlug = (slug) =>
-  majors.find((major) => major.slug === slug);

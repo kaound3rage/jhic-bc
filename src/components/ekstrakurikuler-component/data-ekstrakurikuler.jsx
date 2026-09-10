@@ -2,14 +2,14 @@ import tmcImage from "@/assets/ekstrakurikuler/TMC.jpg";
 import futsalImage from "@/assets/ekstrakurikuler/FUTSAL.png";
 import drumbandImage from "@/assets/ekstrakurikuler/DRUMBAND.jpeg";
 import wdcImage from "@/assets/ekstrakurikuler/WDC.jpeg";
-
 export const ekstrakurikulerList = [
   {
     id: 1,
+    slug: "drumband",
     nama: "DRUMBAND",
-    kategori: "Olahraga",
+    kategori: "Seni & Musik",
     deskripsi:
-      "Klub basket berprestasi dengan pembinaan intensif dan partisipasi rutin di DBL.",
+      "Mengembangkan keterampilan bermusik, kedisiplinan, kekompakan, dan kreativitas melalui kegiatan drumband.",
     gambar: drumbandImage,
     jadwal: "Senin & Kamis, 16:00 WIB",
     pembina: "Coach Rendy",
@@ -17,10 +17,11 @@ export const ekstrakurikulerList = [
   },
   {
     id: 2,
+    slug: "web-design-community",
     nama: "Web Design Community (WDC)",
-    kategori: "Kepemimpinan",
+    kategori: "Teknologi & Media",
     deskripsi:
-      "Membentuk karakter disiplin, kepemimpinan tangguh, dan kekompakan baris-berbaris.",
+      "Wadah bagi siswa untuk mengembangkan kemampuan desain web, UI/UX, frontend development, dan teknologi web modern.",
     gambar: wdcImage,
     jadwal: "Rabu & Sabtu, 15:30 WIB",
     pembina: "Drs. Sri Wahyuni",
@@ -28,11 +29,11 @@ export const ekstrakurikulerList = [
   },
   {
     id: 3,
-    slug: "tmc",
+    slug: "technical-mountaineering-club",
     nama: "Technical Mountaineering Club (TMC)",
-    kategori: "Olahraga",
+    kategori: "Olahraga & Petualangan",
     deskripsi:
-      "mengadakan ekspedisi luar ruangan tingkat lanjut, panjat tebing dan es vertikal, serta pelatihan perjalanan gletser dan keterampilan dataran tinggi.",
+      "Mengadakan ekspedisi luar ruangan tingkat lanjut, panjat tebing, serta pelatihan perjalanan dan keterampilan dataran tinggi.",
     gambar: tmcImage,
     jadwal: "Selasa, 15:30 WIB",
     pembina: "Mr. Adnan Wijaya, M.Pd",
@@ -42,9 +43,9 @@ export const ekstrakurikulerList = [
     id: 4,
     slug: "osis",
     nama: "OSIS",
-    kategori: "Teknologi & Media",
+    kategori: "Organisasi & Kepemimpinan",
     deskripsi:
-      "Eksplorasi pembuatan robot cerdas, Internet of Things (IoT), dan kompetisi pemrograman.",
+      "Wadah pengembangan kepemimpinan, tanggung jawab, kreativitas, dan kemampuan berorganisasi bagi siswa.",
     gambar: tmcImage,
     jadwal: "Jumat, 14:30 WIB",
     pembina: "Ir. Kurnia Sandy",
@@ -52,10 +53,11 @@ export const ekstrakurikulerList = [
   },
   {
     id: 5,
+    slug: "mpk",
     nama: "MPK",
-    kategori: "Seni & Budaya",
+    kategori: "Organisasi & Kepemimpinan",
     deskripsi:
-      "Harmonisasi vokal dan instrumen untuk festival paduan suara dan upacara sekolah.",
+      "Mendorong kemampuan kepemimpinan, aspirasi siswa, kedisiplinan, serta pengembangan organisasi di lingkungan sekolah.",
     gambar: tmcImage,
     jadwal: "Kamis & Sabtu, 15:00 WIB",
     pembina: "Ibu Maria Kusuma",
@@ -63,48 +65,98 @@ export const ekstrakurikulerList = [
   },
   {
     id: 6,
-    slug: "sepak-bola-futsal",
+    slug: "futsal",
     nama: "FUTSAL",
-    kategori: "Teknologi & Media",
+    kategori: "Olahraga",
     deskripsi:
-      "Redaksi majalah sekolah, liputan berita event, podcast, dan fotografi jurnalistik.",
+      "Mengasah kemampuan teknik dasar, kerja sama tim, kebugaran, dan mental bertanding dalam olahraga futsal.",
     gambar: futsalImage,
     jadwal: "Rabu, 15:30 WIB",
     pembina: "Bp. Hendra Prasetya",
     jumlahAnggota: 30,
   },
   {
-    id: 7,
-    slug: "sepak-bola-futsal",
-    nama: "Futsal Putra & Putri",
-    kategori: "Olahraga",
-    deskripsi:
-      "Mengasah kerja sama tim, kelincahan teknik, dan mental bertanding dalam kompetisi pelajar.",
-    gambar: futsalImage,
-    jadwal: "Selasa & Jumat, 16:00 WIB",
-    pembina: "Coach Dimas",
-    jumlahAnggota: 50,
-  },
-  {
     id: 8,
+    slug: "karya-ilmiah-remaja",
     nama: "Karya Ilmiah Remaja",
     kategori: "Akademik & Sains",
     deskripsi:
-      "Wadah riset sains, inovasi teknologi terapan, dan lomba karya tulis ilmiah nasional.",
+      "Wadah untuk mengembangkan kemampuan riset, eksperimen sains, inovasi teknologi terapan, dan karya tulis ilmiah.",
     gambar: tmcImage,
     jadwal: "Kamis, 15:30 WIB",
     pembina: "Dr. Nuri Haryati",
     jumlahAnggota: 26,
   },
   {
-    id: 9,
-    nama: "Tari Tradisional & Modern",
-    kategori: "Seni & Budaya",
+    id: 10,
+    slug: "cyber-security",
+    nama: "Cyber Security",
+    kategori: "Teknologi & Media",
     deskripsi:
-      "Melestarikan kekayaan tari nusantara sekaligus mengeksplorasi kreasi kontemporer spektakuler.",
+      "Mempelajari dasar keamanan siber, jaringan komputer, ethical hacking, keamanan sistem, dan kesadaran terhadap ancaman digital.",
+    gambar: wdcImage,
+    jadwal: "Senin & Rabu, 15:30 WIB",
+    pembina: "Pembina Cyber Security",
+    jumlahAnggota: 25,
+  },
+  {
+    id: 11,
+    slug: "it-software",
+    nama: "IT Software",
+    kategori: "Teknologi & Media",
+    deskripsi:
+      "Mengembangkan kemampuan pemrograman, pembuatan aplikasi, pengembangan software, database, dan teknologi informasi.",
+    gambar: wdcImage,
+    jadwal: "Selasa & Kamis, 15:30 WIB",
+    pembina: "Pembina IT Software",
+    jumlahAnggota: 32,
+  },
+  {
+    id: 12,
+    slug: "wsp-tonti",
+    nama: "WSP / Tonti",
+    kategori: "Organisasi & Kepemimpinan",
+    deskripsi:
+      "Mengembangkan kedisiplinan, ketangkasan, kepemimpinan, kekompakan, dan keterampilan baris-berbaris.",
+    gambar: drumbandImage,
+    jadwal: "Selasa & Kamis, 15:30 WIB",
+    pembina: "Pembina WSP / Tonti",
+    jumlahAnggota: 40,
+  },
+  {
+    id: 13,
+    slug: "pmr",
+    nama: "Palang Merah Remaja (PMR)",
+    kategori: "Kesehatan & Sosial",
+    deskripsi:
+      "Mengembangkan pengetahuan dan keterampilan pertolongan pertama, kesehatan remaja, kepedulian sosial, serta kegiatan kemanusiaan.",
     gambar: tmcImage,
-    jadwal: "Rabu & Sabtu, 15:30 WIB",
-    pembina: "Ibu Ratna Dewi, S.Sn",
-    jumlahAnggota: 34,
+    jadwal: "Rabu, 15:30 WIB",
+    pembina: "Pembina PMR",
+    jumlahAnggota: 30,
+  },
+  {
+    id: 14,
+    slug: "dewan-ambalan",
+    nama: "Dewan Ambalan",
+    kategori: "Organisasi & Kepemimpinan",
+    deskripsi:
+      "Mengembangkan kepemimpinan, kemandirian, kedisiplinan, tanggung jawab, dan keterampilan kepramukaan melalui kegiatan Dewan Ambalan.",
+    gambar: tmcImage,
+    jadwal: "Jumat, 15:30 WIB",
+    pembina: "Pembina Pramuka",
+    jumlahAnggota: 36,
+  },
+  {
+    id: 15,
+    slug: "skaduta-media",
+    nama: "Skaduta Media",
+    kategori: "Media & Jurnalistik",
+    deskripsi:
+      "Mengembangkan kemampuan jurnalistik, fotografi, videografi, desain grafis, pengelolaan media sosial, dan publikasi kegiatan sekolah.",
+    gambar: wdcImage,
+    jadwal: "Kamis, 15:30 WIB",
+    pembina: "Pembina Skaduta Media",
+    jumlahAnggota: 28,
   },
 ];

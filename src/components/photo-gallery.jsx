@@ -1,17 +1,19 @@
 import { useEffect } from "react";
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
 import { cn } from "cn";
+import { Button } from "@/components/ui/button";
 
 export function PhotoGrid({ photos, onOpen, gridClassName }) {
   return (
     <div className={cn("grid gap-3", gridClassName)}>
       {photos.map((photo, index) => (
-        <button
+        <Button
           key={photo.id}
           type="button"
           aria-label={photo.alt ?? `Buka foto ${index + 1}`}
           onClick={() => onOpen(index)}
-          className="group relative cursor-pointer overflow-hidden rounded-xl ring-1 ring-foreground/10 transition-all duration-200 animate-in fade-in-0 hover:ring-2 hover:ring-primary/60 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring [animation-duration:350ms]"
+          variant="ghost"
+          className="group relative h-auto w-full cursor-pointer overflow-hidden rounded-xl p-0 ring-1 ring-foreground/10 transition-all duration-200 animate-in fade-in-0 hover:ring-2 hover:ring-primary/60 [animation-duration:350ms]"
         >
           <img
             src={photo.imageUrl ?? photo.src}
@@ -21,7 +23,7 @@ export function PhotoGrid({ photos, onOpen, gridClassName }) {
             className="aspect-4/3 w-full object-cover transition-transform duration-300 group-hover:scale-105"
           />
           <div className="pointer-events-none absolute inset-0 bg-black/0 transition-colors duration-300 group-hover:bg-black/20" />
-        </button>
+        </Button>
       ))}
     </div>
   );
@@ -55,26 +57,30 @@ export function Lightbox({ photos, index, onClose, onNavigate }) {
       className="fixed inset-0 z-[70] flex animate-in fade-in-0 items-center justify-center bg-black/90 p-4 [animation-duration:200ms]"
       onClick={onClose}
     >
-      <button
+      <Button
         type="button"
         aria-label="Tutup galeri"
         onClick={onClose}
-        className="absolute top-4 right-4 flex h-11 w-11 cursor-pointer items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-white/20"
+        variant="ghost"
+        size="icon-lg"
+        className="absolute top-4 right-4 cursor-pointer rounded-full bg-white/10 text-white hover:bg-white/20 hover:text-white"
       >
         <X className="h-5 w-5" />
-      </button>
+      </Button>
 
-      <button
+      <Button
         type="button"
         aria-label="Foto sebelumnya"
         onClick={(event) => {
           event.stopPropagation();
           onNavigate(index - 1);
         }}
-        className="absolute left-3 top-1/2 flex h-11 w-11 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-white/20 sm:left-6"
+        variant="ghost"
+        size="icon-lg"
+        className="absolute left-3 top-1/2 -translate-y-1/2 cursor-pointer rounded-full bg-white/10 text-white hover:bg-white/20 hover:text-white sm:left-6"
       >
         <ChevronLeft className="h-6 w-6" />
-      </button>
+      </Button>
 
       <div className="flex max-h-[88vh] max-w-4xl flex-col items-center" onClick={(event) => event.stopPropagation()}>
         {photo && (
@@ -100,17 +106,19 @@ export function Lightbox({ photos, index, onClose, onNavigate }) {
         </span>
       </div>
 
-      <button
+      <Button
         type="button"
         aria-label="Foto berikutnya"
         onClick={(event) => {
           event.stopPropagation();
           onNavigate(index + 1);
         }}
-        className="absolute right-3 top-1/2 flex h-11 w-11 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-white/20 sm:right-6"
+        variant="ghost"
+        size="icon-lg"
+        className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer rounded-full bg-white/10 text-white hover:bg-white/20 hover:text-white sm:right-6"
       >
         <ChevronRight className="h-6 w-6" />
-      </button>
+      </Button>
     </div>
   );
 }

@@ -1,18 +1,50 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, Compass } from "lucide-react";
+import { ArrowRight, Compass, Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import Breadcrumb from "@/components/breadcrumb";
 import { usePageMeta } from "@/hooks/use-page-meta";
+import { ekstrakurikulerList } from "@/components/ekstrakurikuler-component/data-ekstrakurikuler";
 import { ekstrakurikulerData } from "@/data/ekstrakurikuler";
+import EkstrakurikulerCard from "@/components/ekstrakurikuler-component/ekstrakurikuler-card";
 
 function EkstrakurikulerPage() {
+  const [search, setSearch] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("Semua");
+  const allEkstrakurikuler = ekstrakurikulerList;
+  const categories = [
+    "Semua",
+    ...new Set(allEkstrakurikuler.map((item) => item.kategori)),
+  ];
+  const keyword = search.trim().toLowerCase();
+  const filteredEkstrakurikuler = allEkstrakurikuler.filter((item) => {
+    const description = Array.isArray(item.deskripsi)
+      ? item.deskripsi.join(" ")
+      : item.deskripsi;
+    const matchesSearch =
+      !keyword ||
+      item.nama.toLowerCase().includes(keyword) ||
+      description.toLowerCase().includes(keyword) ||
+      item.kategori.toLowerCase().includes(keyword);
+    const matchesCategory =
+      selectedCategory === "Semua" || item.kategori === selectedCategory;
+
+    return matchesSearch && matchesCategory;
+  });
+
+  const resetFilters = () => {
+    setSearch("");
+    setSelectedCategory("Semua");
+  };
+
   usePageMeta(
     "Ekstrakurikuler",
     "Jelajahi 12 ekstrakurikuler dan organisasi siswa di SMK Negeri 2 Yogyakarta (SKADUTA).",
@@ -32,50 +64,56 @@ function EkstrakurikulerPage() {
         </p>
       </div>
 
-      <div className="space-y-12">
-        {ekstrakurikulerData.map((category) => (
-          <section key={category.kategori}>
-            <div className="flex items-center gap-3">
-              <span className="h-6 w-1 rounded-full bg-primary" />
-              <h2 className="text-lg font-semibold tracking-tight sm:text-xl">
-                {category.kategori}
-              </h2>
-            </div>
+      <div className="mb-8 flex flex-col gap-3 sm:flex-row">
+        <div className="relative flex-1">
+          <Search className="pointer-events-none absolute top-1/2 left-3 size-4 -translate-y-1/2 text-muted-foreground" />
 
-            <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {category.items.map((item) => (
-                <Link
-                  key={item.slug}
-                  to={`/ekstrakurikuler/${item.slug}`}
-                  className="group focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring"
-                >
-                  <Card className="h-full overflow-hidden pt-0 transition duration-300 group-hover:border-primary/50 group-hover:shadow-md">
-                    <img
-                      src={item.fotoUrl}
-                      alt={item.fotoAlt ?? item.nama}
-                      loading="lazy"
-                      decoding="async"
-                      className="aspect-video w-full object-cover transition duration-300 group-hover:scale-105"
-                    />
-                    <CardHeader>
-                      <CardTitle className="text-base">{item.nama}</CardTitle>
-                      <CardDescription className="line-clamp-2">
-                        {item.deskripsi[0]}
-                      </CardDescription>
-                    </CardHeader>
-                    <CardContent className="pt-1">
-                      <span className="inline-flex items-center gap-1 text-sm font-medium text-primary">
-                        Lihat detail
-                        <ArrowRight className="size-4 transition-transform duration-200 group-hover:translate-x-0.5" />
-                      </span>
-                    </CardContent>
-                  </Card>
-                </Link>
-              ))}
-            </div>
-          </section>
-        ))}
+          <Input
+            value={search}
+            onChange={(event) => setSearch(event.target.value)}
+            placeholder="Cari ekstrakurikuler..."
+            className="h-10 pl-9"
+          />
+        </div>
+
+        <Select value={selectedCategory} onValueChange={setSelectedCategory}>
+          <SelectTrigger className="h-10! w-full sm:w-56">
+            <SelectValue placeholder="Semua Kategori" />
+          </SelectTrigger>
+
+          <SelectContent>
+            {categories.map((category) => (
+              <SelectItem key={category} value={category}>
+                {category === "Semua" ? "Semua Kategori" : category}
+              </SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
       </div>
+
+      {filteredEkstrakurikuler.length > 0 ? (
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {filteredEkstrakurikuler.map((item) => (
+            <EkstrakurikulerCard
+              key={item.id}
+              item={item}
+              hasDetail={ekstrakurikulerData.some((category) =>
+                category.items.some((detailItem) => detailItem.slug === item.slug),
+              )}
+            />
+          ))}
+        </div>
+      ) : (
+        <div className="rounded-xl border border-dashed bg-muted/30 p-8 text-center">
+          <h2 className="font-semibold">Tidak ada ekstrakurikuler ditemukan</h2>
+          <p className="mt-1 text-sm text-muted-foreground">
+            Coba gunakan kata kunci lain atau ubah kategori filter.
+          </p>
+          <Button variant="outline" className="mt-4" onClick={resetFilters}>
+            Reset Filter
+          </Button>
+        </div>
+      )}
 
       <div className="mt-12 flex flex-col items-start gap-4 rounded-2xl bg-muted/50 p-6 ring-1 ring-border sm:flex-row sm:items-center sm:justify-between sm:p-8">
         <div className="flex items-start gap-4">

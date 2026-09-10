@@ -19,7 +19,7 @@ function Hero() {
         <div className="flex items-start flex-col gap-4">
           <Badge
             variant="outline"
-            className={"bg-primary-foreground text-primary border-popover"}
+            className="border-primary/20 bg-primary-foreground text-primary"
           >
             The Industrial Culture School
           </Badge>
@@ -36,7 +36,7 @@ function Hero() {
           </p>
           <div className="flex items-center gap-2">
             <Button className={"px-4 py-5 bg-emerald-600 hover:bg-emerald-700"}>
-              <Link>SPMB</Link>
+              <Link to={"/spmb"}>SPMB</Link>
               <SquareArrowUpRight />
             </Button>
             <Button className={"px-4 py-5"}>

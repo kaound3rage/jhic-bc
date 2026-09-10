@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import Breadcrumb from "@/components/breadcrumb";
+import { Card, CardContent } from "@/components/ui/card";
 import { usePageMeta } from "@/hooks/use-page-meta";
 import { Lightbox, PhotoGrid } from "@/components/photo-gallery";
 import { fotoGaleri, kategoriGaleri, tagGaleri } from "@/data/galeri";
@@ -82,14 +82,6 @@ function GaleriPage() {
 
   return (
     <div className="w-full px-4 py-8 sm:px-6 lg:px-0 lg:py-12">
-      <Breadcrumb
-        items={[
-          { label: "Beranda", href: "/" },
-          { label: "Fasilitas & Galeri" },
-          { label: "Galeri" },
-        ]}
-      />
-
       <h1 className="mt-4 text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
         Galeri
       </h1>
@@ -99,54 +91,59 @@ function GaleriPage() {
       </p>
 
       <div className="mt-8 flex flex-col gap-4">
-        <div className="flex gap-2 overflow-x-auto pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+        <div className="flex gap-2 overflow-x-auto pb-1 scrollbar-none [&::-webkit-scrollbar]:hidden">
           {kategoriGaleri.map((item) => {
             const active = kategori === item.value;
             return (
-              <button
+              <Button
                 key={item.value}
                 type="button"
                 onClick={() => handleKategori(item.value)}
-                className={`shrink-0 cursor-pointer rounded-full px-4 py-2 text-sm font-medium transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring ${
+                variant={active ? "default" : "secondary"}
+                className={`h-auto shrink-0 cursor-pointer rounded-full px-4 py-2 text-sm font-medium ${
                   active
-                    ? "bg-primary text-primary-foreground shadow-sm"
+                    ? "bg-primary text-primary-foreground"
                     : "bg-muted text-muted-foreground hover:bg-foreground/10 hover:text-foreground"
                 }`}
               >
                 {item.label}
-              </button>
+              </Button>
             );
           })}
         </div>
 
         {tagGaleri.length > 0 && (
           <div className="flex flex-wrap gap-2">
-            <button
+            <Button
               type="button"
               onClick={() => handleTag(null)}
-              className={`cursor-pointer rounded-full border px-3 py-1.5 text-xs font-medium transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring ${
+              variant="outline"
+              size="xs"
+              className={`h-auto cursor-pointer rounded-full px-3 py-1.5 text-xs font-medium ${
                 tag === null
                   ? "border-primary bg-primary/10 text-primary"
                   : "border-border bg-white text-muted-foreground hover:border-primary/40 hover:text-foreground"
               }`}
             >
               Semua
-            </button>
+            </Button>
             {tagGaleri.map((tagItem) => {
               const active = tag === tagItem;
               return (
-                <button
+                <Button
                   key={tagItem}
                   type="button"
                   onClick={() => handleTag(tagItem)}
-                  className={`cursor-pointer rounded-full border px-3 py-1.5 text-xs font-medium transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring ${
+                  variant="outline"
+                  size="xs"
+                  className={`h-auto cursor-pointer rounded-full px-3 py-1.5 text-xs font-medium ${
                     active
                       ? "border-primary bg-primary/10 text-primary"
                       : "border-border bg-white text-muted-foreground hover:border-primary/40 hover:text-foreground"
                   }`}
                 >
                   {tagItem}
-                </button>
+                </Button>
               );
             })}
           </div>
@@ -167,9 +164,11 @@ function GaleriPage() {
             gridClassName="mt-6 grid-cols-2 gap-3 sm:grid-cols-2 lg:grid-cols-3"
           />
         ) : (
-          <div className="mt-6 rounded-xl border border-dashed text-sm text-muted-foreground p-8 text-center">
-            Tidak ada foto pada kategori ini.
-          </div>
+          <Card className="mt-6 border-dashed py-0 text-sm text-muted-foreground">
+            <CardContent className="p-8 text-center">
+              Tidak ada foto pada kategori ini.
+            </CardContent>
+          </Card>
         )}
 
         {visible < filtered.length && (
@@ -199,26 +198,32 @@ function GaleriPage() {
           </p>
           <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
             {socialLinks.map((social) => (
-              <a
+              <Card
                 key={social.name}
-                href={social.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group flex items-center gap-4 rounded-2xl bg-card p-5 ring-1 ring-foreground/10 shadow-sm transition-all duration-200 hover:ring-2 hover:ring-primary/60 hover:shadow-md"
+                className="group py-0 transition-all duration-200 hover:ring-2 hover:ring-primary/60 hover:shadow-md"
               >
-                <span className="flex size-12 shrink-0 items-center justify-center rounded-xl border border-[#BAE6FD] bg-[#F0F9FF]">
-                  <img src={social.icon} alt={social.name} className="size-6" />
-                </span>
-                <span className="flex flex-col">
-                  <span className="text-sm font-semibold text-foreground">
-                    {social.name}
-                  </span>
-                  <span className="text-xs text-muted-foreground">
-                    {social.handle}
-                  </span>
-                </span>
-                <ArrowRight className="ml-auto size-5 text-muted-foreground transition-transform duration-200 group-hover:translate-x-0.5 group-hover:text-primary" />
-              </a>
+                <CardContent className="p-0">
+                  <a
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-4 p-5"
+                  >
+                    <span className="flex size-12 shrink-0 items-center justify-center rounded-xl border border-[#BAE6FD] bg-[#F0F9FF]">
+                      <img src={social.icon} alt={social.name} className="size-6" />
+                    </span>
+                    <span className="flex flex-col">
+                      <span className="text-sm font-semibold text-foreground">
+                        {social.name}
+                      </span>
+                      <span className="text-xs text-muted-foreground">
+                        {social.handle}
+                      </span>
+                    </span>
+                    <ArrowRight className="ml-auto size-5 text-muted-foreground transition-transform duration-200 group-hover:translate-x-0.5 group-hover:text-primary" />
+                  </a>
+                </CardContent>
+              </Card>
             ))}
           </div>
         </div>

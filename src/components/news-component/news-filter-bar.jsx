@@ -23,7 +23,7 @@ function FilterGroup({ title, options, selected, onSelect, allFilter }) {
             variant={selected === option.label ? "default" : "outline"}
             onClick={() => onSelect(option.label)}
           >
-            {option.label} ({option.count})
+            #{option.label} ({option.count})
           </Button>
         ))}
       </div>
@@ -34,12 +34,12 @@ function FilterGroup({ title, options, selected, onSelect, allFilter }) {
 function NewsFilterBar({
   allFilter,
   categories,
-  tags,
+  // tags,
   category,
   tag,
   search,
   setCategory,
-  setTag,
+  // setTag,
   setSearch,
   clearFilters,
 }) {
@@ -71,9 +71,9 @@ function NewsFilterBar({
 
       <div className="flex flex-col gap-5">
         <FilterGroup title="Kategori" options={categories} selected={category} onSelect={setCategory} allFilter={allFilter} />
-        {tags.length > 0 && (
+        {/* {tags.length > 0 && (
           <FilterGroup title="Tag" options={tags} selected={tag} onSelect={setTag} allFilter={allFilter} />
-        )}
+        )} */}
       </div>
     </aside>
   );
