@@ -94,7 +94,7 @@ function App() {
           />
           <Route path="/galeri" element={<GaleriPage />} />
           <Route path="/fasilitas" element={<FasilitasPage />} />
-          <Route path="/alumni" element={<AlumniPage />} />
+          <Route path="/profil/alumni" element={<AlumniPage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
         <RouteMeta />

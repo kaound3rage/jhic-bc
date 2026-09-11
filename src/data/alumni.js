@@ -9,8 +9,8 @@ export const alumni = [
     quote:
       "Belajar di SMK Negeri 2 Yogyakarta memberi saya fondasi teknis dan keberanian untuk terus berkembang.",
     kategori: "Wirausaha",
-    tahunLulus: "2018",
-    jurusan: "Rekayasa Perangkat Lunak",
+    tahunLulus: "2007",
+    jurusan: "Teknik Komputer dan Jaringan",
   },
   {
     slug: "aulia-rahma",
@@ -26,7 +26,7 @@ export const alumni = [
   {
     slug: "dimas-nugraha",
     name: "Dimas Nugraha",
-    role: "Mahasiswa Teknik Mesin",
+    role: "Mahasiswa Teknik Mesin ITB",
     image: "/pjs.png",
     quote:
       "Budaya belajar dan praktik di SKADUTA membuat saya lebih percaya diri melanjutkan pendidikan.",

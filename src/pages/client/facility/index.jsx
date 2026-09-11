@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { Separator } from "@/components/ui/separator";
 import { usePageMeta } from "@/hooks/use-page-meta";
 import FasilitasCta from "@/components/fasilitas-component/fasilitas-cta";
 import FasilitasHero from "@/components/fasilitas-component/fasilitas-hero";
@@ -31,7 +30,6 @@ function FasilitasPage() {
   return (
     <section className="w-full px-4 py-8 sm:px-6 lg:px-0 lg:py-12">
       <FasilitasHero />
-      <Separator className="my-8 lg:my-10" />
       <FasilitasSearch
         query={query}
         onQueryChange={setQuery}

@@ -5,14 +5,14 @@ export const companyLogos = [
   },
   {
     name: "PT Komatsu",
-    logo: "/src/assets/industry/komatsu.webp",
+    logo: "/src/assets/industry/komatsu_logo.webp",
   },
   {
     name: "PT Denso",
-    logo: "/src/assets/industry/denso.webp",
+    logo: "/src/assets/industry/denso_logo.webp",
   },
   {
     name: "Samsung",
-    logo: "/src/assets/industry/samsung.webp",
+    logo: "/src/assets/industry/samsung_logo.webp",
   },
 ];
