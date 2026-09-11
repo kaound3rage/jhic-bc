@@ -39,11 +39,13 @@ function FacilitySection() {
             key={item.nama}
             className="mx-auto w-full max-w-sm overflow-hidden pt-0"
           >
-            <img
-              src={item.image}
-              alt={item.nama}
-              className="aspect-video w-full object-cover"
-            />
+            <div className="relative aspect-video overflow-hidden">
+              <img
+                src={item.image}
+                alt={item.nama}
+                className="size-full object-cover transition-transform duration-300 group-hover/card:scale-105"
+              />
+            </div>
 
             <CardHeader>
               <Badge className="w-fit border-green-200 bg-green-100 text-green-700 hover:bg-green-100">

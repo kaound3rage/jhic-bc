@@ -2,6 +2,7 @@ import tmcImage from "@/assets/ekstrakurikuler/TMC.jpg";
 import futsalImage from "@/assets/ekstrakurikuler/FUTSAL.png";
 import drumbandImage from "@/assets/ekstrakurikuler/DRUMBAND.jpeg";
 import wdcImage from "@/assets/ekstrakurikuler/WDC.jpeg";
+
 export const ekstrakurikulerList = [
   {
     id: 1,
@@ -13,7 +14,7 @@ export const ekstrakurikulerList = [
     gambar: drumbandImage,
     jadwal: "Senin & Kamis, 16:00 WIB",
     pembina: "Coach Rendy",
-    jumlahAnggota: 38,
+    instagram: "@drumbandskaduta",
   },
   {
     id: 2,
@@ -25,7 +26,7 @@ export const ekstrakurikulerList = [
     gambar: wdcImage,
     jadwal: "Rabu & Sabtu, 15:30 WIB",
     pembina: "Drs. Sri Wahyuni",
-    jumlahAnggota: 52,
+    instagram: "@wdc.smaduta",
   },
   {
     id: 3,
@@ -33,11 +34,11 @@ export const ekstrakurikulerList = [
     nama: "Technical Mountaineering Club (TMC)",
     kategori: "Olahraga & Petualangan",
     deskripsi:
-      "Mengadakan ekspedisi luar ruangan tingkat lanjut, panjat tebing, serta pelatihan perjalanan dan keterampilan dataran tinggi.",
+      "Mengadakan ekspedisi luar ruangan, panjat tebing, serta pelatihan perjalanan dan keterampilan kegiatan alam bebas.",
     gambar: tmcImage,
     jadwal: "Selasa, 15:30 WIB",
     pembina: "Mr. Adnan Wijaya, M.Pd",
-    jumlahAnggota: 28,
+    instagram: "@tmcskaduta",
   },
   {
     id: 4,
@@ -49,7 +50,7 @@ export const ekstrakurikulerList = [
     gambar: tmcImage,
     jadwal: "Jumat, 14:30 WIB",
     pembina: "Ir. Kurnia Sandy",
-    jumlahAnggota: 35,
+    instagram: "@osisskaduta",
   },
   {
     id: 5,
@@ -57,11 +58,11 @@ export const ekstrakurikulerList = [
     nama: "MPK",
     kategori: "Organisasi & Kepemimpinan",
     deskripsi:
-      "Mendorong kemampuan kepemimpinan, aspirasi siswa, kedisiplinan, serta pengembangan organisasi di lingkungan sekolah.",
+      "Mendorong kemampuan kepemimpinan, penyampaian aspirasi siswa, kedisiplinan, serta pengembangan organisasi di lingkungan sekolah.",
     gambar: tmcImage,
     jadwal: "Kamis & Sabtu, 15:00 WIB",
     pembina: "Ibu Maria Kusuma",
-    jumlahAnggota: 42,
+    instagram: "@osisskaduta",
   },
   {
     id: 6,
@@ -73,10 +74,10 @@ export const ekstrakurikulerList = [
     gambar: futsalImage,
     jadwal: "Rabu, 15:30 WIB",
     pembina: "Bp. Hendra Prasetya",
-    jumlahAnggota: 30,
+    instagram: "@futsalskaduta",
   },
   {
-    id: 8,
+    id: 7,
     slug: "karya-ilmiah-remaja",
     nama: "Karya Ilmiah Remaja",
     kategori: "Akademik & Sains",
@@ -85,22 +86,22 @@ export const ekstrakurikulerList = [
     gambar: tmcImage,
     jadwal: "Kamis, 15:30 WIB",
     pembina: "Dr. Nuri Haryati",
-    jumlahAnggota: 26,
+    instagram: "@kirskaduta",
   },
   {
-    id: 10,
+    id: 8,
     slug: "cyber-security",
     nama: "Cyber Security",
     kategori: "Teknologi & Media",
     deskripsi:
-      "Mempelajari dasar keamanan siber, jaringan komputer, ethical hacking, keamanan sistem, dan kesadaran terhadap ancaman digital.",
+      "Mempelajari keamanan siber, jaringan komputer, ethical hacking, keamanan sistem, dan kesadaran terhadap ancaman digital.",
     gambar: wdcImage,
     jadwal: "Senin & Rabu, 15:30 WIB",
     pembina: "Pembina Cyber Security",
-    jumlahAnggota: 25,
+    instagram: "@cybersecurityskaduta",
   },
   {
-    id: 11,
+    id: 9,
     slug: "it-software",
     nama: "IT Software",
     kategori: "Teknologi & Media",
@@ -109,10 +110,10 @@ export const ekstrakurikulerList = [
     gambar: wdcImage,
     jadwal: "Selasa & Kamis, 15:30 WIB",
     pembina: "Pembina IT Software",
-    jumlahAnggota: 32,
+    instagram: "@itsoftwareskaduta",
   },
   {
-    id: 12,
+    id: 10,
     slug: "wsp-paskibra",
     nama: "WSP (PASKIBRA)",
     kategori: "Organisasi & Kepemimpinan",
@@ -121,10 +122,10 @@ export const ekstrakurikulerList = [
     gambar: drumbandImage,
     jadwal: "Selasa & Kamis, 15:30 WIB",
     pembina: "Pembina WSP / Tonti",
-    jumlahAnggota: 40,
+    instagram: "@wspskaduta",
   },
   {
-    id: 13,
+    id: 11,
     slug: "pmr",
     nama: "Palang Merah Remaja (PMR)",
     kategori: "Kesehatan & Sosial",
@@ -133,10 +134,10 @@ export const ekstrakurikulerList = [
     gambar: tmcImage,
     jadwal: "Rabu, 15:30 WIB",
     pembina: "Pembina PMR",
-    jumlahAnggota: 30,
+    instagram: "@pmrskaduta",
   },
   {
-    id: 14,
+    id: 12,
     slug: "dewan-ambalan",
     nama: "Dewan Ambalan",
     kategori: "Organisasi & Kepemimpinan",
@@ -145,10 +146,10 @@ export const ekstrakurikulerList = [
     gambar: tmcImage,
     jadwal: "Jumat, 15:30 WIB",
     pembina: "Pembina Pramuka",
-    jumlahAnggota: 36,
+    instagram: "@dewanambalanskaduta",
   },
   {
-    id: 15,
+    id: 13,
     slug: "skaduta-media",
     nama: "Skaduta Media",
     kategori: "Media & Jurnalistik",
@@ -157,6 +158,54 @@ export const ekstrakurikulerList = [
     gambar: wdcImage,
     jadwal: "Kamis, 15:30 WIB",
     pembina: "Pembina Skaduta Media",
-    jumlahAnggota: 28,
+    instagram: "@skadutamedia",
+  },
+  {
+    id: 14,
+    slug: "animations",
+    nama: "Animations",
+    kategori: "Seni & Kreativitas",
+    deskripsi:
+      "Mengembangkan kreativitas siswa melalui animasi, ilustrasi, desain visual, serta produksi karya digital.",
+    gambar: wdcImage,
+    jadwal: "Kamis, 15:30 WIB",
+    pembina: "Pembina Animations",
+    instagram: "@animationskaduta",
+  },
+  {
+    id: 15,
+    slug: "kidung-ajisaka",
+    nama: "Kidung Ajisaka",
+    kategori: "Seni & Budaya",
+    deskripsi:
+      "Wadah pengembangan seni, budaya, kreativitas, dan apresiasi terhadap kesenian serta budaya Yogyakarta.",
+    gambar: drumbandImage,
+    jadwal: "Kamis, 15:30 WIB",
+    pembina: "Pembina Kidung Ajisaka",
+    instagram: "@kidungajisaka",
+  },
+  {
+    id: 16,
+    slug: "basket",
+    nama: "Basket",
+    kategori: "Olahraga",
+    deskripsi:
+      "Mengembangkan kemampuan teknik permainan basket, kebugaran, kerja sama tim, disiplin, dan mental bertanding.",
+    gambar: futsalImage,
+    jadwal: "Kamis, 15:30 WIB",
+    pembina: "Pembina Basket",
+    instagram: "@basketskaduta",
+  },
+  {
+    id: 17,
+    slug: "badminton",
+    nama: "Badminton",
+    kategori: "Olahraga",
+    deskripsi:
+      "Mengembangkan keterampilan bermain badminton, kebugaran, koordinasi, disiplin, dan sportivitas siswa.",
+    gambar: futsalImage,
+    jadwal: "Kamis, 15:30 WIB",
+    pembina: "Pembina Badminton",
+    instagram: "@badmintonskaduta",
   },
 ];

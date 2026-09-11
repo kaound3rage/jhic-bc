@@ -17,7 +17,6 @@ function Home() {
       <ProfileSection />
       <MessageSection />
       <MajorSection />
-      <NewsSection />
       <FacilitySection />
       <section className="flex flex-col gap-6 py-18">
         <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
@@ -34,6 +33,7 @@ function Home() {
         </div>
         <AlumniSection />
       </section>
+      <NewsSection />
     </div>
   );
 }

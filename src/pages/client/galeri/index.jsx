@@ -100,7 +100,7 @@ function GaleriPage() {
                 type="button"
                 onClick={() => handleKategori(item.value)}
                 variant={active ? "default" : "secondary"}
-                className={`h-auto shrink-0 cursor-pointer rounded-full px-4 py-2 text-sm font-medium ${
+                className={`h-auto shrink-0 cursor-pointer px-4 py-2 text-sm font-medium ${
                   active
                     ? "bg-primary text-primary-foreground"
                     : "bg-muted text-muted-foreground hover:bg-foreground/10 hover:text-foreground"
@@ -119,7 +119,7 @@ function GaleriPage() {
               onClick={() => handleTag(null)}
               variant="outline"
               size="xs"
-              className={`h-auto cursor-pointer rounded-full px-3 py-1.5 text-xs font-medium ${
+              className={`h-auto cursor-pointer px-3 py-1.5 text-xs font-medium ${
                 tag === null
                   ? "border-primary bg-primary/10 text-primary"
                   : "border-border bg-white text-muted-foreground hover:border-primary/40 hover:text-foreground"
@@ -136,7 +136,7 @@ function GaleriPage() {
                   onClick={() => handleTag(tagItem)}
                   variant="outline"
                   size="xs"
-                  className={`h-auto cursor-pointer rounded-full px-3 py-1.5 text-xs font-medium ${
+                  className={`h-auto cursor-pointer px-3 py-1.5 text-xs font-medium ${
                     active
                       ? "border-primary bg-primary/10 text-primary"
                       : "border-border bg-white text-muted-foreground hover:border-primary/40 hover:text-foreground"

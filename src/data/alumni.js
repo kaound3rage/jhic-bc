@@ -27,7 +27,8 @@ export const alumni = [
     slug: "dimas-nugraha",
     name: "Dimas Nugraha",
     role: "Mahasiswa Teknik Mesin ITB",
-    image: "/pjs.png",
+    image:
+      "https://images.bisnis.com/upload/img/KopiKenangan002.JPEG",
     quote:
       "Budaya belajar dan praktik di SKADUTA membuat saya lebih percaya diri melanjutkan pendidikan.",
     kategori: "Kuliah",
@@ -38,7 +39,8 @@ export const alumni = [
     slug: "salsabila-putri",
     name: "Salsabila Putri",
     role: "UI/UX Designer",
-    image: "/sija.png",
+    image:
+      "/woman.png",
     quote:
       "Projek nyata di sekolah membantu saya memahami cara mengubah kebutuhan menjadi solusi yang berguna.",
     kategori: "Bekerja",
@@ -49,7 +51,8 @@ export const alumni = [
     slug: "bagas-pratama",
     name: "Bagas Pratama",
     role: "Pemilik Bengkel Mandiri",
-    image: "/moh_rokhis.webp",
+    image:
+      "https://images.bisnis.com/upload/img/KopiKenangan002.JPEG",
     quote:
       "Keterampilan praktik yang saya dapatkan menjadi bekal untuk membangun usaha bersama teman-teman.",
     kategori: "Wirausaha",

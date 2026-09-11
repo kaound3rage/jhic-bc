@@ -5,7 +5,7 @@ export const newsItems = [
     author: "Admin",
     type: "Prestasi",
     tags: ["LKS", "Kompetisi"],
-    title: "SKADUTA Raih Juara LKS Tingkat Provinsi",
+    title: "Juara 1 LKS Web Technologies Tingkat Provinsi",
     description:
       "Siswa SMK Negeri 2 Yogyakarta kembali menorehkan prestasi membanggakan dalam ajang Lomba Kompetensi Siswa tingkat provinsi.",
     image: "/pjs.png",
@@ -13,6 +13,18 @@ export const newsItems = [
   },
   {
     id: 2,
+    date: "08 September 2026",
+    author: "Admin",
+    type: "Prestasi",
+    tags: ["LKS", "Kompetisi"],
+    title: "Juara 2 LKS IT Software Solutions for Business",
+    description:
+      "Siswa SMK Negeri 2 Yogyakarta kembali menorehkan prestasi membanggakan dalam ajang Lomba Kompetensi Siswa tingkat provinsi.",
+    image: "/pjs.png",
+    slug: "skaduta-raih-juara-lks-tingkat-provinsi",
+  },
+  {
+    id: 3,
     date: "03 September 2026",
     author: "Admin",
     type: "Kegiatan",
@@ -24,7 +36,7 @@ export const newsItems = [
     slug: "kolaborasi-pembelajaran-bersama-mitra-industri",
   },
   {
-    id: 3,
+    id: 4,
     date: "27 Agustus 2026",
     author: "Admin",
     type: "Pengumuman",
@@ -36,7 +48,7 @@ export const newsItems = [
     slug: "informasi-pendaftaran-peserta-didik-baru",
   },
   {
-    id: 4,
+    id: 5,
     date: "20 Agustus 2026",
     author: "Tim Humas",
     type: "Kegiatan",
@@ -48,7 +60,7 @@ export const newsItems = [
     slug: "semarak-peringatan-hut-kemerdekaan-di-skaduta",
   },
   {
-    id: 5,
+    id: 6,
     date: "15 Agustus 2026",
     author: "Admin",
     type: "Akademik",
@@ -60,7 +72,7 @@ export const newsItems = [
     slug: "pelatihan-literasi-digital-untuk-guru-dan-siswa",
   },
   {
-    id: 6,
+    id: 7,
     date: "09 Agustus 2026",
     author: "Tim Humas",
     type: "Prestasi",
@@ -72,7 +84,7 @@ export const newsItems = [
     slug: "tim-futsal-skaduta-melaju-ke-final-antar-smk",
   },
   {
-    id: 7,
+    id: 8,
     date: "02 Agustus 2026",
     author: "Admin",
     type: "Pengumuman",
@@ -84,7 +96,7 @@ export const newsItems = [
     slug: "jadwal-asesmen-tengah-semester-ganjil",
   },
   {
-    id: 8,
+    id: 9,
     date: "25 Juli 2026",
     author: "Tim Humas",
     type: "Kegiatan",
@@ -96,7 +108,7 @@ export const newsItems = [
     slug: "gerakan-jumat-bersih-wujudkan-sekolah-nyaman",
   },
   {
-    id: 9,
+    id: 10,
     date: "18 Juli 2026",
     author: "Admin",
     type: "Alumni",

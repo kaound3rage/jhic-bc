@@ -90,9 +90,9 @@ function SchoolProfilePage() {
 
   return (
     <div className="w-full px-4 py-8 sm:px-6 lg:px-0 lg:py-10">
-      <section className="relative mt-6 min-h-[25rem] overflow-hidden rounded-2xl bg-muted shadow-sm ring-1 ring-foreground/10 sm:min-h-[31rem]">
+      <section className="relative mt-6 min-h-100 overflow-hidden rounded-2xl bg-muted shadow-sm ring-1 ring-foreground/10 sm:min-h-[31rem]">
         <img
-          src="/sekolah.webp"
+          src="/sekolah_2.png"
           alt="Gedung SMK Negeri 2 Yogyakarta"
           className="absolute inset-0 size-full object-cover"
           loading="eager"
@@ -121,7 +121,7 @@ function SchoolProfilePage() {
           <div className="space-y-10 sm:space-y-12">
             {milestones.map((milestone) => (
               <article key={milestone.year} className="relative max-w-3xl">
-                <span className="absolute -left-[2.3rem] top-1.5 size-3 rounded-full bg-primary ring-4 ring-background sm:-left-[3.05rem]" />
+                <span className="absolute left-[-2.3rem] top-1.5 size-3 rounded-full bg-primary ring-4 ring-background sm:left-[-3.05rem]" />
                 <p className="font-mono text-xs font-semibold text-primary">
                   {milestone.year}
                 </p>
