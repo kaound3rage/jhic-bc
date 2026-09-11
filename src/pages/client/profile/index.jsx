@@ -138,7 +138,6 @@ function SchoolProfilePage() {
           </div>
         </div>
       </section>
-
       <section className="mt-16 sm:mt-20">
         <SectionHeading
           eyebrow="01 / Perjalanan"

@@ -8,6 +8,7 @@ import MessageSection from "@/components/home-component/message-section";
 import ProfileSection from "@/components/home-component/profile-section";
 import WhySkaduta from "@/components/home-component/why-skaduta";
 import NewsSection from "../../../components/home-component/news-section";
+import GallerySection from "@/components/home-component/gallery-section";
 
 function Home() {
   return (
@@ -18,6 +19,7 @@ function Home() {
       <MessageSection />
       <MajorSection />
       <FacilitySection />
+      <GallerySection />
       <section className="flex flex-col gap-6 py-18">
         <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
           <div className="flex flex-col gap-1">
