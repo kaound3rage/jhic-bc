@@ -6,14 +6,14 @@ import { Card, CardContent } from "@/components/ui/card";
 
 function FasilitasCta() {
   return (
-    <Card className="overflow-hidden border-0 bg-gradient-to-r from-[#102d73] to-[#164f98] text-white shadow-lg">
+    <Card className="overflow-hidden border-0 bg-primary">
       <CardContent className="flex flex-col gap-6 p-6 sm:p-8 lg:flex-row lg:items-center lg:justify-between">
         <div className="max-w-xl">
           <Badge className="border-white/15 bg-white/10 text-white">
             <AlertTriangle className="size-3.5" />
             Layanan Tanggap Sarpras
           </Badge>
-          <h2 className="mt-4 text-2xl font-semibold tracking-tight sm:text-3xl">
+          <h2 className="mt-4 text-2xl text-white font-semibold tracking-tight sm:text-3xl">
             Menemukan Kerusakan Fasilitas?
           </h2>
           <p className="mt-2 text-sm leading-6 text-blue-100">
@@ -23,10 +23,10 @@ function FasilitasCta() {
           </p>
         </div>
 
-        <div className="flex flex-col gap-2 sm:flex-row lg:flex-col xl:flex-row">
+        <div className="flex flex-col gap-2">
           <Button
             render={<Link to="/sigap/lapor-fasilitas" />}
-            className="bg-amber-400 text-slate-950 hover:bg-amber-300"
+            className="bg-amber-400 text-orange-900 hover:bg-amber-300"
           >
             <Megaphone className="size-4" />
             Lapor Kerusakan Sekarang

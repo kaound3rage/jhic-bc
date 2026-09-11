@@ -1,4 +1,4 @@
-import densoLogo from "../assets/industry/denso.webp";
+import densoLogo from "../assets/industry/denso_logo.webp";
 import indonesiaIndicatorLogo from "../assets/industry/indonesia_indicator.webp";
 import komatsuLogo from "../assets/industry/komatsu.png";
 import samsungLogo from "../assets/industry/samsung.png";

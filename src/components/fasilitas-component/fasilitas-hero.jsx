@@ -1,5 +1,5 @@
-import { Building2 } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
+// import { Building2 } from "lucide-react";
+// import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 
 const stats = [
@@ -10,12 +10,12 @@ const stats = [
 
 function FasilitasHero() {
   return (
-    <header className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
+    <header className="flex flex-col gap-8 mb-9 lg:flex-row lg:items-end lg:justify-between">
       <div className="max-w-2xl">
-        <Badge variant="secondary" className="gap-1.5 uppercase tracking-wide">
+        {/* <Badge variant="secondary" className="gap-1.5 uppercase tracking-wide">
           <Building2 className="size-3.5" />
           Sarana & Prasarana
-        </Badge>
+        </Badge> */}
         <h1 className="mt-4 text-3xl font-semibold tracking-tight sm:text-4xl">
           Fasilitas Sekolah
         </h1>

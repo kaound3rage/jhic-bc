@@ -72,8 +72,8 @@ function Hero() {
             alt="SEKOLAH"
             className="rounded-3xl w-130 h-80"
           />
-          <span className="bg-primary-foreground text-primary font-semibold p-5 rounded-2xl absolute -translate-x-11 -translate-y-7">
-            Terakreditasi - A
+          <span className="bg-accent text-primary font-semibold p-5 rounded-2xl absolute -translate-x-11 -translate-y-7">
+            Terakreditasi · A
           </span>
         </div>
       </section>

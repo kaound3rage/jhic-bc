@@ -8,7 +8,7 @@ import {
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from "./ui/navigation-menu";
-import { Aperture, Compass, Menu, School, UserRound, Wrench } from "lucide-react";
+import { Aperture, Compass, Menu, School, UserRound, Wrench, Toolbox } from "lucide-react";
 import { Program } from "./navigation-component/data-program";
 import { Jurusan } from "./navigation-component/data-jurusan";
 
@@ -36,6 +36,13 @@ function Header() {
                 icon={UserRound}
               >
                 Pesan dan amanat dari kepala sekolah.
+              </ListItem>
+              <ListItem
+                href="/profil/alumni"
+                title="Jejak Alumni"
+                icon={Toolbox}
+              >
+                Jelajahi pencapaian alumni kami.
               </ListItem>
             </ul>
           </NavigationMenuContent>

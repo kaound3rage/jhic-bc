@@ -55,9 +55,6 @@ function AlumniPage() {
     <div className="w-full px-4 py-8 sm:px-6 lg:px-0 lg:py-12">
       <Breadcrumb />
       <div className="mt-5 max-w-3xl">
-        <p className="font-mono text-xs font-medium uppercase tracking-[0.18em] text-primary">
-          Komunitas SKADUTA
-        </p>
         <h1 className="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">
           Daftar Alumni SKADUTA
         </h1>
@@ -93,7 +90,7 @@ function AlumniPage() {
         }`}
       >
         {filteredAlumni.length > 0 ? (
-          <div className="grid grid-cols-1 gap-4 min-[480px]:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+          <div className="grid grid-cols-1 gap-4 min-[480px]:grid-cols-2 md:grid-cols-3 lg:grid-cols-3">
             {filteredAlumni.map((item) => (
               <Card
                 key={item.slug}
