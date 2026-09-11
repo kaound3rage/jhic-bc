@@ -366,16 +366,16 @@ export default function ChatbotBox() {
       {/* Box Chatbot saat Terbuka */}
       {isOpen ? (
         <div
-          className="flex flex-col overflow-hidden rounded-3xl border border-white/60 bg-white/55 text-card-foreground shadow-[0_24px_70px_-24px_rgba(15,23,42,0.45)] backdrop-blur-2xl transition-all duration-300 animate-in fade-in slide-in-from-bottom-4"
+          className="flex flex-col overflow-hidden rounded-3xl border border-sky-200/70 bg-white/55 text-card-foreground shadow-[0_24px_70px_-24px_rgba(15,23,42,0.45)] backdrop-blur-2xl transition-all duration-300 animate-in fade-in slide-in-from-bottom-4"
           style={{
             width: "min(400px, calc(100vw - 2.5rem))",
             height: "min(580px, calc(100vh - 6rem))",
           }}
         >
           {/* Header Box */}
-          <div className="flex items-center justify-between border-b border-white/50 bg-white/35 px-4 py-3 text-foreground backdrop-blur-xl">
+          <div className="flex items-center justify-between border-b border-sky-200/70 bg-linear-to-r from-sky-100/65 via-white/35 to-blue-100/45 px-4 py-3 text-foreground backdrop-blur-xl">
             <div className="flex items-center gap-2.5">
-              <div className="relative flex h-9 w-9 items-center justify-center rounded-xl border border-white/70 bg-white/60 shadow-sm backdrop-blur-md">
+              <div className="relative flex h-9 w-9 items-center justify-center rounded-xl border border-sky-200/80 bg-white/65 shadow-sm backdrop-blur-md">
                 <img
                   src="/logo.webp"
                   alt="SMKN 2 Yogyakarta"
@@ -425,7 +425,7 @@ export default function ChatbotBox() {
           </div>
 
           {/* Area Percakapan (Messages List) */}
-          <div className="relative flex-1 space-y-3 overflow-y-auto bg-linear-to-b from-white/25 to-sky-50/20 p-3.5 text-xs">
+          <div className="relative flex-1 space-y-3 overflow-y-auto bg-linear-to-b from-sky-50/55 via-white/20 to-blue-50/35 p-3.5 text-xs">
             {messages.map((msg) => {
               const isUser = msg.role === "user";
 
@@ -437,7 +437,7 @@ export default function ChatbotBox() {
                   }`}
                 >
                   {!isUser && (
-                    <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#BAE6FD] text-primary border border-primary/20 mt-0.5">
+                    <div className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-sky-200/80 bg-sky-100/80 text-primary shadow-sm">
                       <Bot className="h-4 w-4" />
                     </div>
                   )}
@@ -448,7 +448,7 @@ export default function ChatbotBox() {
                         ? "bg-primary/90 text-primary-foreground rounded-tr-xs shadow-sm"
                         : msg.error
                         ? "bg-red-50 border border-red-200 text-red-800 rounded-tl-xs"
-                        : "border border-white/75 bg-white/60 text-foreground shadow-sm backdrop-blur-md rounded-tl-xs"
+                        : "rounded-tl-xs border border-sky-200/65 bg-sky-50/55 text-foreground shadow-sm backdrop-blur-md"
                     }`}
                   >
                     {/* Teks Pesan */}
@@ -514,7 +514,7 @@ export default function ChatbotBox() {
 
           {/* Saran Pertanyaan Cepat (Quick Prompts) */}
           {messages.length <= 2 && (
-            <div className="border-t border-white/50 bg-white/20 px-3.5 py-1.5 backdrop-blur-md">
+            <div className="border-t border-sky-200/60 bg-sky-50/35 px-3.5 py-1.5 backdrop-blur-md">
               <p className="mb-1 flex items-center gap-1 text-[10px] font-medium text-muted-foreground">
                 Pertanyaan yang sering ditanyakan:
               </p>
@@ -525,7 +525,7 @@ export default function ChatbotBox() {
                     type="button"
                     disabled={isStreaming}
                     onClick={() => handleSendMessage(prompt)}
-                    className="cursor-pointer rounded-full border border-white/80 bg-white/55 px-2.5 py-1 text-[10px] text-foreground/80 shadow-sm backdrop-blur-sm transition-colors hover:border-primary/40 hover:bg-white/80 disabled:cursor-not-allowed disabled:opacity-50"
+                    className="cursor-pointer rounded-full border border-sky-200/80 bg-white/60 px-2.5 py-1 text-[10px] text-foreground/80 shadow-sm backdrop-blur-sm transition-colors hover:border-primary/60 hover:bg-sky-50/80 disabled:cursor-not-allowed disabled:opacity-50"
                   >
                     {prompt}
                   </button>
@@ -535,13 +535,13 @@ export default function ChatbotBox() {
           )}
 
           {/* Area Form Input */}
-          <div className="border-t border-white/60 bg-white/35 p-2.5 backdrop-blur-xl">
+          <div className="border-t border-sky-200/65 bg-linear-to-r from-sky-50/45 to-white/35 p-2.5 backdrop-blur-xl">
             <form
               onSubmit={(e) => {
                 e.preventDefault();
                 handleSendMessage();
               }}
-              className="flex items-center gap-1.5 rounded-2xl border border-white/80 bg-white/60 p-1 shadow-sm backdrop-blur-md focus-within:border-primary/60 focus-within:ring-2 focus-within:ring-primary/15"
+              className="flex items-center gap-1.5 rounded-2xl border border-sky-200/80 bg-white/65 p-1 shadow-sm backdrop-blur-md focus-within:border-primary/70 focus-within:ring-2 focus-within:ring-primary/15"
             >
               <input
                 ref={inputRef}
@@ -612,7 +612,7 @@ export default function ChatbotBox() {
           <button
             type="button"
             onClick={() => setIsOpen(true)}
-            className="group flex cursor-pointer items-center gap-2.5 rounded-full border border-white/70 bg-white/60 px-4 py-2.5 text-foreground shadow-[0_14px_35px_-12px_rgba(15,23,42,0.45)] backdrop-blur-xl transition-all duration-300 hover:scale-105 hover:bg-white/80 hover:shadow-2xl active:scale-95"
+            className="group flex cursor-pointer items-center gap-2.5 rounded-full border border-sky-200/80 bg-white/60 px-4 py-2.5 text-foreground shadow-[0_14px_35px_-12px_rgba(15,23,42,0.45)] backdrop-blur-xl transition-all duration-300 hover:scale-105 hover:border-sky-300 hover:bg-sky-50/80 hover:shadow-2xl active:scale-95"
             aria-label="Buka Chatbot SKADUTA"
           >
             <div className="relative flex h-8 w-8 items-center justify-center rounded-full bg-primary/10 ring-1 ring-primary/20">
