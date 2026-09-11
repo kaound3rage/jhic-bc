@@ -90,24 +90,52 @@ function SchoolProfilePage() {
 
   return (
     <div className="w-full px-4 py-8 sm:px-6 lg:px-0 lg:py-10">
-      <section className="relative mt-6 min-h-100 overflow-hidden rounded-2xl bg-muted shadow-sm ring-1 ring-foreground/10 sm:min-h-[31rem]">
-        <img
-          src="/sekolah_2.png"
-          alt="Gedung SMK Negeri 2 Yogyakarta"
-          className="absolute inset-0 size-full object-cover"
-          loading="eager"
-        />
-        <div className="absolute inset-0 bg-linear-to-t from-black/85 via-black/45 to-black/10" />
-        <div className="absolute inset-x-0 bottom-0 p-6 sm:p-10 lg:p-14">
-          <Badge className="border-white/25 bg-white/15 text-white backdrop-blur-sm hover:bg-white/15">
-            The Industrial Culture School
-          </Badge>
-          <h1 className="mt-4 max-w-3xl text-balance text-3xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl">
-            Profil SMK Negeri 2 Yogyakarta
-          </h1>
-          <p className="mt-4 max-w-2xl text-sm leading-7 text-white/80 sm:text-base">
-            Menghasilkan Tamatan Berkarakter, Unggul &amp; Berdaya Saing Global.
-          </p>
+      <section>
+        <div className="relative mt-6 min-h-100 overflow-hidden rounded-2xl bg-muted shadow-sm ring-1 ring-foreground/10 sm:min-h-124">
+          <img
+            src="/sekolah_2.png"
+            alt="Gedung SMK Negeri 2 Yogyakarta"
+            className="absolute inset-0 size-full object-cover"
+            loading="eager"
+          />
+          <div className="absolute inset-0 bg-linear-to-t from-black/85 via-black/45 to-black/10" />
+          <div className="absolute inset-x-0 bottom-0 p-6 sm:p-10 lg:p-14">
+            <Badge className="border-white/25 bg-white/15 text-white backdrop-blur-sm hover:bg-white/15">
+              The Industrial Culture School
+            </Badge>
+            <h1 className="mt-4 max-w-3xl text-balance text-3xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl">
+              Profil SMK Negeri 2 Yogyakarta
+            </h1>
+            <p className="mt-4 max-w-2xl text-sm leading-7 text-white/80 sm:text-base">
+              Menghasilkan Tamatan Berkarakter, Unggul &amp; Berdaya Saing
+              Global.
+            </p>
+          </div>
+        </div>
+        <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-3">
+          <div className="overflow-hidden rounded-2xl">
+            <img
+              src="/sejarah/sejarah_1.png"
+              alt="Sejarah SMK Negeri 2 Yogyakarta 1"
+              className="aspect-4/3 h-full w-full object-cover"
+            />
+          </div>
+
+          <div className="overflow-hidden rounded-2xl">
+            <img
+              src="/sejarah/sejarah_2.png"
+              alt="Sejarah SMK Negeri 2 Yogyakarta 2"
+              className="aspect-4/3 h-full w-full object-cover"
+            />
+          </div>
+
+          <div className="overflow-hidden rounded-2xl">
+            <img
+              src="/sejarah/sejarah_3.png"
+              alt="Sejarah SMK Negeri 2 Yogyakarta 3"
+              className="aspect-4/3 h-full w-full object-cover"
+            />
+          </div>
         </div>
       </section>
 
