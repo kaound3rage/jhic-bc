@@ -4,7 +4,7 @@ export const fasilitasList = [
     nama: "Laboratorium Sains Terpadu",
     kategori: "Akademik & Riset",
     lokasi: "Gedung A Lantai 2",
-    gambar: "/galeri/galeri-01.svg",
+    gambar: "/pjs.png",
     deskripsi:
       "Ruang praktik untuk mendukung pembelajaran sains melalui eksperimen dan kegiatan riset siswa.",
   },
@@ -13,7 +13,7 @@ export const fasilitasList = [
     nama: "Perpustakaan PJS",
     kategori: "Akademik & Riset",
     lokasi: "Gedung B Lantai 1",
-    gambar: "/galeri/galeri-02.svg",
+    gambar: "/pjs.png",
     deskripsi:
       "Pusat sumber belajar dengan koleksi buku dan ruang nyaman untuk membaca serta belajar mandiri.",
   },
@@ -22,7 +22,7 @@ export const fasilitasList = [
     nama: "Lapangan Basket",
     kategori: "Olahraga",
     lokasi: "Kompleks Olahraga Timur",
-    gambar: "/galeri/galeri-03.svg",
+    gambar: "/pjs.png",
     deskripsi:
       "Fasilitas olahraga untuk mendukung aktivitas basket, latihan fisik, dan kegiatan ekstrakurikuler siswa.",
   },
@@ -31,7 +31,7 @@ export const fasilitasList = [
     nama: "Studio Musik & Podcast",
     kategori: "Seni & Pertunjukan",
     lokasi: "Gedung Kesenian Lantai 1",
-    gambar: "/galeri/galeri-04.svg",
+    gambar: "/pjs.png",
     deskripsi:
       "Studio kreatif untuk produksi musik, podcast, dan pengembangan karya seni digital siswa.",
   },
@@ -40,7 +40,7 @@ export const fasilitasList = [
     nama: "Auditorium Graha Krida",
     kategori: "Seni & Pertunjukan",
     lokasi: "Gedung Pusat Lantai 3",
-    gambar: "/galeri/galeri-05.svg",
+    gambar: "/pjs.png",
     deskripsi:
       "Ruang pertunjukan dan kegiatan sekolah untuk mendukung seminar, pentas seni, dan acara bersama.",
   },
@@ -49,7 +49,7 @@ export const fasilitasList = [
     nama: "Laboratorium Komputer",
     kategori: "Teknologi & Multimedia",
     lokasi: "Gedung C Lantai 2",
-    gambar: "/galeri/galeri-06.svg",
+    gambar: "/pjs.png",
     deskripsi:
       "Laboratorium dengan perangkat komputer untuk praktik teknologi, pemrograman, desain, dan multimedia.",
   },
@@ -58,7 +58,7 @@ export const fasilitasList = [
     nama: "Greenhouse & Taman Botani",
     kategori: "Akademik & Riset",
     lokasi: "Area Sayap Selatan",
-    gambar: "/galeri/galeri-07.svg",
+    gambar: "/pjs.png",
     deskripsi:
       "Area pembelajaran lingkungan untuk mengenal tanaman, ekosistem, dan praktik pengelolaan lingkungan.",
   },
@@ -67,7 +67,7 @@ export const fasilitasList = [
     nama: "UKS",
     kategori: "Kesehatan",
     lokasi: "Gedung Utama Lantai 1",
-    gambar: "/galeri/galeri-08.svg",
+    gambar: "/pjs.png",
     deskripsi:
       "Fasilitas layanan kesehatan dasar bagi siswa dan warga sekolah yang membutuhkan penanganan awal.",
   },
@@ -76,12 +76,11 @@ export const fasilitasList = [
     nama: "Kantin Sehat",
     kategori: "Layanan Siswa",
     lokasi: "Gedung D Paviliun",
-    gambar: "/galeri/galeri-09.svg",
+    gambar: "/pjs.png",
     deskripsi:
       "Area makan siswa yang menyediakan pilihan makanan dan minuman untuk mendukung pola hidup sehat.",
   },
 ];
-
 export const fasilitasKategori = [
   "Semua",
   "Akademik",

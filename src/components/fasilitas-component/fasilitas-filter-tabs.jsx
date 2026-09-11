@@ -13,7 +13,7 @@ function FasilitasFilterTabs({ activeCategory, onCategoryChange }) {
             type="button"
             size="sm"
             variant={isActive ? "default" : "outline"}
-            className="rounded-full px-4 h-10"
+            className="px-4 h-10"
             aria-pressed={isActive}
             onClick={() => onCategoryChange(category)}
           >

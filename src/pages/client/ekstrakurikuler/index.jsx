@@ -10,30 +10,37 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import Breadcrumb from "@/components/breadcrumb";
+
 import { usePageMeta } from "@/hooks/use-page-meta";
 import { ekstrakurikulerList } from "@/components/ekstrakurikuler-component/data-ekstrakurikuler";
 import { ekstrakurikulerData } from "@/data/ekstrakurikuler";
 import EkstrakurikulerCard from "@/components/ekstrakurikuler-component/ekstrakurikuler-card";
+import { Card, CardContent } from "@/components/ui/card";
 
 function EkstrakurikulerPage() {
   const [search, setSearch] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("Semua");
+
   const allEkstrakurikuler = ekstrakurikulerList;
+
   const categories = [
     "Semua",
     ...new Set(allEkstrakurikuler.map((item) => item.kategori)),
   ];
+
   const keyword = search.trim().toLowerCase();
+
   const filteredEkstrakurikuler = allEkstrakurikuler.filter((item) => {
     const description = Array.isArray(item.deskripsi)
       ? item.deskripsi.join(" ")
       : item.deskripsi;
+
     const matchesSearch =
       !keyword ||
       item.nama.toLowerCase().includes(keyword) ||
       description.toLowerCase().includes(keyword) ||
       item.kategori.toLowerCase().includes(keyword);
+
     const matchesCategory =
       selectedCategory === "Semua" || item.kategori === selectedCategory;
 
@@ -45,6 +52,21 @@ function EkstrakurikulerPage() {
     setSelectedCategory("Semua");
   };
 
+  const stats = [
+    {
+      value: `${allEkstrakurikuler.length}+`,
+      label: "Ekstrakurikuler",
+    },
+    {
+      value: categories.length - 1,
+      label: "Kategori Kegiatan",
+    },
+    {
+      value: allEkstrakurikuler.length,
+      label: "Kegiatan Aktif",
+    },
+  ];
+
   usePageMeta(
     "Ekstrakurikuler",
     "Jelajahi 12 ekstrakurikuler dan organisasi siswa di SMK Negeri 2 Yogyakarta (SKADUTA).",
@@ -52,17 +74,35 @@ function EkstrakurikulerPage() {
 
   return (
     <section className="w-full px-4 py-8 sm:px-6 lg:px-0 lg:py-12">
-      <div className="mb-8 max-w-3xl">
-        <Breadcrumb />
-        <h1 className="mt-4 text-2xl font-semibold tracking-tight sm:text-3xl">
-          Ekstrakurikuler
-        </h1>
-        <p className="mt-3 text-sm text-muted-foreground">
-          Jelajahi 12 ekstrakurikuler dan organisasi siswa di SKADUTA. Setiap
-          kegiatan dibina untuk mengembangkan potensi, karakter, dan prestasi
-          siswa.
-        </p>
-      </div>
+      <header className="mb-9 flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
+        <div className="max-w-2xl">
+          <h1 className="mt-4 text-3xl font-semibold tracking-tight sm:text-4xl">
+            Ekstrakurikuler
+          </h1>
+
+          <p className="mt-3 max-w-xl text-sm leading-6 text-muted-foreground sm:text-base">
+            Jelajahi berbagai kegiatan ekstrakurikuler dan organisasi siswa di
+            SMK Negeri 2 Yogyakarta untuk mengembangkan potensi, karakter, dan
+            prestasi siswa.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-3 gap-2 sm:gap-3 lg:min-w-96">
+          {stats.map((stat) => (
+            <Card key={stat.label} className="bg-muted/50 py-3 shadow-none">
+              <CardContent className="px-3 text-center sm:px-4">
+                <p className="text-xl font-semibold text-primary sm:text-2xl">
+                  {stat.value}
+                </p>
+
+                <p className="mt-1 text-[0.65rem] text-muted-foreground sm:text-xs">
+                  {stat.label}
+                </p>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      </header>
 
       <div className="mb-8 flex flex-col gap-3 sm:flex-row">
         <div className="relative flex-1">
@@ -98,7 +138,9 @@ function EkstrakurikulerPage() {
               key={item.id}
               item={item}
               hasDetail={ekstrakurikulerData.some((category) =>
-                category.items.some((detailItem) => detailItem.slug === item.slug),
+                category.items.some(
+                  (detailItem) => detailItem.slug === item.slug,
+                ),
               )}
             />
           ))}

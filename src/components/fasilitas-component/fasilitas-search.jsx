@@ -13,7 +13,7 @@ function FasilitasSearch({ query, onQueryChange, activeCategory, onCategoryChang
           onChange={(event) => onQueryChange(event.target.value)}
           placeholder="Cari fasilitas berdasarkan nama atau lokasi..."
           aria-label="Cari fasilitas berdasarkan nama atau lokasi"
-          className="h-10 rounded-full bg-background pl-9"
+          className="h-10 bg-background pl-9"
         />
       </div>
       <FasilitasFilterTabs

@@ -4,7 +4,7 @@ import { Card } from "../ui/card";
 import { ArrowRight, Medal } from "lucide-react";
 
 const stats = [
-  { value: "2.8k+", label: "Siswa Aktif" },
+  { value: "2.2k+", label: "Siswa Aktif" },
   { value: "10", label: "Program Keahlian" },
   { value: "50+", label: "Mitra Industri" },
   { value: "95%", label: "Lulusan Kerja" },
@@ -34,7 +34,7 @@ function WhySkaduta() {
                 <Medal />
               </Button>
               <Button className={"px-4 py-5"} variant="outline">
-                <Link to={"/berita"}>Fasilitas</Link>
+                <Link to={"/fasilitas"}>Fasilitas</Link>
                 <ArrowRight />
               </Button>
             </span>

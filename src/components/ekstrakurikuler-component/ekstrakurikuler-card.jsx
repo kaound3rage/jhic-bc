@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { CalendarDays, ImageOff, Trophy, User, Users } from "lucide-react";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { CalendarDays, ImageOff, Trophy, User } from "lucide-react";
+
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -12,31 +12,25 @@ const categoryStyles = {
   "Seni & Musik": "border-purple-200 bg-purple-50 text-purple-700",
   "Akademik & Sains": "border-blue-200 bg-blue-50 text-blue-700",
   "Teknologi & Media": "border-cyan-200 bg-cyan-50 text-cyan-700",
-  "Olahraga": "border-orange-200 bg-orange-50 text-orange-700",
+  Olahraga: "border-orange-200 bg-orange-50 text-orange-700",
   "Organisasi & Kepemimpinan": "border-yellow-200 bg-yellow-50 text-yellow-700",
   "Kesehatan & Sosial": "border-red-200 bg-red-50 text-red-700",
   "Media & Jurnalistik": "border-indigo-200 bg-indigo-50 text-indigo-700",
+  "Seni & Kreativitas": "border-pink-200 bg-pink-50 text-pink-700",
+  "Seni & Budaya": "border-violet-200 bg-violet-50 text-violet-700",
 };
-
-function getInitials(name) {
-  return name
-    .replace(/^(Coach|Mr\\.|Mrs\\.|Bp\\.|Ibu|Dr\\.|Ir\\.)\\s+/i, "")
-    .split(/\\s+/)
-    .slice(0, 2)
-    .map((part) => part[0])
-    .join("")
-    .toUpperCase();
-}
 
 function EkstrakurikulerCard({ item, hasDetail }) {
   const [imageFailed, setImageFailed] = useState(false);
+
   const description = Array.isArray(item.deskripsi)
     ? item.deskripsi[0]
     : item.deskripsi;
+
   const image = item.gambar ?? item.fotoUrl;
 
   return (
-    <Card className="h-full gap-0 py-0 transition-shadow hover:shadow-md">
+    <Card className="h-full gap-0 py-0">
       <div className="relative aspect-video overflow-hidden bg-muted/60">
         {imageFailed ? (
           <div
@@ -53,12 +47,13 @@ function EkstrakurikulerCard({ item, hasDetail }) {
           <img
             src={image}
             alt={`Kegiatan ${item.nama}`}
-            className="size-full object-cover"
+            className="aspect-video w-full object-cover transition-transform duration-300 hover:scale-105"
             onError={() => setImageFailed(true)}
           />
         )}
+
         {item.prestasi && (
-          <Badge className="absolute bottom-3 right-3 bg-background/95 text-foreground hover:bg-background">
+          <Badge className="absolute right-3 bottom-3 bg-background/95 text-foreground hover:bg-background">
             <Trophy className="text-amber-500" />
             {item.prestasi}
           </Badge>
@@ -75,28 +70,38 @@ function EkstrakurikulerCard({ item, hasDetail }) {
         >
           {item.kategori}
         </Badge>
+
         <h2 className="text-base font-semibold">{item.nama}</h2>
+
         <p className="mt-1 line-clamp-2 min-h-10 text-sm leading-5 text-muted-foreground">
           {description}
         </p>
+
         <Separator className="my-3" />
+
         <div className="space-y-2 text-xs text-muted-foreground">
           <div className="flex items-center gap-2">
             <CalendarDays className="size-3.5 shrink-0" />
             <span>{item.jadwal}</span>
           </div>
+
           <div className="flex items-center gap-2">
             <User className="size-3.5 shrink-0" />
-            <Avatar size="sm">
-              <AvatarFallback>{getInitials(item.pembina)}</AvatarFallback>
-            </Avatar>
             <span>{item.pembina}</span>
           </div>
-          <div className="flex items-center gap-2">
-            <Users className="size-3.5 shrink-0" />
-            <span>{item.jumlahAnggota} Anggota Aktif</span>
-          </div>
+
+          {item.instagram && (
+            <div className="flex items-center gap-2">
+              <img
+                src="https://cdn.simpleicons.org/instagram"
+                alt=""
+                className="size-3.5 opacity-60 grayscale"
+              />
+              <span>{item.instagram}</span>
+            </div>
+          )}
         </div>
+
         <div className="mt-4">
           {hasDetail ? (
             <Button
