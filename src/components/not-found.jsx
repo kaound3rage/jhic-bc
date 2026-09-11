@@ -13,7 +13,7 @@ function NotFound() {
         Maaf, halaman yang kamu cari tidak tersedia.
       </p>
 
-      <Button asChild className="mt-6 py-4.5 px-5">
+      <Button className="mt-6 py-4.5 px-5">
         <Link to="/">Kembali ke Beranda</Link>
         <Home />
       </Button>

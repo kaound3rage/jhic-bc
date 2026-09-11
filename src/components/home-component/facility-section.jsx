@@ -1,15 +1,7 @@
 import { Link } from "react-router-dom";
 import { Button } from "../ui/button";
-import { Badge } from "../ui/badge";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "../ui/card";
-import { fasilitas } from "./data-facility";
-import { ArrowRight } from "lucide-react";
+import FasilitasCard from "../fasilitas-component/fasilitas-card";
+import { fasilitasList } from "../fasilitas-component/data-fasilitas";
 
 function FacilitySection() {
   return (
@@ -34,37 +26,8 @@ function FacilitySection() {
       </div>
 
       <div className="grid grid-cols-3 gap-4">
-        {fasilitas.slice(0, 3).map((item) => (
-          <Card
-            key={item.nama}
-            className="mx-auto w-full max-w-sm overflow-hidden pt-0"
-          >
-            <div className="relative aspect-video overflow-hidden">
-              <img
-                src={item.image}
-                alt={item.nama}
-                className="size-full object-cover transition-transform duration-300 group-hover/card:scale-105"
-              />
-            </div>
-
-            <CardHeader>
-              <Badge className="w-fit border-green-200 bg-green-100 text-green-700 hover:bg-green-100">
-                Tersedia
-              </Badge>
-
-              <CardTitle>{item.nama}</CardTitle>
-              <CardDescription>{item.deskripsi}</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <Button
-                variant="ghost"
-                className="group text-primary hover:text-primary"
-              >
-                <Link to="/">Lihat Detail</Link>
-                <ArrowRight className="transition-transform duration-200 group-hover:scale-125 " />
-              </Button>
-            </CardContent>
-          </Card>
+        {fasilitasList.slice(0, 3).map((item) => (
+          <FasilitasCard key={item.id} fasilitas={item} />
         ))}
       </div>
     </section>
